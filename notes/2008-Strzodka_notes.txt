@@ -1,0 +1,27 @@
+Abstract:
+FPGAs are becoming more and more attractive for high precision scientific
+computations. One of the main problems in efficient resource utilization is the
+quadratically growing resource usage of multipliers depending on the operand
+size. Many research efforts have been devoted to the optimization of individual
+arithmetic and linear algebra operations. In this paper we take a higher level
+approach and seek to reduce the intermediate computational precision on the
+algorithmic level by optimizing the accuracy towards the final result of an
+algorithm. In our case this is the accurate solution of partial differential
+equations (PDEs). Using the Poisson Problem as a typical PDE example we show
+that most intermediate operations can be computed with floats or even smaller
+formats and only very few operations (e.g. 1%) must be performed in double
+precision to obtain the same accuracy as a full double precision solver. Thus
+the FPGA can be configured with many parallel float rather than few resource
+hungry double operations. To achieve this, we adapt the general concept of mixed
+precision iterative refinement methods to FPGAs and develop a fully pipelined
+version of the Conjugate Gradient solver. We combine this solver with different
+iterative refinement schemes and precision combinations to obtain resource
+efficient mappings of the pipelined algorithm core onto the FPGA.
+
+Background & Problem:
+The size of FPGAs grows quickly and allows to implement many parallel arithmetic
+units even for large number formats (e.g. IEEE double standard). In order to
+implement arithmetic floating point operations on FPGAs, one important fact is
+that the area of a multiplier grows quadratically when the area of an adder
+grows linearly. Hardwired embedded multipliers manage the issue until some
+extent but it mostly shifts the issue.
