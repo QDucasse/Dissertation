@@ -46,14 +46,14 @@ The first part of the literature review will review the different vectors of
 precision. What are the elements of a program that have an impact on precision?
 Types, sampling, frequency?
 
-The second part will look at the possible applications of such 
+The second part will look at the possible applications of such
 
 ## Articles read and annotated
 
 - [X] 1989-Imel
 - [X] 2008-Baboulin
 - [X] 2008-Strzodka
-- [ ] 2008-Sun
+- [X] 2008-Sun
 - [ ] 2009-Goddeke
 - [ ] 2010-Clark
 - [ ] 2012-Chow
@@ -71,3 +71,6 @@ The second part will look at the possible applications of such
 - Research Report Final - 08/04 3:30pm
 
 ## Logs
+
+19/02
+Re-read 2008-Strzodka and read 2008-Sun
