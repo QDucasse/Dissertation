@@ -56,7 +56,7 @@ The second part will look at the possible applications of such
 - [X] 2008-Sun
 - [ ] 2009-Goddeke
 - [X] 2010-Clark
-- [ ] 2012-Chow
+- [X] 2012-Chow
 - [ ] 2012-LeGrand
 - [ ] 2018-Darulova
 - [ ] 2018-LeGallo
