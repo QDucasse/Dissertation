@@ -64,6 +64,7 @@ The second part will look at the possible applications of such
 ## Important sites
 - Precision analysis tools: https://fpbench.org/community.html
 - Single and double precision summary: https://blogs.nvidia.com/blog/2019/11/15/whats-the-difference-between-single-double-multi-and-mixed-precision-computing/
+- Floating-point standards: https://www.doc.ic.ac.uk/~eedwards/compsys/float/
 
 Mixed-precision applications:
 - Climate analytics: https://dl.acm.org/doi/10.1109/SC.2018.00054
