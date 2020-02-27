@@ -55,7 +55,7 @@ The second part will look at the possible applications of such
 - [X] 2008-Strzodka
 - [X] 2008-Sun
 - [ ] 2009-Goddeke
-- [ ] 2010-Clark
+- [X] 2010-Clark
 - [ ] 2012-Chow
 - [ ] 2012-LeGrand
 - [ ] 2018-Darulova
@@ -63,6 +63,10 @@ The second part will look at the possible applications of such
 
 ## Important sites
 - Precision analysis tools: https://fpbench.org/community.html
+- Single and double precision summary: https://blogs.nvidia.com/blog/2019/11/15/whats-the-difference-between-single-double-multi-and-mixed-precision-computing/
+
+Mixed-precision applications:
+- Climate analytics: https://dl.acm.org/doi/10.1109/SC.2018.00054
 
 
 ## Planning and Deadlines
@@ -74,3 +78,12 @@ The second part will look at the possible applications of such
 
 19/02
 Re-read 2008-Strzodka and read 2008-Sun
+
+21/02
+Re-read 1989-Imel & 2008-Baboulin
+
+23/02
+Corrections on 2008-Strzodka and 2008-Sun
+
+27/02
+Read 2010-Clark
