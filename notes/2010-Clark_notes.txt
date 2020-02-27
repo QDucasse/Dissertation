@@ -55,3 +55,7 @@ high precision.
 Wilson-Dirac matrix-vector routines optimised.Krylov solver based upon those and
 created on the CUDA architecture. Minimising the memory bandwidth requirements,
 even at the expense of increasing the overall floating point operation count.
+
+Alternative mixed precision method using reliable updates.
+
+--> open-source QUDA library in order to do QCD calculations

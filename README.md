@@ -67,6 +67,8 @@ The second part will look at the possible applications of such
 
 Mixed-precision applications:
 - Climate analytics: https://dl.acm.org/doi/10.1109/SC.2018.00054
+- Opioid addiction: https://dl.acm.org/doi/10.5555/3291656.3291732
+- Nuclear fusion simulation: https://www.ornl.gov/news/david-green-teaming-solve-questions-fusion
 
 
 ## Planning and Deadlines
