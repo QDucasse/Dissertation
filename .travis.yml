@@ -3,7 +3,6 @@ language: minimal
 cache:
   directories:
     - $HOME/.cache/Tectonic
-    - $HOME/miniconda
 
 before_install:
   # Download and install conda
