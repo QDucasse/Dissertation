@@ -18,3 +18,9 @@ before_install:
 
 script:
   - make
+
+deploy:
+  provider: releases
+  api_key: 04c018ac80e14317a5c1a364c20deeb6f7ee09ab
+  file: research_report.pdf
+  skip_cleanup: true
