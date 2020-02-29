@@ -57,9 +57,9 @@ The second part will look at the possible applications of such
 - [ ] 2009-Goddeke
 - [X] 2010-Clark
 - [X] 2012-Chow
-- [ ] 2012-LeGrand
-- [ ] 2018-Darulova
-- [ ] 2018-LeGallo
+- [X] 2012-LeGrand
+- [X] 2018-Darulova
+- [X] 2018-LeGallo
 
 ## Important sites
 - Precision analysis tools: https://fpbench.org/community.html
@@ -89,4 +89,9 @@ Re-read 1989-Imel & 2008-Baboulin
 Corrections on 2008-Strzodka and 2008-Sun
 
 27/02
-Read 2010-Clark
+Read and annotated 2010-Clark
+
+28/02
+Read and annotated 2012-LeGrand and 2018-Darulova
+
+29/02
