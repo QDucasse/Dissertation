@@ -16,7 +16,8 @@ before_install:
   - hash -r
 
     # Install tectonic
-  - conda install -y -c conda-forge tectonic==0.1.11
+  - conda config --add channels conda-forge
+  - conda install tectonic==0.1.11
   - conda install -y -c malramsay biber==2.11
 
 script:
