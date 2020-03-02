@@ -39,7 +39,7 @@ cache:
 script: # Change working directory each time so including files will work. Change back so the pdfs can be found for deployment. This way, building multiple files goes well.
  - cd ./research_report/
  # Run tectonic once to generate intermediate files
- - tectonic --keep-intermediates --reruns 0 ./main.tex
+ - tectonic --keep-intermediates --reruns 0 ./research_report.tex
  # If a bcf file exists run biber to compile references
  - if [ -f "main.bcf" ]; then biber main; fi
 
