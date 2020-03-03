@@ -1,7 +1,6 @@
 ============
 ABSTRACT
 ============
-
 On modern architectures, the performance of 32-bit operations is often at least
 twice as fast as the performance of 64-bit operations. By using a combination of
 32-bit and 64-bit floating point arithmetic, the performance of many dense and

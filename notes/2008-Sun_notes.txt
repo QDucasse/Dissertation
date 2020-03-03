@@ -16,14 +16,14 @@ of their lower resource cost, reduced memory bandwidth requirements, and higher
 circuit frequency. On the other hand, scientific computations usually demand
 highly accurate solutions. This paper seeks to utilise lower precision data
 formats whenever possible for higher performance without losing the accuracy of
- higher precision data formats by using mixed-precision algorithms and
- architectures. First, we analyse the floating-point performance of different
- data formats on FPGAs. Second, we introduce mixed-precision iterative
- refinement algorithms for linear solvers and give an error analysis. Finally,
- we propose an innovative architecture for a mixed-precision direct solver for
- reconfigurable computing. Our results show that our mixed-precision algorithm
- and architecture significantly improve the performance of linear solvers on
- FPGAs.
+higher precision data formats by using mixed-precision algorithms and
+architectures. First, we analyse the floating-point performance of different
+data formats on FPGAs. Second, we introduce mixed-precision iterative
+refinement algorithms for linear solvers and give an error analysis. Finally,
+we propose an innovative architecture for a mixed-precision direct solver for
+reconfigurable computing. Our results show that our mixed-precision algorithm
+and architecture significantly improve the performance of linear solvers on
+FPGAs.
 
 ============
 BACKGROUND & PROBLEM

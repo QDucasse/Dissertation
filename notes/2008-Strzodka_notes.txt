@@ -9,12 +9,12 @@ Float types are the point of study
 ABSTRACT
 ============
 FPGAs are becoming more and more attractive for high precision scientific
-computations. One of the main problems in efficient resource utilization is the
+computations. One of the main problems in efficient resource utilisation is the
 quadratically growing resource usage of multipliers depending on the operand
-size. Many research efforts have been devoted to the optimization of individual
+size. Many research efforts have been devoted to the optimisation of individual
 arithmetic and linear algebra operations. In this paper we take a higher level
 approach and seek to reduce the intermediate computational precision on the
-algorithmic level by optimizing the accuracy towards the final result of an
+algorithmic level by optimising the accuracy towards the final result of an
 algorithm. In our case this is the accurate solution of partial differential
 equations (PDEs). Using the Poisson Problem as a typical PDE example we show
 that most intermediate operations can be computed with floats or even smaller

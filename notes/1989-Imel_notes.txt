@@ -1,4 +1,6 @@
-Abstract:
+==========
+ABSTRACT
+==========
 Apparatus for performing mixed precision calculations in the floating point unit
 of a microprocessor from a single instruction opcode. 80-bit floating-point
 registers may be specified as the source or destination address of a floating-
@@ -11,8 +13,9 @@ the FP register in extended precision, regardless of the precision specified by
 the instruction. In this way, real and long-real operations can be made to use
 extended precision numbers without explicitly specifying that in the opcode.
 
-
-Background and problem:
+==========
+BACKGROUND
+==========
 The machine used is an Intel  iAPX 286/20 Numeric Data Processor (NDP). It has
 eight 80-bit floating point registers (~ 40 16-bit registers). Two registers
 handle the results of numerical instructions. A control word registers defines
@@ -22,8 +25,9 @@ opcodes are used for the different operations. Using a single opcode would
 reduce the number of floating point operations and will both simplify the
 programming and increase the performance of those operations.
 
-
-Solution intro:
+==========
+SOLUTION
+==========
 This idea is accomplished by using an instruction decoder that generates a
 microinstruction (1 bit of which specifies the address range of source or
 destination to be an 80-bit FP register). The logic in the FP unit responsive to
@@ -32,7 +36,6 @@ precision. Using a single opcode shows that both mixed and extended precision
 can be used. This is done through the arithmetic that avoids extra conversion
 and allows computation to sufficient precision instead of the widest.
 
-Solution description:
 Seven major units:
 - Instruction Fetch Unit:
     Fetches and caches instructions from memory. Maintains 6 instruction pointers
@@ -45,7 +48,7 @@ Seven major units:
 - Floating Point Unit:
     The Floating Point Representation  represents each number by a pair of
     numerals equals one of those numeral times a power of an implicit fixed
-    positive integer base. 
+    positive integer base.
 - Bus Control Logic:
     Pipelines and sequences external bus accesses.
 - Integer Execution Unit:
