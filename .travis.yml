@@ -28,4 +28,3 @@ deploy:
   on:
     repo: QDucasse/msc_research_report
     tags: true
-    branch: master
