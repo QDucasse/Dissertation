@@ -1,0 +1,27 @@
+      1. Vecteurs de performance
+Les principaux vecteurs de performance liés à l'utilisation de la précision mixte sont:
+- Le type des différents nombres: double, float, signed, unsigned, etc.
+- L'arithmétique utilisée: floating-point, fixed-point
+- Le nombre d'opérations
+- Lié au nombre d'opérations, la représentation hardware de ces opérations (nombre de transistors)
+- L'utilisation de mémoire et de bande-passante
+
+De manière générale, une précision plus faible amène une réduction du nombre d'opérations et donc de l'utilisation mémoire et de bande passante. Dans le cas de l'utilisation d'une arithmétique fixed-point (virgule fixe), le nombre mais aussi l'ordre des opérations peut avoir un impact sur la précision du résultat ainsi que la performance.
+
+     2. Méthodes d'amélioration de la performance
+
+L'utilisation d'une précision plus faible s'effectue notamment à l'aide d'une méthode appelée iterative refinement et ses variantes adaptées aux différentes architectures. Le principe de cette méthode applicable à la résolution de systèmes linéaires (Ax=b) consiste à déterminer une séquence de solutions convergeant vers la solution en suivant les trois étapes:
+- Calcul du résidu
+- Résolution d'un sous-système
+- Correction de la séquence
+
+Des outils permettent de "tailler" le type d'une variable au type le plus petit possible permettant de conserver la précision voulue.
+
+Enfin, dans le cas d'une arithmétique fixed-point, une réécriture du programme pour réordonner les opérations permet de gagner en performance et précision.
+
+     3. Applications
+
+Les principales applications de mixed-precision dans la littérature sont des bancs d'essai de résolution de systèmes linéaires et leurs dérivés. Dans ces dérivés se trouvent :
+- Simulation de fusion nucléaire, simulation de physique moléculaire
+- Traitement Big Data via une étude d'addiction aux opioïdes
+- Deep Learning via le traitement d'images avec l'analyse du climat

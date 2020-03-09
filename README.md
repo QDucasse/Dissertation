@@ -50,7 +50,7 @@ The second part will look at the possible applications of such
 ## Articles read and annotated
 
 - [X] 1989-Imel: Mixed-precision operations from a single opcode
-- [ ] 2001-Yates: Fixed-point arithmetic, an introduction
+- [X] 2001-Yates: Fixed-point arithmetic, an introduction
 - [X] 2008-Baboulin: Accelerating computations with mixed-precision
 - [X] 2008-Strzodka: Pipelined mixed-precision on FPGAs
 - [X] 2008-Sun: Mixed-precision linear-solver for FPGAs
@@ -58,12 +58,16 @@ The second part will look at the possible applications of such
 - [X] 2010-Clark: GPUs mixed-precision lattice QCD solvers
 - [X] 2012-Chow: Mixed-precision Monte-Carlo methodology for FPGAs
 - [X] 2012-LeGrand: Mixed-Molecular GPU model for molecular dynamics
-- [ ] 2013-Darulova: Synthesis of fixed-point programs
+- [X] 2013-Darulova: Synthesis of fixed-point programs
 - [ ] 2013-RubioGonzalez: Precimonius, tuning assistant for FP programs
+- [ ] 2014-XuanSang: From Smalltalk to Silicon: Turn Smalltalk code into FPGA
+- [ ] 2018-Colangelo: Low numeric Precision Deep Learning inference
 - [X] 2018-Darulova: Sound mixed-precision with rewriting
+- [ ] 2018-Jia: Deep learning training system
 - [ ] 2018-Joubert: Attacking the opioid epidemic
 - [ ] 2018-Kurth: Exascale deep learning for climate analysis
 - [X] 2018-LeGallo: Mixed-precision in-memory computing
+- [ ] 2018-Narang: Mixed-precision training
 
 ## Important sites
 Precision analysis:
@@ -124,3 +128,11 @@ Found applications and uses of mixed-precision in diverse fields
 Looking for material regarding fixed-point and floating-point
 arithmetic. Computerphile serie and 2001-Yates document.
 Read and annotated 2013-Darulova.
+
+08/03
+
+09/03
+
+10/03
+
+11/03
