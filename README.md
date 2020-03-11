@@ -86,6 +86,11 @@ Mixed-precision applications:
 - Opioid addiction: https://dl.acm.org/doi/10.5555/3291656.3291732
 - Nuclear fusion simulation: https://www.ornl.gov/news/david-green-teaming-solve-questions-fusion
 
+Deep-learning:
+- Convolutional Neural Networks: http://cs231n.github.io/convolutional-networks/
+- CNN vocabulary: https://machinelearningmastery.com/difference-between-a-batch-and-an-epoch/
+- Machine Learning on FPGAs: Neural Networks: https://www.youtube.com/watch?v=3iCifD8gZ0Q
+- Machine Learning For Embedded Applications on FPGAs: https://www.youtube.com/watch?v=t520cNlT7bU
 
 ## Planning and Deadlines
 
