@@ -110,11 +110,11 @@ Deep-learning:
 `01/03` Found applications and uses of mixed-precision in diverse fields
 2018-Joubert, 2018-Kurth.  
 `02/03` Looking for material regarding fixed-point and floating-point
-arithmetic. Computerphile serie and 2001-Yates document.  
-Read and annotated 2013-Darulova.
+arithmetic. Computerphile serie and 2001-Yates document.
+Read and annotated 2013-Darulova.  
 `06/03` Read and Annotated 2014-XuanSang.  
 `07/03` Learned about CNN (Convolutional Neural Network) through the cd231n Stanford
 lecture materials  
 `08/03` Read and Annotated 2018-Colangelo  
 `09/03` Watched two talks on ML for FPGA (Intel and Xilinx)  
-`10/03` Read and annotated 2018-Jia and 2018-Narang 
+`10/03` Read and annotated 2018-Jia and 2018-Narang
