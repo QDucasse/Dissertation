@@ -98,54 +98,23 @@ Deep-learning:
 - Research Report Final - 08/04 3:30pm
 
 ## Logs
-15/02
-Read and annotated 1989-Imel
-
-16/02
-Read and annotated 2008-Strzodka
-
-17/02
-Read 2008-Baboulin
-
-19/02
-Re-read 2008-Strzodka and read 2008-Sun.
-
-21/02
-Re-read 1989-Imel & 2008-Baboulin.
-
-23/02
-Corrections on 2008-Strzodka and 2008-Sun.
-
-27/02
-Read and annotated 2010-Clark.
-
-28/02
-Read and annotated 2012-LeGrand and 2018-Darulova.
-
-29/02
-Read and annotated 2018-LeGallo.
-
-01/03
-Found applications and uses of mixed-precision in diverse fields
-2018-Joubert, 2018-Kurth.
-
-02/03
-Looking for material regarding fixed-point and floating-point
-arithmetic. Computerphile serie and 2001-Yates document.
+`15/02` Read and annotated 1989-Imel  
+`16/02` Read and annotated 2008-Strzodka  
+`17/02` Read 2008-Baboulin  
+`19/02` Re-read 2008-Strzodka and read 2008-Sun.  
+`21/02` Re-read 1989-Imel & 2008-Baboulin.  
+`23/02` Corrections on 2008-Strzodka and 2008-Sun.  
+`27/02` Read and annotated 2010-Clark.  
+`28/02` Read and annotated 2012-LeGrand and 2018-Darulova.  
+`29/02` Read and annotated 2018-LeGallo.  
+`01/03` Found applications and uses of mixed-precision in diverse fields
+2018-Joubert, 2018-Kurth.  
+`02/03` Looking for material regarding fixed-point and floating-point
+arithmetic. Computerphile serie and 2001-Yates document.  
 Read and annotated 2013-Darulova.
-
-06/03
-Read and Annotated 2014-XuanSang.
-
-07/03
-Learned about CNN (Convolutional Neural Network) through the cd231n Stanford
-lecture materials
-
-08/03
-Read and Annotated 2018-Colangelo
-
-09/03
-Watched two talks on ML for FPGA (Intel and Xilinx)
-
-10/03
-Read and annotated 2018-Jia and 2018-Narang 
+`06/03` Read and Annotated 2014-XuanSang.  
+`07/03` Learned about CNN (Convolutional Neural Network) through the cd231n Stanford
+lecture materials  
+`08/03` Read and Annotated 2018-Colangelo  
+`09/03` Watched two talks on ML for FPGA (Intel and Xilinx)  
+`10/03` Read and annotated 2018-Jia and 2018-Narang 
