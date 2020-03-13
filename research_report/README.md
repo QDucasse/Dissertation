@@ -13,14 +13,14 @@
     - Mixed Precision
         - Motivations
         - Methods
-    - Hardware
-        - GPU
-        - FPGA
     - Applications
         - Linear Algebra
         - Simulations (Physics, Chemistry)
         - Big Data
         - Deep Learning
+    - Hardware
+        - GPU
+        - FPGA
 - Requirement Analysis
 - Professional, Legal, Ethical and Social Issues
 - Project Plan
@@ -29,10 +29,10 @@
 ## Planning
 `Fri 13/03` Background  
 `Mon 16/03` Mixed Precision  
-`Wed 18/03` Hardware   
-`Fri 20/03` Applications  
+`Wed 18/03` Applications   
+`Fri 20/03` Hardware  
 `Mon 23/03` Introduction  
-`Wed 25/03` Requirements Analysis + Project Plan  
+`Tue 24/03` Requirements Analysis + Project Plan  
 `Fri 27/03` Conclusion/Discussion + Abstract  
 `Mon 30/03` PLES  
 `Wed 01/04` Final version   

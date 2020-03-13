@@ -8,23 +8,121 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Main Section 1}
+\section{Background}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies lacinia euismod. Nam tempus risus in dolor rhoncus in interdum enim tincidunt. Donec vel nunc neque. In condimentum ullamcorper quam non consequat. Fusce sagittis tempor feugiat. Fusce magna erat, molestie eu convallis ut, tempus sed arcu. Quisque molestie, ante a tincidunt ullamcorper, sapien enim dignissim lacus, in semper nibh erat lobortis purus. Integer dapibus ligula ac risus convallis pellentesque.
-
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
-\subsection{Subsection 1}
-
-Nunc posuere quam at lectus tristique eu ultrices augue venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat. Vivamus sodales tortor eget quam adipiscing in vulputate ante ullamcorper. Sed eros ante, lacinia et sollicitudin et, aliquam sit amet augue. In hac habitasse platea dictumst.
+The question of the representation of numbers as we, humans, use them in a world of electronics has been central in the creation of computers and their associated arithmetics. Several problems are contained in the simple question of: How to translate our arithmetic and number operations in a piece of hardware?
 
 %-----------------------------------
-%	SUBSECTION 2
+%	SUBSECTION 1 - Number Representation
 %-----------------------------------
+\subsection{Number Representation}
 
-\subsection{Subsection 2}
-Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar pellentesque. Cras in elit neque, quis varius elit. Phasellus fringilla, nibh eu tempus venenatis, dolor elit posuere quam, quis adipiscing urna leo nec orci. Sed nec nulla auctor odio aliquet consequat. Ut nec nulla in ante ullamcorper aliquam at sed dolor. Phasellus fermentum magna in augue gravida cursus. Cras sed pretium lorem. Pellentesque eget ornare odio. Proin accumsan, massa viverra cursus pharetra, ipsum nisi lobortis velit, a malesuada dolor lorem eu neque.
+The first thing to note is that electronics can represent two states, a presence or absence of an electric impulsion. The states of "on" and "off" is embedded in transistors that can represent both. The transistor is the hardware representant of this duality while a bit is the software counter-part. This is the underlying reason of why computers, even the first fully electronical computer ENIAC - Electronical Numerical Integrator and Computer -, are using a binary system. If this system is handy to translate our base 10 arithmetic and simple numbers such as integers, it is harder to translate more complex numbers such as reals and floating point operations. The meaning of an N-bit binary word is entirely dependent of the interpretation we choose to use. This interpretation consists of both a representation (the type of the object the memory represents) as well as its associated mapping. Common number representations consists of unsigned integers, signed integers (using two's complement), floating point reals as well as fixed-point reals.
+
+%-----------------------------------
+%	SUBSUBSECTION 1 - Integer Representation
+%-----------------------------------
+\subsubsection{Integer Representation}
+
+The representation of integers and especially unsigned integers is straightforward as it consists of a change form base 10 to base 2. This number representation can be done in 16-bits, 32-bits or 64-bits depending on its type, the supporting hardware and the space we need to contain it. Representing a number in base 2 from base 10 or vice versa is straightforward as it only demands simple and exact basic operations to be performed.
+
+% EXAMPLE INTEGER REPRESENTATION
+
+Now, if we want to represent a signed integer, we have to use a method called the two's complement in order to bring the sign in while keeping the basic behavior of the addition to work on numbers whether they are positive or negative. The method consists in changing the value of all the bits of a given number then adding one to the result.
+
+% EXAMPLE TWO'S COMPLEMENT
+
+Those two representation allow a complete mapping of integers up to a certain range: signed 32-bits integer can represent base 10 numbers between -2,147,483,648 and 2,147,483,647 while unsigned integers can represent base 10 numbers between 0 and 4,294,967,295.
+
+%-----------------------------------
+%	SUBSUBSECTION 2 - Floating-Point Representation
+%-----------------------------------
+\subsubsection{Floating-Point Representation}
+
+Representing floating-point numbers has been a concern since the 1980's and the industrial development of several computing modules and interfaces. The need for a consensus in this domain and particular applications has been answered by the IEEE-754 standard in 1985. This standard defines both the floating-point number representations and exceptions conditions along with their default handling. This norm was reviewed fondamentally in 2008, extending it to 64-bits and 128-bits length. The last dated revision of the norm is from 2019.
+
+Floating-point numbers following this representation are composed of three distinct elements:
+\begin{enumerate}
+  \item A sign bit
+  \item An exponent
+  \item A mantissa
+\end{enumerate}
+
+Those three elements compose the number by using the following formula:
+\begin{equation}
+  (sign)\ mantissa * 2^{exponent}
+\end{equation}
+
+In order to present both positive and negative exponents and as using the two's complement on the exponent would complexify the computation of floating-point numbers, a bias is used in the exponent. This bias corresponds to
+\begin{equation}
+  2^e - 1
+\end{equation}
+where e is the number of bits of the exponent part.
+
+When referring to single-precision floating-point representation we are talking about 32-bit long memory representation. They are mapped as follows:
+\begin{itemize}
+  \item Sign bit: 1 bit
+  \item Exponent: 8 bits
+  \item Mantissa: 23 bits
+  \item Exponent Bias: 127
+\end{itemize}
+
+% FP32 EXAMPLE
+
+Referring to double precision floating-point representation means looking at 64-bit long memory representation, mapped as follows:
+\begin{itemize}
+  \item Sign bit: 1 bit
+  \item Exponent: 11 bits
+  \item Mantissa: 52 bits
+  \item Exponent Bias: 127
+\end{itemize}
+
+% FP32 EXAMPLE
+
+Along this representations, IEEE-754 introduces representations of special numbers such as positive and negative infinity as well as NaN and zero. Moreover, it adds methods to round floating-point numbers to positive or negative infinity, zero or to the nearest value.
+
+%-----------------------------------
+%	SUBSUBSECTION 3 - Fixed-Point Representation
+%-----------------------------------
+\subsubsection{Fixed-Point Representation}
+
+Another way to look at the decimals is to fix the radix point to be at a certain place and keep it thoughout all the computations and representations using this arithmetic. A fixed-point representation consists of three components:
+\begin{enumerate}
+  \item A sign indicator
+  \item An integer corresponding to the total number of bits
+  \item Another integer corresponding to the size of the fractional part
+\end{enumerate}
+
+Representing a number with this representation can be done by simply concatenating the base 2 representation of each side of the radix point.
+
+% FIXED POINT EXAMPLES (SEVERAL EXAMPLE OF THE SAME NUMBER)
+
+As shown in the above example, several representations can depict the same decimal number. Finding the correct amount of bits to allocate to each side of the radix point is what will qualify the representation. Allocating fewer bits than needed may lead to overflow while allocating too much may increase quantisation errors.
+Along with this new representation comes a whole new arithmetic. While this format can help tailor your needs in terms of variable types, it comes with an additional cost. The operations performed in this arithmetic are non-trivial as addition and multiplication are not associative and distributive anymore. This means the order of the operations will have an impact on the final result. Moreover, the round-off error underlying this representation is often non-trivial to grasp. However, those operations are low demanding in terms of computing power.
+
+%-----------------------------------
+%	SUBSECTION 2 - Performance Benchmarks
+%-----------------------------------
+\subsection{Performance benchmarks}
+
+Floating-point representation (in either single or double precision) allows extreme precision at the cost of space in memory. On the other hand, fixed-point representation, even if it comes with a more complex arithmetic and insidious round-off errors, allows to tailor the type to your needs. If you want to store the values of the size and mass of planets in floating-point precision, you will end up not using the majority of the range of values you selected while you could tailor a correct type in fixed-point representation.
+
+The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Mark Horrowitz talk at the ISSCC 2014 was entitled "Computing's Energy Problem (and what we can do about it)" provides an insight of the problems and challenges technology scaling has encountered in its development. The Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in "the design of applications and hardware that are better matched to task and each other". The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on "High-Performance Hardware for Machine Learning". The following graph is extracted from this lecture and presents the energy and area costs different floating-point operations demand.
+
+% COSTS OF OPERATIONS 2015-DALLY
+
+The benefit of using a more optimised representation other the floating-point representation has been investigated as soon as in 2000 in 2000-TONG. The authors present a way to reduce the energy consumption by minimising the bitwidth representation of the floating-point data. The data used to tailor the type representation is human-sensory data such as speech or video imagery. This kind of data is obtained at low precision (4 to 10 bits) but mapped into a full single-precision floating-point type. Using such optimisations, the authors manage to obtain a reduction of 66\% in multiplier energy per operation without sacrificing any accuracy.
+
+Xilinx, a manufacturer of Field-Programmable Gate Arrays (FPGAs), produced a white paper written by Ambrose Finnerty and Hervé Ratigner entitled "Reduce Power and Cost by Converting from Floating Point to Fixed Point". This paper shows that the tools Xilinx provide can already handle fixed-point types and arithmetic and that the benefits are important for use of the FPGA:
+\begin{itemize}
+  \item Reduced power consumption
+  \item Reduced use of FPGA resources (look-up tables, flip-flops, memory)
+  \item Latency improvements
+  \item Comparable performance and accuracy
+\end{itemize}
+The authors show the example of an FIR filter implementation in fixed-point representation from floating-point. The frequency is shown to be 16\% faster and the latency 7.5 times lower.
+
+In conclusion, using a type that matches correctly the use you will make of it in an environment where costs are translated in terms of energy consumption, memory or bandwidth usage, will always come out as an improvement with little to no loss in accuracy.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
