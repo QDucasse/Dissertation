@@ -27,10 +27,24 @@ The first thing to note is that electronics can represent two states, a presence
 The representation of integers and especially unsigned integers is straightforward as it consists of a change form base 10 to base 2. This number representation can be done in 16-bits, 32-bits or 64-bits depending on its type, the supporting hardware and the space we need to contain it. Representing a number in base 2 from base 10 or vice versa is straightforward as it only demands simple and exact basic operations to be performed.
 
 % EXAMPLE INTEGER REPRESENTATION
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics{Figures/IntegerRepr.pdf}
+% 		\rule{35em}{0.5pt}
+% 	\caption[Integer Representation]{Example of the representation of an integer}
+% 	\label{fig:IntegerRepr}
+% \end{figure}
 
 Now, if we want to represent a signed integer, we have to use a method called the two's complement in order to bring the sign in while keeping the basic behavior of the addition to work on numbers whether they are positive or negative. The method consists in changing the value of all the bits of a given number then adding one to the result.
 
 % EXAMPLE TWO'S COMPLEMENT
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics{Figures/TwosComplement.pdf}
+% 		\rule{35em}{0.5pt}
+% 	\caption[Two's Complement]{Example of the two's complement}
+% 	\label{fig:TwosComplement}
+% \end{figure}
 
 Those two representation allow a complete mapping of integers up to a certain range: signed 32-bits integer can represent base 10 numbers between -2,147,483,648 and 2,147,483,647 while unsigned integers can represent base 10 numbers between 0 and 4,294,967,295.
 
@@ -68,6 +82,13 @@ When referring to single-precision floating-point representation we are talking 
 \end{itemize}
 
 % FP32 EXAMPLE
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics{Figures/SPFP.pdf}
+% 		\rule{35em}{0.5pt}
+% 	\caption[Single-precision float representation]{Example of the representation of a float in single-precision}
+% 	\label{fig:IntegerRepr}
+% \end{figure}
 
 Referring to double precision floating-point representation means looking at 64-bit long memory representation, mapped as follows:
 \begin{itemize}
@@ -77,7 +98,14 @@ Referring to double precision floating-point representation means looking at 64-
   \item Exponent Bias: 127
 \end{itemize}
 
-% FP32 EXAMPLE
+% FP64 EXAMPLE
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics{Figures/DPFP.pdf}
+% 		\rule{35em}{0.5pt}
+% 	\caption[Double-precision float representation]{Example of the representation of a float in double-precision}
+% 	\label{fig:DPFP}
+% \end{figure}
 
 Along this representations, IEEE-754 introduces representations of special numbers such as positive and negative infinity as well as NaN and zero. Moreover, it adds methods to round floating-point numbers to positive or negative infinity, zero or to the nearest value.
 
@@ -128,6 +156,62 @@ In conclusion, using a type that matches correctly the use you will make of it i
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 
-\section{Main Section 2}
+\section{Mixed Precision}
 
-Sed ullamcorper quam eu nisl interdum at interdum enim egestas. Aliquam placerat justo sed lectus lobortis ut porta nisl porttitor. Vestibulum mi dolor, lacinia molestie gravida at, tempus vitae ligula. Donec eget quam sapien, in viverra eros. Donec pellentesque justo a massa fringilla non vestibulum metus vestibulum. Vestibulum in orci quis felis tempor lacinia. Vivamus ornare ultrices facilisis. Ut hendrerit volutpat vulputate. Morbi condimentum venenatis augue, id porta ipsum vulputate in. Curabitur luctus tempus justo. Vestibulum risus lectus, adipiscing nec condimentum quis, condimentum nec nisl. Aliquam dictum sagittis velit sed iaculis. Morbi tristique augue sit amet nulla pulvinar id facilisis ligula mollis. Nam elit libero, tincidunt ut aliquam at, molestie in quam. Aenean rhoncus vehicula hendrerit.
+The previous section explained in details the different existing number representations. With a particular emphasis on the representation of floating-point number, the previous section has shown what the underlying issues of such representations are. The question now is how can we use to our advantage the different types along with their strengths and weaknesses?
+
+%-----------------------------------
+%	SUBSECTION 1 - Motivations
+%-----------------------------------
+\subsection{Motivations}
+
+The term "mixed precision" comes from the idea of using different precisions (type representations) to increase the performance of a computation that would otherwise only use the highest available (or user-defined) precision. The previous section shown us that each number representation has its pros and cons. Using lower precision types and representations will allow the total computation to decrease the usage of several hardware resources (memory, bandwidth, energy consumption) 2014-HORROWITZ, 2015-DALLY.
+
+However, if lower-precision is acceptable, using mixed-precision can increase the capacity of smaller systems and subsystems as it will increase the overall performance and resources usage. This goal is targetted when you are aiming for the most performant processor, being given a size and type of usage. Moreover, this can be used when you know exactly the tasks your system will perform as well as their needed size. 2001-YATES presents several rules allowing you to determine the required size of any operation performed in fixed-point arithmetic. This arithmetic, as shown earlier is an interesting choice as it allows you to tailor the type to your needs. Reconfigurable hardware can take advantage of this as well by using the exact required size for an operation. Such architecture will be looked upon on the next sections.
+
+Scientific computations often require the highest available precision and the reduced precision induced by the lower-precision components is unacceptable. In order to still take advantage of the several gains lower-precision provides, a compromise has to be found about how and when to use lower-precision. Ideas on the usage have been looked upon since the 1950's and the first methods to correctly implement them in the early 1960's.
+
+In any case, the developer has to know and keep in mind:
+\begin{itemize}
+  \item Required end precision
+  \item Acceptable error rate
+  \item Actual operations performed by the system
+\end{itemize}
+
+Mixed precision methods consist of doing a large part of the computation in low-precision components and only a small part in high-precision. As presented in the survey paper 2009-Goddeke using different formats in the same algorithm can have several beneficial properties such as:
+\begin{itemize}
+  \item Accuracy: Same accuracy when up to 99\% of the operations is performed in the low format
+  \item Computation: Low precision operations require less transistors and can translate in more paralellism
+  \item Memory: Reduction in size in memory influences the efficiency and bandwidth requirements positively
+\end{itemize}
+
+%-----------------------------------
+%	SUBSECTION 2 - Methods and Implementations
+%-----------------------------------
+\subsection{Methods and Implementations}
+Several methods to actually implement a mixed precision algorithm have been developed starting 60 years ago. If the methods are different in practice, the theory behind them is the same as they aim to delegate most of the work to low-precision components while only using high-precision to recover the desired accuracy for the computation.
+%-----------------------------------
+%	SUBSUBSECTION 1 - Iterative Refinement
+%-----------------------------------
+\subsubsection{Iterative Refinement}
+
+Since the early 1960's, literature has studied the effects and ways to implement mixed precision. The first known works to implement such methods is 1963-Wilkinson and 1967-Moler. The method presented by both is named "iterative refinement" and uses a combination of accumulative inner products along with a linear solver. This solution is directed towards the resolution of a system in the form of \begin{equation} Ax=b \end{equation} for a quadratic \begin{equation} NxN A\end{equation} matrix. The main idea is to use a residual between the wanted result and the result obtained by the last iteration. This residual is computed using high precision and accumulated using high-precision as well while the resolution of the equation is done in low-precision.
+
+% Iterative Refinement Example
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics{Figures/IterRefinement.pdf}
+% 		\rule{35em}{0.5pt}
+% 	\caption[Iterative Refinement]{Iterative Refinement Idea}
+% 	\label{fig:IterRefinement}
+% \end{figure}
+
+This method has later been reused and extended. 2008-BABOULIN combines single- and double-precision floating-point numbers to enhance the performance of "dense and sparse linear algebra algorithms". 2008-STRODZKA presents an enhanced algorithm to resolve a partial differential equation (Poisson problem) to present the effects of a mixed-precision approach. 2008-SUN reproduces a linear solver in mixed-precision but adds an error analysis. The last two articles implement the result of their research on a reprogrammable architecture. Several applications profit directly from these papers and their implementations of mixed-precision algorithms as we will see in later sections.
+
+\subsubsection{Analysis and Rewriting}
+
+When creating a new application or system, any developer tends to use the highest available (or one of the highest) to represent the numbers he will need. However, the space and operations performed on higher-precision types are, as shown earlier, not the most performant. A simple, yet effective way to choose the correct type is to analyse the code and rewrite types that can be represented by lower precision ones. This idea has been implemented in the code analysis tool Precimonious 2013-RUBIOGONZALEZ for floating-point representations. This analysis tool can go over the code and determines parts of it where lower precision can be applied.
+
+The mixed-precision approach can be applied from a different perspective when using a fixed-precision representation. 2013-DARULOVA shows that several polynomial expressions over the reals are cast over fixed-point arithmetic without being optimised, leading approximations of the real values. The tool they present allows to determine the best fixed-point implementation of a real number thanks to genetic programming. Then, as the order of operations is impactful when dealing with fixed-point arithmetic (distributivity and associativity are not respected), the tool reorder the operations to optimise the error and accuracy.
+
+Those two tools have been brought together in 2018-DARULOVA under the "first fully automated and sound technique and tool for optimising the performance of floating-point and fixed-point kernels". This tool combines rewriting and mixed-precision tuning where rewriting goes over several evaluation orders and picks the one that minimises the round-off error without runtime costs while mixed-precision tuning assigns the correct finite-precision variables and operations. The overall tool provides finer-grain control over the program and better performance than each of the method taken alone.
