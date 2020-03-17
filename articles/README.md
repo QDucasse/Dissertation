@@ -1,40 +1,30 @@
-| Article  Name      | ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)- | Floating  Point | Fixed  Point | Mixed  Precision | Iterative  Refinement | Linear  Algebra | Simulations | Big Data | Deep  Learning | GPU | FPGA |
-| ------------------ | ---------------------- | --------------- | ------------ | ---------------- | --------------------- | --------------- | ----------- | -------- | -------------- | --- | ---- |
-| 1963-Wilkinson     |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 1967-Moler         |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 1989-Imel          |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2000-Tong          |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2001-Yates         |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2008-Baboulin      |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2008-Strzodka      |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2008-Sun           |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2009-Goddeke       |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2010-Clark         |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2012-Chow          |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2012-LeGrand       |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2013-Darulova      |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2013-RubioGonzalez |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2014-Horrowitz     |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2014-XuanSang      |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2015-Dally         |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2017-Finnerty      |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2018-Abdelouahab   |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2018-Colangelo     |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2018-Darulova      |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2018-Jia           |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2018-Joubert       |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2018-Kurth         |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2018-LeGallo       |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2018-Narang        |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2018-Zhao          |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-| 2019-Jhanshahi     |                        |                 |              |                  |                       |                 |             |          |                |     |      |
-
-
-
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Number representation  
-![#c5f015](https://placehold.it/15/c5f015/000000?text=+) Floating-point  
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Fixed-point
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Fixed-point
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Fixed-point
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Fixed-point
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) Fixed-point
+| Article  Name      | Number  Representation | Floating  Point | Fixed  Point | Mixed  Precision | Iterative  Refinement | Linear  Algebra | Simulations | Big Data | Deep  Learning | GPU | FPGA | Benchmark |
+| ------------------ |:----------------------:|:---------------:|:------------:|:----------------:|:---------------------:|:---------------:|:-----------:|:--------:|:--------------:|:---:|:----:|:---------:|
+| 1963-Wilkinson     |                        |                 |              |        X         |           X           |                 |             |          |                |     |      |           |
+| 1967-Moler         |                        |                 |              |        X         |           X           |                 |             |          |                |     |      |           |
+| 1989-Imel          |                        |                 |              |        X         |                       |                 |             |          |                |  X  |      |           |
+| 2000-Tong          |           X            |        X        |      X       |                  |                       |                 |             |          |                |     |      |           |
+| 2001-Yates         |                        |                 |              |                  |                       |                 |             |          |                |     |      |           |
+| 2008-Baboulin      |                        |                 |              |        X         |           X           |        X        |             |          |                |  X  |  X   |           |
+| 2008-Strzodka      |                        |        X        |              |        X         |                       |        X        |             |          |                |     |  X   |           |
+| 2008-Sun           |                        |        X        |              |        X         |           X           |        X        |             |          |                |     |  X   |           |
+| 2009-Goddeke       |                        |                 |              |        X         |           X           |        X        |      X      |          |                |  X  |  X   |     X     |
+| 2010-Clark         |                        |                 |              |        X         |           X           |        X        |      X      |          |                |     |  X   |           |
+| 2012-Chow          |                        |                 |              |        X         |                       |        X        |             |          |                |     |  X   |           |
+| 2012-LeGrand       |                        |                 |      X       |        X         |                       |                 |      X      |          |                |  X  |      |           |
+| 2013-Darulova      |           X            |                 |      X       |                  |                       |                 |             |          |                |     |      |           |
+| 2013-RubioGonzalez |           X            |        X        |              |                  |                       |                 |             |          |                |     |      |           |
+| 2014-Horrowitz     |                        |                 |              |                  |                       |                 |             |          |                |     |      |     X     |
+| 2014-XuanSang      |                        |                 |              |                  |                       |                 |             |          |                |     |  X   |           |
+| 2015-Dally         |           X            |        X        |      X       |                  |                       |                 |             |          |       X        |     |      |     X     |
+| 2017-Finnerty      |                        |        X        |      X       |                  |                       |                 |             |          |                |     |  X   |     X     |
+| 2018-Abdelouahab   |                        |                 |              |                  |                       |                 |             |          |       X        |     |  X   |           |
+| 2018-Colangelo     |                        |                 |              |                  |                       |                 |             |          |       X        |     |  X   |           |
+| 2018-Darulova      |           X            |        X        |      X       |        X         |                       |                 |             |          |                |     |      |           |
+| 2018-Jia           |                        |                 |              |                  |                       |                 |             |          |       X        |  X  |      |           |
+| 2018-Joubert       |                        |                 |              |        X         |                       |                 |             |    X     |                |     |      |           |
+| 2018-Kurth         |                        |                 |              |                  |                       |                 |             |          |       X        |  X  |      |           |
+| 2018-LeGallo       |                        |                 |              |        X         |                       |                 |             |          |                |     |      |           |
+| 2018-Narang        |           X            |        X        |              |                  |                       |                 |             |          |       X        |     |      |           |
+| 2018-Zhao          |                        |                 |              |                  |                       |                 |             |          |       X        |     |  X   |           |
+| 2019-Jhanshahi     |                        |                 |      X       |                  |                       |                 |             |          |       X        |     |  X   |           |
