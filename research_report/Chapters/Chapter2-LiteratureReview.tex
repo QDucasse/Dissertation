@@ -5,7 +5,7 @@
 \lhead{Chapter 2. \emph{Literature Review}}
 
 %----------------------------------------------------------------------------------------
-%	SECTION 1
+%	SECTION 1 - Background
 %----------------------------------------------------------------------------------------
 
 \section{Background}
@@ -153,7 +153,7 @@ The authors show the example of an FIR filter implementation in fixed-point repr
 In conclusion, using a type that matches correctly the use you will make of it in an environment where costs are translated in terms of energy consumption, memory or bandwidth usage, will always come out as an improvement with little to no loss in accuracy.
 
 %----------------------------------------------------------------------------------------
-%	SECTION 2
+%	SECTION 2 - Mixed Precision
 %----------------------------------------------------------------------------------------
 
 \section{Mixed Precision}
@@ -215,3 +215,51 @@ When creating a new application or system, any developer tends to use the highes
 The mixed-precision approach can be applied from a different perspective when using a fixed-precision representation. 2013-DARULOVA shows that several polynomial expressions over the reals are cast over fixed-point arithmetic without being optimised, leading approximations of the real values. The tool they present allows to determine the best fixed-point implementation of a real number thanks to genetic programming. Then, as the order of operations is impactful when dealing with fixed-point arithmetic (distributivity and associativity are not respected), the tool reorder the operations to optimise the error and accuracy.
 
 Those two tools have been brought together in 2018-DARULOVA under the "first fully automated and sound technique and tool for optimising the performance of floating-point and fixed-point kernels". This tool combines rewriting and mixed-precision tuning where rewriting goes over several evaluation orders and picks the one that minimises the round-off error without runtime costs while mixed-precision tuning assigns the correct finite-precision variables and operations. The overall tool provides finer-grain control over the program and better performance than each of the method taken alone.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3 - Application
+%----------------------------------------------------------------------------------------
+
+\section{Applications}
+
+%-----------------------------------
+%	SUBSECTION 1 - Linear Algebra
+%-----------------------------------
+
+\subsection{Linear Algebra}
+
+%-----------------------------------
+%	SUBSECTION 2 - Simulations (Physics)
+%-----------------------------------
+
+\subsection{Simulations}
+
+%-----------------------------------
+%	SUBSECTION 3 - Big Data
+%-----------------------------------
+
+\subsection{Big Data}
+
+%-----------------------------------
+%	SUBSECTION 4 - Deep Learning
+%-----------------------------------
+
+\subsection{Deep Learning}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4 - Hardware Architecture
+%----------------------------------------------------------------------------------------
+
+\section{Hardware Architecture}
+
+%-----------------------------------
+%	SUBSECTION 4 - GPU
+%-----------------------------------
+
+\subsection{GPU}
+
+%-----------------------------------
+%	SUBSECTION 4 - FPGA
+%-----------------------------------
+
+\subsection{FPGA}
