@@ -214,7 +214,7 @@ When creating a new application or system, any developer tends to use the highes
 
 The mixed-precision approach can be applied from a different perspective when using a fixed-precision representation. Darulova et al. \cite{Darulova2013} shows that several polynomial expressions over the reals are cast over fixed-point arithmetic without being optimised, leading approximations of the real values. The tool they present allows to determine the best fixed-point implementation of a real number thanks to genetic programming. Then, as the order of operations is impactful when dealing with fixed-point arithmetic (distributivity and associativity are not respected), the tool reorder the operations to optimise the error and accuracy.
 
-Those two tools have been brought together in 2018-DARULOVA under the "first fully automated and sound technique and tool for optimising the performance of floating-point and fixed-point kernels". This tool combines rewriting and mixed-precision tuning where rewriting goes over several evaluation orders and picks the one that minimises the round-off error without runtime costs while mixed-precision tuning assigns the correct finite-precision variables and operations. The overall tool provides finer-grain control over the program and better performance than each of the method taken alone.
+Those two tools have been brought together in \cite{Darulova2018} under the "first fully automated and sound technique and tool for optimising the performance of floating-point and fixed-point kernels". This tool combines rewriting and mixed-precision tuning where rewriting goes over several evaluation orders and picks the one that minimises the round-off error without runtime costs while mixed-precision tuning assigns the correct finite-precision variables and operations. The overall tool provides finer-grain control over the program and better performance than each of the method taken alone.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3 - Application
@@ -222,29 +222,116 @@ Those two tools have been brought together in 2018-DARULOVA under the "first ful
 
 \section{Applications}
 
+Mixed-precision mindset and algorithms are used in several applications from overall performance boosting due to precise tuning to new methods to handle tomorrow's problematics such as Big Data or Deep Learning. The question to ask when developing a new application that can benefit from mixed-precision is how are you put it in action inside your application: code analysis and rewriting, finer-grain tuning or more complex algorithms such as the earlier iterative refinement?
+
 %-----------------------------------
 %	SUBSECTION 1 - Linear Algebra
 %-----------------------------------
 
-\subsection{Linear Algebra}
+\subsection{Mathematic computations}
+
+Linear Algebra directly gains from iterative refinement techniques and can be applied to several wider projects. Some well-known linear problems and operations are the bottleneck of their container projects and finding an optimisation leading to a better performance in their resolution would mean a direct improvement to the overall performance. Baboulin et al. \cite{Baboulin2009} and Sun et al. \cite{Sun2008} present a mixed-precision method aiming at the LU factorisation.
+\begin{align}
+  PA=LU \textrm{ where } & \textrm{A is the matrix to factorise} \\
+        & \textrm{ P is a permutation matrix} \\
+        & \textrm{ U an upper triangular matrix} \\
+        & \textrm{ L is a lower triangular matrix} \\
+\end{align}
+This factorisation is required in many different algorithms using linear algebra as obtaining triangular matrices simplifies later computation. While both authors focus on the same subject, \cite{Sun2008} presents a reconfigurable architecture design and implementation.
+
+Strzodka et al. \cite{Strzodka2006} present a solution to the partial differentiate equation Poisson problem defined on a reconfigurable architecture. The resolution of such a problem is done using methods called multigrid solvers or the simpler conjugate gradient solver. The mixed-precision is integrated in the solution process by splitting it into a \guille{computationally demanding low precision inner iteration loop and a computationally simple high precision outer correction loop}. The authors present different pipelined versions of the conjugate gradient solver that can be better integrated in reconfigurable architectures.
+
+Another mathematic computation extensively used in the world of science, engineering and finance are Monte Carlo simulations that are used to simulate random processes and estimate the distribution of the results. Chow et al. \cite{Chow2012} present a mixed-precision version of the sampling function used in the Monte-Carlo simulation. Along with the solution, the authors provide a description of the hardware implementation made possible on reconfigurable architecture.
 
 %-----------------------------------
 %	SUBSECTION 2 - Simulations (Physics)
 %-----------------------------------
 
-\subsection{Simulations}
+\subsection{Physics simulations}
+
+A direct application of the above computations is the improvement of physics simulations. Such simulation is usually done using GPUs  and can take place in several fields requiring computationally intensive operations. Such fields are molecular chemistry, nuclear physics and finite element simulations for example.
+
+% NUMBER REPRESENTATIONS !!!!!!
+% IMAGES FOR ALL SIMULATIONS
+
+Goddeke et al. \cite{Goddeke2007} present a survey paper to quantify the performance and accuracy of mixed-precision solvers in finite element simulations. This survey paper takes in consideration different mixed precision algorithms and their associated implementations. Moreover, it compares the performance of different hardware architecture, CPUs, GPUs and FPGAs. The article confirms that low-precision operations are more performant but need the developer to have knowledge of the error propagation.
+
+Clark et al. \cite{Clark2010} use mixed-precision to solve lattice quantum chromodynamics systems of equations in simulations. These systems corresponds to \guille{the lattice discretised theory of the strong force, that which binds together quarks in the nucleon}. The propagation of those quarks uses a Dirac operator's inverse, a large sparse matrix that needs to be used in several system of operations later on. The Wilson-Dirac matrix is the target of the optimisation and this optimisation is made possible by implementing a method of mixed-precision using \emph{reliable updates} within a linear solver. Those \emph{reliable updates} periodically replace the iterated residual with the true residual calculated at high precision and allows better performance than classic defect-correction approach.
+
+Molecular dynamics simulations are also using mixed-precision techniques as proposed by Le Grand et al. \cite{LeGrand2012}. The mixed-precision approach presented in the article uses fixed-point integer arithmetic to translate the force components. The article compares single precision fixed-point representation to the classic single/double precision. The conclusions show a gain in performance without sacrificing any accuracy.
+
+% NUCLEAR FUSION
 
 %-----------------------------------
-%	SUBSECTION 3 - Big Data
+%	SUBSECTION 3 - Deep Learning
 %-----------------------------------
-
-\subsection{Big Data}
-
-%-----------------------------------
-%	SUBSECTION 4 - Deep Learning
-%-----------------------------------
-
 \subsection{Deep Learning}
+
+Machine learning can also benefit from mixed-precision since it is heavily relying on matrix operations. In the recent years, machine learning, and especially deep learning, are benefitting from the research in mixed-precision. As there is a lot of interest going in the performance of neural networks and their ability to train quicker and still be accurate, the focus of both fields appear to be extremely similar.
+
+%-----------------------------------
+%	SUBSUBSECTION 1 - Deep Learning
+%-----------------------------------
+
+\subsubsection{Neural Networks}
+
+The apparition of neural networks in machine learning comes from the analogy with the human brain and the way neurons work and communicate between each other. Each neuron receives several inputs from other previous neurons and performs an operation on all the received inputs to create the output that will go to the next layer of neurons. The analogy can be seen on the next figure:
+
+% NEURAL NETWORK PRESENTATION
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics{Figures/NN.pdf}
+% 		\rule{35em}{0.5pt}
+% 	\caption[Neural Network Example]{Example of a neuron and its behaviour in a neural network}
+% 	\label{fig:NN}
+% \end{figure}
+
+The neuron performs a simple dot product of all the inputs along with their weights, adds a bias to the sum and applies a given non-linear activation function. The weight will give importance to some of the inputs while hiding others. Throughout the training, some of the inputs will be shown to be more useful than others and the weight will depict this attribute. The activation function models the \guille{firing rate of the neuron which \[...\]represents the frequency of the spikes along the axoms}. Several choices of non-linear functions can be made for your neurons:
+\begin{itemize}
+  \item Sigmoid function $\sigma(x) = \frac{1}{(1+e^{-x})}$
+  \item Tanh $tanh(x) = 2\sigma(2x)$
+  \item Rectified Linear Unit (ReLU) $ f(x) = max(0,x) $
+\end{itemize}
+
+Neural networks perform the simple operations of reducing the inputs, adding a bias and passing it through a non-linear function. However, it is possible to set up several layers where the first one is called the \emph{input layer}, the last one the \emph{output layer} and all the layers in-between the \emph{hidden layers}. While having hidden neurons is useful to better comprehend the data fed to the network, having too much of them can lead to overfitting, including noise and outliers into the pattern recognition.
+
+Neural networks perform well in machine learning, but the fields where the architecture is the most used are image and speech recognition. An extension of neural networks is used when the data is known to be of a certain type. For example, if the data is known to be images, Convolutional Neural Networks (CNN) are the best choice. They are tailored with the goal of handling images. They are a special type of neural networks in the sense that they use 3D layers and transformations on images.
+
+% NEURAL NETWORK AND CNN COMPARISON
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics{Figures/NN-CNN.pdf}
+% 		\rule{35em}{0.5pt}
+% 	\caption[Neural Network and CNN comparison]{Comparison between a classic Neural Network and a CNN}
+% 	\label{fig:NN}
+% \end{figure}
+
+Several layers are used and allow to perform different operations on images:
+\begin{itemize}
+  \item INPUT: Image input holding the resolution and RGB layers
+  \item CONV: Connects small regions of the input image
+  \item RELU: Apply an activation function (such as $max(0,x)$)
+  \item POOL: Downsampling operation
+  \item FC (fully-connected): Computation of the class scores
+\end{itemize}
+
+Those layers then compose a CNN architecture and can be trained on bank of images to adjust the different bias and weight for each layers. Finally, once the network is trained, it can deduce the class of a given image.
+
+%-----------------------------------
+%	SUBSUBSECTION 2 - Introducing Mixed Precision
+%-----------------------------------
+
+\subsubsection{Introducing Mixed Precision}
+
+Training a neural network is the longest process mandatory to make the most out of the architecture. However, using the mixed-precision mindset, there are ways to accelerate the training of the network by decreasing the precision of some operations. The ImageNet Project REFIMAGENET is a large database designed to be used in visual object recognition softwares. The same project runs an annual contest, the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). Each year, contesters try to get the best possible accuracy out of the network they propose. While accuracy is the main factor to determine the winner, deep learning real-world issues often have to take in account the training of the network.
+
+Many researchers have been looking into the issue with mixed-precision in mind. As shown by Bacchus et al. \cite{Bacchus2020}, there is a fundamental underlying trade-off between accuracy, network training time and hardware efficiency. Research looked upon ways to reduce the size taken by weights and the activation function and the impact of a reduction in the size of those:
+
+Narang et al. \cite{Narang2018} store weights, activations and gradients in IEEE half-precision nearly halving the memory requirements and speeding up the arithmetic. The authors propose three techniques to maintain the accuracy of the model. They maintain a single-precision copy of weights to accumulate the gradients, propose a loss-scaling to preserve low-magnitude gradients and use half-precision arithmetic that writes to single-precision arithmetic before writing the half-precision values to memory.
+
+Colangelo et al. \cite{Colangelo2018} present a CNN mapping to a reconfigurable architecture in order to use sub 8-bit activation and weights. In order to use binary- or ternary-weighted neural networks, they cap their sizes to respectively 1 and 2-bits. Using this type of limited numeric precision can only be fully optimised with FPGAs and the authors show that they manage to get an optimisation of \guille{the bandwidth, memory, power and computation savings}.
+
+Jia et al. \cite{Jia2018} present a novel mixed-precision training method along with an optimised all-reduce algorithm.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4 - Hardware Architecture
