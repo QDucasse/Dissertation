@@ -29,8 +29,7 @@ The representation of integers and especially unsigned integers is straightforwa
 % EXAMPLE INTEGER REPRESENTATION
 \begin{figure}[htbp]
 	\centering
-		\includegraphics{Figures/IntegerRepr.pdf}
-		\rule{35em}{0.5pt}
+		\includegraphics[width=\textwidth]{Figures/IntegerRepr.pdf}
 	\caption[Integer Representation]{Example of the representation of an integer}
 	\label{fig:IntegerRepr}
 \end{figure}
@@ -80,8 +79,7 @@ When referring to single-precision floating-point representation we are talking 
 % FP32 EXAMPLE
 \begin{figure}[htbp]
 	\centering
-		\includegraphics{Figures/SPFP.pdf}
-		\rule{35em}{0.5pt}
+		\includegraphics[width=\textwidth]{Figures/SPFP.pdf}
 	\caption[Single-precision float representation]{Example of the representation of a float in single-precision}
 	\label{fig:SPFP}
 \end{figure}
@@ -97,8 +95,7 @@ Referring to double precision floating-point representation means looking at 64-
 % FP64 EXAMPLE
 \begin{figure}[htbp]
 	\centering
-		\includegraphics{Figures/DPFP.pdf}
-		\rule{35em}{0.5pt}
+		\includegraphics[width=\textwidth]{Figures/DPFP.pdf}
 	\caption[Double-precision float representation]{Example of the representation of a float in double-precision}
 	\label{fig:DPFP}
 \end{figure}
@@ -191,7 +188,7 @@ Several methods to actually implement a mixed precision algorithm have been deve
 %-----------------------------------
 \subsubsection{Iterative Refinement}
 
-Since the early 1960's, literature has studied the effects and ways to implement mixed precision. The first known works to implement such methods are James H. Wilkinson \cite{Wilkinson1994} and Cleve Moler \cite{Moler1957}. The method presented by both is named \guille{iterative refinement} and uses a combination of accumulative inner products along with a linear solver. This solution is directed towards the resolution of a system in the form of \begin{equation} Ax=b \end{equation} for a quadratic \begin{equation} NxN A\end{equation} matrix. The main idea is to use a residual between the wanted result and the result obtained by the last iteration. This residual is computed using high precision and accumulated using high-precision as well while the resolution of the equation is done in low-precision.
+Since the early 1960's, literature has studied the effects and ways to implement mixed precision. The first known works to implement such methods are James H. Wilkinson \cite{Wilkinson1994} and Cleve Moler \cite{Moler1967}. The method presented by both is named \guille{iterative refinement} and uses a combination of accumulative inner products along with a linear solver. This solution is directed towards the resolution of a system in the form of \begin{equation} Ax=b \end{equation} for a quadratic \begin{equation} NxN A\end{equation} matrix. The main idea is to use a residual between the wanted result and the result obtained by the last iteration. This residual is computed using high precision and accumulated using high-precision as well while the resolution of the equation is done in low-precision.
 
 % Iterative Refinement Example
 % \begin{figure}[htbp]
@@ -210,7 +207,7 @@ When creating a new application or system, any developer tends to use the highes
 
 The mixed-precision approach can be applied from a different perspective when using a fixed-precision representation. Darulova et al. \cite{Darulova2013} shows that several polynomial expressions over the reals are cast over fixed-point arithmetic without being optimised, leading approximations of the real values. The tool they present allows to determine the best fixed-point implementation of a real number thanks to genetic programming. Then, as the order of operations is impactful when dealing with fixed-point arithmetic (distributivity and associativity are not respected), the tool reorder the operations to optimise the error and accuracy.
 
-Those two tools have been brought together in \cite{Darulova2018} under the "first fully automated and sound technique and tool for optimising the performance of floating-point and fixed-point kernels". This tool combines rewriting and mixed-precision tuning where rewriting goes over several evaluation orders and picks the one that minimises the round-off error without runtime costs while mixed-precision tuning assigns the correct finite-precision variables and operations. The overall tool provides finer-grain control over the program and better performance than each of the method taken alone.
+Those two tools have been brought together in \cite{Darulova2018} under the \guille{first fully automated and sound technique and tool for optimising the performance of floating-point and fixed-point kernels}. This tool combines rewriting and mixed-precision tuning where rewriting goes over several evaluation orders and picks the one that minimises the round-off error without runtime costs while mixed-precision tuning assigns the correct finite-precision variables and operations. The overall tool provides finer-grain control over the program and better performance than each of the method taken alone.
 
 % TUNING EXAMPLE
 % \begin{figure}[htbp]
@@ -400,7 +397,7 @@ Moore's law \cite{Moore2006} predicted the evolution of hardware capacities in y
 
 One solution to enable hardware acceleration is to parallelise computationally expensive tasks. The GPUs, or Graphics Processing Unit are specialised electronic circuit that can handle computationally demanding tasks such as 3D rendering, video encoding and decoding or any action that can be massively parallelised (cryptocurrency digging, matrix computations or brute-force cracking). Few companies actually conceive and sell such systems. The most famous are NVidia, AMD and Intel and some smaller fabless (they conceive the circuit but do not mass-produce it) companies such as Qualcomm or ARM. Other manufacturing companies such as ASUS or MSI will then integrate those circuits into products and calibrate them along with a cooling system that can make it enhance its base abilities.
 
-Along with GPUs come their proper Software Development Kit (SDK) in order for developers to use their tools. NVidia invested heavily in CUDA (Compute Unified Device Architecture) \cite{CUDA} and its aim is to reproduce a C syntax and environment for GPUs. AMD and Intel provide open-source SDK that tools then built upon.
+Along with GPUs come their proper Software Development Kit (SDK) in order for developers to use their tools. NVidia invested heavily in CUDA (\emph{Compute Unified Device Architecture}) \cite{CUDA} and its aim is to reproduce a C syntax and environment for GPUs. AMD and Intel provide open-source SDK that tools then built upon.
 
 GPUs are the basic way your computer delegates expensive tasks from the CPU to the GPU (integrated or external). They require less knowledge than FPGAs but provide a more static architecture that will be limited when it comes to tuning. Mixed-precision mindset will not reach its full potential with this architecture but will still manage to increase the performance of different operations and tasks.
 
@@ -410,7 +407,7 @@ GPUs are the basic way your computer delegates expensive tasks from the CPU to t
 
 \subsection{FPGA}
 
-On the other hand, the 1990's have seen the birth of a new type of architecture: reconfigurable hardware. They allow to create application-specific hardware and are mixed-precision by default. Xilinx, one of the most famous FPGA manufacturer describes them \cite{Xilinx} as consisting of \guille{up to two million logic cells that can be configured to implement a variety of software algorithms}. Those logic cells can be dynamically reconfigured and this behaviour is the strength of this architecture.
+On the other hand, the 1990's have seen the birth of a new type of architecture: reconfigurable hardware. They allow to create application-specific hardware and are mixed-precision by default. Xilinx, one of the most famous FPGA manufacturer describes them as consisting of \guille{up to two million logic cells that can be configured to implement a variety of software algorithms}. Those logic cells can be dynamically reconfigured and this behaviour is the strength of this architecture.
 
 FPGAs consist of several important elements:
 \begin{itemize}
