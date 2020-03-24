@@ -343,7 +343,7 @@ The neuron performs a simple dot product of all the inputs along with their weig
 
 Neural networks perform the simple operations of reducing the inputs, adding a bias and passing it through a non-linear function. However, it is possible to set up several layers where the first one is called the \emph{input layer}, the last one the \emph{output layer} and all the layers in-between the \emph{hidden layers}. While having hidden neurons is useful to better comprehend the data fed to the network, having too much of them can lead to overfitting, including noise and outliers into the pattern recognition.
 
-Neural networks perform well in machine learning, but the fields where the architecture is the most used are image and speech recognition. An extension of neural networks is used when the data is known to be of a certain type. For example, if the data is known to be images, Convolutional Neural Networks (CNN) are the best choice. They are tailored with the goal of handling images. They are a special type of neural networks in the sense that they use 3D layers and transformations on images.
+Neural networks perform well in machine learning, but the fields where the architecture is the most used are image and speech recognition. An extension of neural networks is used when the data is known to be of a certain type. For example, if the data is known to be images, Convolutional Neural Networks (CNN) are the best choice. They are tailored with the goal of handling images. They are a special type of neural networks in the sense that they use 3D layers and transformations on images. CNNs can be used for image classification, object detection, image segmentation or speech recognition. We will focus on image recognition here.
 
 % NEURAL NETWORK AND CNN COMPARISON
 % \begin{figure}[htbp]
@@ -363,7 +363,7 @@ Several layers are used and allow to perform different operations on images:
   \item FC (fully-connected): Computation of the class scores
 \end{itemize}
 
-Those layers then compose a CNN architecture and can be trained on bank of images to adjust the different bias and weight for each layers. Finally, once the network is trained, it can deduce the class of a given image.
+Layers input a set of data, known as a \emph{Feature Map} and output a new set of feature maps with higher-level semantics. Those layers then compose a CNN architecture and can be trained on a bank of images to adjust the different bias and weight for each layers. Finally, once the network is trained, it can deduce the class of a given image. Those two steps are called \emph{Training} and \emph{Inference}, the training will work on a set of annotated data samples to create a model \guille{which semantics extrapolate outside the training set, \[with a\] \emph{modelling power}} \cite{Abdelouahab2018}. Once this step is completed, the \emph{Inference} phase can start and the network will have to classify new data instances. This inference has to be run each time a new instance is provided to the system. Therefore, literature focus on accelerating this phase.
 
 %-----------------------------------
 %	SUBSUBSECTION 2 - Introducing Mixed Precision
@@ -371,7 +371,7 @@ Those layers then compose a CNN architecture and can be trained on bank of image
 
 \subsubsection{Introducing Mixed Precision}
 
-Training a neural network is the longest process mandatory to make the most out of the architecture. However, using the mixed-precision mindset, there are ways to accelerate the training of the network by decreasing the precision of some operations. The ImageNet Project REFIMAGENET is a large database designed to be used in visual object recognition softwares. The same project runs an annual contest, the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). Each year, contesters try to get the best possible accuracy out of the network they propose. While accuracy is the main factor to determine the winner, deep learning real-world issues often have to take in account the training of the network.
+Training a neural network is the longest process mandatory to make the most out of the architecture. However, using the mixed-precision mindset, there are ways to accelerate the training of the network by decreasing the precision of some operations. The ImageNet Project \cite{Imagenet} is a large database designed to be used in visual object recognition softwares. The same project runs an annual contest, the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). Each year, contesters try to get the best possible accuracy out of the network they propose. While accuracy is the main factor to determine the winner, deep learning real-world issues often have to take in account the training of the network.
 
 Many researchers have been looking into the issue with mixed-precision in mind. As shown by Bacchus et al. \cite{Bacchus2020}, there is a fundamental underlying trade-off between accuracy, network training time and hardware efficiency. Research looked upon ways to reduce the size taken by weights and the activation function and the impact of a reduction in the size of those:
 
@@ -379,8 +379,14 @@ Micikevicius et al. \cite{Micikevicius2017} store weights, activations and gradi
 
 Colangelo et al. \cite{Colangelo2018} present a CNN mapping to a reconfigurable architecture in order to use sub 8-bit activation and weights. In order to use binary- or ternary-weighted neural networks, they cap their sizes to respectively 1 and 2-bits. Using this type of limited numeric precision can only be fully optimised with FPGAs and the authors show that they manage to get an optimisation of \guille{the bandwidth, memory, power and computation savings}.
 
-Jia et al. \cite{Jia2018} present a novel mixed-precision training method along with an optimised all-reduce algorithm.
-ope
+Jia et al. \cite{Jia2018} present a novel mixed-precision training method along with an optimised all-reduce algorithm. Any neural network will have to use a version of an all-reduce algorithm, consisting of the sum of all the previous elements broadcasted to all the next elements. Using an optimised version of the algorithm will increase the performance of each layer separately and the whole system in the end.
+
+Zhao et al. \cite{Zhao2016} propose F-CNN, a framework to train CNNs on FPGAs. Their design makes available highly customisable modules that will be optimised to maximise performance under the constraints of bandwidth and hardware resources. The authors state that the introduction of mixed-precision will be the next step of optimisation of their design. Moreover, the use of they prove their design is more performant than CPUs and less expensive in terms of energy than GPUs.
+
+Jahanshahi et al. \cite{Jahanshahi2019} propose a CNN accelerator tool. It generates the hardware description for a CNN to be programmed on a target FPGA. The software uses an API the developer can use to enter the available resources. The software will then generate the hardware description and run a simulation to adjust the precision and minimise the classification error. The whole system is shown to be more performant on a half-precision fixed-point representation rather than using single-precision floating-point data: 3\% accuracy loss in exchange for 15.75x speedup.
+
+Kurth et al. \cite{Kurth2018} presents a direct application of mixed-precision training on GPUs to help climate analysis. The authors expand open-source tools such as Tensorflow and Horovod in order to present their work. They managed to optimise the network's training to increase the overall efficiency and performance. The predictions the network is able to make are shown to be of an unmet precision and will help characterise the impact of several physical event (flooding, monetary loss, etc.).
+
 %----------------------------------------------------------------------------------------
 %	SECTION 4 - Hardware Architecture
 %----------------------------------------------------------------------------------------
@@ -390,7 +396,7 @@ ope
 Moore's law \cite{Moore2006} predicted the evolution of hardware capacities in years to come when defined in 1965. It is an empirical relationship and in no means a physical or natural law but has shown to be exact for the thirty years following its creation. The Moore's law, when announced in 1965 said that \guille{the number of components per integrated circuit would double every year}. This law held for a decade and was then revised to \guille{doubling every two years} for the next decade. This law has been an industry guideline and helped produce long term business plans. However, the law is slowly coming to an end and has been shown to not fulfil the prophecy anymore due to physical limitations such as thermal restrictions. New architectures will have to take the lead as more computational power is still needed for the years to come. What are the new ways and architectures to increase performance even more?
 
 %-----------------------------------
-%	SUBSECTION 4 - GPU
+%	SUBSECTION 1 - GPU
 %-----------------------------------
 
 \subsection{GPU}
@@ -402,12 +408,12 @@ Along with GPUs come their proper Software Development Kit (SDK) in order for de
 GPUs are the basic way your computer delegates expensive tasks from the CPU to the GPU (integrated or external). They require less knowledge than FPGAs but provide a more static architecture that will be limited when it comes to tuning. Mixed-precision mindset will not reach its full potential with this architecture but will still manage to increase the performance of different operations and tasks.
 
 %-----------------------------------
-%	SUBSECTION 4 - FPGA
+%	SUBSECTION 2 - FPGA
 %-----------------------------------
 
 \subsection{FPGA}
 
-On the other hand, the 1990's have seen the birth of a new type of architecture: reconfigurable hardware. They allow to create application-specific hardware and are mixed-precision by default. Xilinx, one of the most famous FPGA manufacturer describes them as consisting of \guille{up to two million logic cells that can be configured to implement a variety of software algorithms}. Those logic cells can be dynamically reconfigured and this behaviour is the strength of this architecture.
+On the other hand, the 1990's have seen the birth of a new type of architecture: reconfigurable hardware. They allow to create application-specific hardware and are mixed-precision by default. Xilinx, one of the most famous FPGA manufacturer describes them as consisting of \guille{up to two million logic cells that can be configured to implement a variety of software algorithms} \cite{Xilinx}. Those logic cells can be dynamically reconfigured and this is the strength of this architecture.
 
 FPGAs consist of several important elements:
 \begin{itemize}
@@ -420,3 +426,55 @@ FPGAs consist of several important elements:
 Along with those base components come many high-end more interesting components that can help develop your hardware to be tightly linked to the application you have in mind. As stated by \cite{Goddeke2007}, FPGAs have native mixed-precision processors and \guille{there is no need to utilise the same number format throughout the algorithm, or even the same operation}. Moreover, the freedom in the number representation can lead to alternative feasible number representations, such as a logarithmic one.
 
 One downside of FPGAs is the need for intrinsic knowledge of a Hardware Description Language (HDL) or one of their higher-level abstractions \cite{XuanSang2014}. While this step can be a downside for some
+
+%-----------------------------------
+%	SUBSECTION 3 - CNNs on FPGAs
+%-----------------------------------
+
+\subsection{CNNs on FPGAs}
+
+Due to their heavy parallel affinity, CNNs can benefit from both GPUs and FPGAs heavy parallelisation capabilities as shown in \cite{}. However, CNNs as stated in \cite{Jahanshahi2019}, "CNN-based methods are computational-intensive and resource-consuming, and thus are hard to be integrated into embedded systems such as smartphones, smart glasses and robots". FPGAs can counterbalance this issue by providing a tailored hardware representation of the CNN and making the most our of limited precision datatypes.
+
+\cite{} presented frameworks for CNNs automatic or semi-automatic hardware implementations on FPGAs. However, Abdelouahab et al. \cite{Abdelouahab2018} present the issues FPGAs face and resolve in their survey paper. While this paper cites over a hundred sources, we can look at the main ideas it highlights.
+
+\subsubsection{Parallelisation Vectors}
+
+Low-energy embedded systems can take advantage of the affinity of CNNs with parallelisation. This extensive concurrency can be used when parallelising from either \emph{Batch Parallelism} or \emph{Inter-Layer Parallelism}.
+
+Batch size is an important parameter when looking at networks, it corresponds to \guille{a hyper-parameter that defines the number of samples to work through before updating the internal model parameters (weights)} \cite{MachineLearningMastery}. As stated in \cite{MachineLearningMastery}, the difference between a \emph{batch} and an \emph{epoch} is that an epoch consists of a full run through the training set while several batches can fit into an epoch. The batch size can divide the training in several types depending on the batch size:
+
+\begin{itemize}
+	\item \emph{Batch Gradient Descent}: Batch size = Size of the training set
+	\item \emph{Stochastic Gradient Descent}: Batch size = 1
+	\item \emph{Mini-batch Gradient Descent}: 1 $<$ Batch size $<$ Size of the training set
+\end{itemize}
+
+A CNN can simultaneously run the filters of the network on the instances of the same batch and obtain a significant acceleration when using batch processing. On the other hand, the structure of the network can be described as \guille{feed-forward}, meaning the output of layer $n$ is directly fed into layer $n+1$. A pipelined implementation can trigger the layer $n+1$ before the end of layer $n$ on selected instances.
+
+The layers CONV are source of concurrency that can be exploited through the separation of the different planes the CONV layer uses (inter-FM), or the separation of the outputs of the layer (intra-FM). Moreover, the 3D-convolution can be expressed as a sum of 2D-convolutions that can be executed in parallel (inter-convolution) and the 2D-convolutions themselves can be pipelined concurrently (intra-convolution).
+
+
+\subsubsection{Inference Optimisations}
+
+As said earlier, the \emph{Inference} step is a critical spot of CNN implementations as it is required each time a new instance is presented to the system whereas the \emph{Training} step can be done once and for all. Increasing the performance of this step is crucial and can be done in several ways. First, the memory bandwidth is the bottleneck of several FPGA implementations. High number of memory reads or high number of weights stored result in a loss of performance. A caching strategy is often a nice answer to this kind of issues.
+
+Next, the literature presents several \emph{Inference Optimisations} strategies that will help the CNN perform best on an FPGA. Exporting a CNN to an FPGA consists of finding the most efficient way to map the CNN on the hardware architecture of the FPGA. The main strategies are resumed beneath and presented in the following graph:
+
+% INFERENCE OPTIMISATIONS
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics{Figures/NN-CNN.pdf}
+% 		\rule{35em}{0.5pt}
+% 	\caption[Neural Network and CNN comparison]{Comparison between a classic Neural Network and a CNN}
+% 	\label{fig:NN}
+% \end{figure}
+
+The main strategies are:
+\begin{itemize}
+	\item Algorithmic optimisations: GEMM transformation, Winograd transform, Fast Fourier Transform .
+	\item Data-path optimisations: Systolic arrays, SIMD and loop optimisations, Data-flow MoC.
+	\item Approximate computations: Fixed-point, Dynamic Fixed-point Binary and Pseudo-Binary nets.
+	\item Reduce computations: Weight pruning, Low rank approximations.
+\end{itemize}
+
+Several solutions found in the literature present combination of three strategies to perform best on a given architecture. These works present several ways to tune a CNN to perform best. When looking globally, re-centering to mixed-precision we can see that, as concluded in \cite{Abdelouahab2018}, \guille{CNNs are by nature over-parameterised and support particularly well approximate tuning techniques such as weight pruning and fixed-point computation}.
