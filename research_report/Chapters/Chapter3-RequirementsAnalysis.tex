@@ -4,32 +4,126 @@
 
 \lhead{Chapter 3. \emph{Requirements Analysis}}
 
+
+This chapter looks over the aims and objectives set in the \emph{Introduction} and translates them into requirements and use cases in the first part. The second part is centred around the methodology the project will be evaluated with. The third and final part will enumerate the deliverables needed.
 %----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-
-\section{Main Section 1}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies lacinia euismod. Nam tempus risus in dolor rhoncus in interdum enim tincidunt. Donec vel nunc neque. In condimentum ullamcorper quam non consequat. Fusce sagittis tempor feugiat. Fusce magna erat, molestie eu convallis ut, tempus sed arcu. Quisque molestie, ante a tincidunt ullamcorper, sapien enim dignissim lacus, in semper nibh erat lobortis purus. Integer dapibus ligula ac risus convallis pellentesque.
-
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
-\subsection{Subsection 1}
-
-Nunc posuere quam at lectus tristique eu ultrices augue venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat. Vivamus sodales tortor eget quam adipiscing in vulputate ante ullamcorper. Sed eros ante, lacinia et sollicitudin et, aliquam sit amet augue. In hac habitasse platea dictumst.
-
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
-
-\subsection{Subsection 2}
-Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar pellentesque. Cras in elit neque, quis varius elit. Phasellus fringilla, nibh eu tempus venenatis, dolor elit posuere quam, quis adipiscing urna leo nec orci. Sed nec nulla auctor odio aliquet consequat. Ut nec nulla in ante ullamcorper aliquam at sed dolor. Phasellus fermentum magna in augue gravida cursus. Cras sed pretium lorem. Pellentesque eget ornare odio. Proin accumsan, massa viverra cursus pharetra, ipsum nisi lobortis velit, a malesuada dolor lorem eu neque.
-
-%----------------------------------------------------------------------------------------
-%	SECTION 2
+%	SECTION 1 - Project Goals
 %----------------------------------------------------------------------------------------
 
-\section{Main Section 2}
+\section{Project Goals}
 
-Sed ullamcorper quam eu nisl interdum at interdum enim egestas. Aliquam placerat justo sed lectus lobortis ut porta nisl porttitor. Vestibulum mi dolor, lacinia molestie gravida at, tempus vitae ligula. Donec eget quam sapien, in viverra eros. Donec pellentesque justo a massa fringilla non vestibulum metus vestibulum. Vestibulum in orci quis felis tempor lacinia. Vivamus ornare ultrices facilisis. Ut hendrerit volutpat vulputate. Morbi condimentum venenatis augue, id porta ipsum vulputate in. Curabitur luctus tempus justo. Vestibulum risus lectus, adipiscing nec condimentum quis, condimentum nec nisl. Aliquam dictum sagittis velit sed iaculis. Morbi tristique augue sit amet nulla pulvinar id facilisis ligula mollis. Nam elit libero, tincidunt ut aliquam at, molestie in quam. Aenean rhoncus vehicula hendrerit.
+The aims and objectives first defined will then be translated into requirements using \emph{functional analysis}, a method borrowed to the field of software engineering. All the functional and non-functional requirements will be discussed along with the requirements table.
+
+%----------------------------------------------------------------------------------------
+%	SUBSECTION 1 - Aims and Objectives
+%----------------------------------------------------------------------------------------
+
+\subsection{Aims and Objectives}
+
+\textbf{Aims}
+
+\begin{enumerate}
+  \item Determine the motivations behind mixed-precision.
+  \item Assess the impact of mixed-precision on state-to-the-art applications.
+  \item Present the methods to apply a mixed-precision mindset to a given application.
+  \item Look into the range of applications mixed-precision has in the literature.
+  \item Provide insight on the choice of architecture for mixed-precision applications.
+  \item Reciprocally present the reason of the need for applications on the chosen architecture.
+\end{enumerate}
+
+\textbf{Objectives}
+
+\begin{enumerate}
+  \item Choose a state-of-the-art application.
+  \item Determine the parameters linked to the application.
+  \item Assess the impact of mixed-precision methods when put in action in the application.
+  \item Determine the metrics of the associated application as compared to the literature.
+  \item Present a proof of concept of the application along with mixed-precision tuning.
+  \item Look for explanations to unexpected behaviour.
+  \item Present a demonstration of the system.
+  \item Confront the results to the state-of-the-art comparable experimental results.
+  \item Present how each parameter impacts the overall performance of the system.
+  \item Provide an insight on how security can be impacted when trying to deteriorate precision.
+  \item Present a set of rules to go against the potential security flaws.
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+%	SUBSECTION 2 - Requirements
+%----------------------------------------------------------------------------------------
+
+\subsection{Requirements}
+
+The system chosen to illustrate hardware acceleration and the use as well as impact of mixed-precision is the implementation of a modular CNN on an FPGA. The system should respect the following requirements.
+
+\textbf{Requirement Table} The table specifies the requirements that the developed system should fulfill. It does not give an indication of how the requirements will be met but explains the reasons of its existence. Each requirement has an identifier, a name, a priority rank (0 being the highest) and an explanation.
+
+\begin{tabular}{ |c c c c c c|}
+  \hline
+  \textbf{ID} & \textbf{Name} & \textbf{Description} & \textbf{Type} & \textbf{Priority} & \textbf{Justification} \\
+  \hline
+  \textbf{R0}  & \emph{LitParam}    & The system should tune parameters defined by the literature                             & Constraint & 0 &  Literature review \\
+  \hline
+  \textbf{R2}  & \emph{LitInfOpt}   & The system should use inference optimisations taken from the literature                 & Constraint & 0 &  Literature review \\
+  \hline
+  \textbf{R3}  & \emph{LitHardDes}  & The system should use hardware design taken from the literature                         & Constraint & 0 &  Literature review \\
+  \hline
+  \textbf{R4}  & \emph{SysGUI}      & The system should implement a GUI to tune the parameters, optimisations and design      & Constraint & 0 &  User requirement  \\
+  \hline
+  \textbf{R5}  & \emph{TestTrTime}  & The system should evaluate the training time of the CNN                                 & Constraint & 0 &  User requirement  \\
+  \hline
+  \textbf{R5}  & \emph{TestHardEff} & The system should evaluate the hardware efficiency of the CNN                           & Constraint & 0 &  User requirement  \\
+  \hline
+  \textbf{R5}  & \emph{TestParam}   & The system should evaluate the impact of the tuning parameters                          & Constraint & 0 &  User requirement  \\
+  \hline
+  \textbf{R6}  & \emph{TestOptMeth} & The system should evaluate the impact of the optimisation methods                       & Constraint & 0 &  User requirement  \\
+  \hline
+  \textbf{R7}  & \emph{TestHardDes} & The system should evaluate the impact of the hardware design                            & Constraint & 0 &  User requirement  \\
+  \hline
+  \textbf{R8}  & \emph{ExpSound}    & The system should lead the experiment through a sound process                           & Constraint & 0 &  Meaningful experimental process \\
+  \hline
+  \textbf{R9}  & \emph{ExpConsist}  & The system should lead the experiment through a consistent and replicable process       & Constraint & 0 &  Meaningful experimental process \\
+  \hline
+  \textbf{R10} & \emph{ResGuide}    & The system should help create guidelines with the results                               & Constraint & 0 &  Exploitable results \\
+  \hline
+  \textbf{R11} & \emph{ResComp}     & The system should create results comparable to the literature                           & Constraint & 0 &  Exploitable results \\
+  \hline
+  \textbf{R12} & \emph{ResFlaws}    & The system should identify its security flaws and define a set of rules to contain them & Constraint & 0 &  Exploitable results \\
+  \hline
+\end{tabular}
+
+%----------------------------------------------------------------------------------------
+%	SUBSECTION 3 - Use Cases
+%----------------------------------------------------------------------------------------
+
+\subsection{Use Cases}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2 - Evaluation Methodology
+%----------------------------------------------------------------------------------------
+
+\section{Evaluation Methodology}
+
+%----------------------------------------------------------------------------------------
+%	SUBSECTION 1 - Comparison
+%----------------------------------------------------------------------------------------
+
+\subsection{Comparison}
+
+%----------------------------------------------------------------------------------------
+%	SUBSECTION 2 - Requirements
+%----------------------------------------------------------------------------------------
+
+\subsection{Requirements}
+
+%----------------------------------------------------------------------------------------
+%	SUBSECTION 3 - Quality
+%----------------------------------------------------------------------------------------
+
+\subsection{Quality}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3 - Project Deliverables
+%----------------------------------------------------------------------------------------
+
+\section{Project Deliverables}

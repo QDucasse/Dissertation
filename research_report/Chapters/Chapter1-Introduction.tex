@@ -5,31 +5,63 @@
 \lhead{Chapter 1. \emph{Introduction}}
 
 %----------------------------------------------------------------------------------------
-%	SECTION 1
+%	SECTION 1 - Context
 %----------------------------------------------------------------------------------------
 
-\section{Main Section 1}
+\section{Context}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies lacinia euismod. Nam tempus risus in dolor rhoncus in interdum enim tincidunt. Donec vel nunc neque. In condimentum ullamcorper quam non consequat. Fusce sagittis tempor feugiat. Fusce magna erat, molestie eu convallis ut, tempus sed arcu. Quisque molestie, ante a tincidunt ullamcorper, sapien enim dignissim lacus, in semper nibh erat lobortis purus. Integer dapibus ligula ac risus convallis pellentesque.
-
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
-\subsection{Subsection 1}
-
-Nunc posuere quam at lectus tristique eu ultrices augue venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat. Vivamus sodales tortor eget quam adipiscing in vulputate ante ullamcorper. Sed eros ante, lacinia et sollicitudin et, aliquam sit amet augue. In hac habitasse platea dictumst.
+Ever since the creation of computers, their computation power has been a source of progress in terms of high-precision scientific computations in one hand or efficient energy expensive mass computations. In one case or the other, this performance has been met through the development of more and more performant hardware as stated by Moore through his law announced in 1965. However, the last decade has proven to counterbalance this law and make it meet an end due to physical and thermal limitations. This decrease in hardware evolution has however shifted the focus to other vectors of performance. One of them is parallelisation through the use of multiple or a cluster of computers to increase the computational power. This focus has enabled the development of new architectures tailored to those specific tasks, such as Graphical Processing Units (GPUs) or reprogrammable architectures such as Field Programmable Gate Arrays (FPGAs). Another field of interest, that will be the main focus of this report is the use of reduced precision to increase the performance of computational-expensive tasks. This report will look over the ideas under mixed-precision, the ways to implement them efficiently, applications that can derive from those methods and how to translate them in physical architectures.
 
 %-----------------------------------
-%	SUBSECTION 2
+%	SECTION 2 - Aims and Objectives
+%-----------------------------------
+\section{Aims and Objectives}
+
+The aim of the report is to give to the reader an insight of the mixed-precision mindset and intentions by covering important articles and ideas the literature holds. The practical aim after looking into the literature is to implement an application of mixed-precision to demonstrate how it can provide hardware acceleration. The choice of the application, the architecture and the methods it will be done has to be carried out and explain through the report.
+
+A Proof of Concept of a mixed-precision will be developed later on during the \emph{Dissertation Thesis}, which parts of the given report will be part of. A better understanding of the literature surrounding the concept of mixed-precision and its applications is expected and should result in the development and implementation of a Convolutional Neural Network on an FPGA.
+
+The resulting aims and objectives are the following:
+
+%-----------------------------------
+%	SUBSECTION 1 - Aims
 %-----------------------------------
 
-\subsection{Subsection 2}
-Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar pellentesque. Cras in elit neque, quis varius elit. Phasellus fringilla, nibh eu tempus venenatis, dolor elit posuere quam, quis adipiscing urna leo nec orci. Sed nec nulla auctor odio aliquet consequat. Ut nec nulla in ante ullamcorper aliquam at sed dolor. Phasellus fermentum magna in augue gravida cursus. Cras sed pretium lorem. Pellentesque eget ornare odio. Proin accumsan, massa viverra cursus pharetra, ipsum nisi lobortis velit, a malesuada dolor lorem eu neque.
+\subsection{Aims}
 
-%----------------------------------------------------------------------------------------
-%	SECTION 2
-%----------------------------------------------------------------------------------------
+\begin{enumerate}
+  \item Determine the motivations behind mixed-precision.
+  \item Assess the impact of mixed-precision on state-to-the-art applications.
+  \item Present the methods to apply a mixed-precision mindset to a given application.
+  \item Look into the range of applications mixed-precision has in the literature.
+  \item Provide insight on the choice of architecture for mixed-precision applications.
+  \item Reciprocally present the reason of the need for applications on the chosen architecture.
+\end{enumerate}
 
-\section{Main Section 2}
+%-----------------------------------
+%	SUBSECTION 2 - Objectives
+%-----------------------------------
 
-Sed ullamcorper quam eu nisl interdum at interdum enim egestas. Aliquam placerat justo sed lectus lobortis ut porta nisl porttitor. Vestibulum mi dolor, lacinia molestie gravida at, tempus vitae ligula. Donec eget quam sapien, in viverra eros. Donec pellentesque justo a massa fringilla non vestibulum metus vestibulum. Vestibulum in orci quis felis tempor lacinia. Vivamus ornare ultrices facilisis. Ut hendrerit volutpat vulputate. Morbi condimentum venenatis augue, id porta ipsum vulputate in. Curabitur luctus tempus justo. Vestibulum risus lectus, adipiscing nec condimentum quis, condimentum nec nisl. Aliquam dictum sagittis velit sed iaculis. Morbi tristique augue sit amet nulla pulvinar id facilisis ligula mollis. Nam elit libero, tincidunt ut aliquam at, molestie in quam. Aenean rhoncus vehicula hendrerit.
+\subsection{Objectives}
+
+\begin{enumerate}
+  \item Choose a state-of-the-art application.
+  \item Determine the parameters linked to the application.
+  \item Assess the impact of mixed-precision methods when put in action in the application.
+  \item Determine the metrics of the associated application as compared to the literature.
+  \item Present a proof of concept of the application along with mixed-precision tuning.
+  \item Look for explanations to unexpected behaviour.
+  \item Present a demonstration of the system.
+  \item Confront the results to the state-of-the-art comparable experimental results.
+  \item Present how each parameter impacts the overall performance of the system.
+  \item Provide an insight on how security can be impacted when trying to deteriorate precision.
+  \item Present a set of rules to go against the potential security flaws.
+\end{enumerate}
+
+%-----------------------------------
+%	SECTION 3 - Structure of the report
+%-----------------------------------
+
+\section{Structure of the report}
+
+The given report is structured as follows. Section 1 provides a brief \emph{Introduction} to the context and objectives of the report. Section 2 consists of the \emph{Literature Review}, presenting the background, ideas, methods and applications of mixed-precision. Section 3 consists of a \emph{Requirement Analysis} of the latter project of the dissertation. Section 4 presents any \emph{Professional, Legal, Ethical and Social Issues} the project can highlight. Section 5 will display the proposed \emph{Project Plan} the dissertation project will be conducted along. Finally, Section 6 consists of the \emph{Conclusion} of the report.
