@@ -459,13 +459,12 @@ As said earlier, the \emph{Inference} step is a critical spot of CNN implementat
 Next, the literature presents several \emph{Inference Optimisations} strategies that will help the CNN perform best on an FPGA. Exporting a CNN to an FPGA consists of finding the most efficient way to map the CNN on the hardware architecture of the FPGA. The main strategies are resumed beneath and presented in the following graph:
 
 % INFERENCE OPTIMISATIONS
-% \begin{figure}[htbp]
-% 	\centering
-% 		\includegraphics{Figures/NN-CNN.png}
-% 		\rule{35em}{0.5pt}
-% 	\caption[Neural Network and CNN comparison]{Comparison between a classic Neural Network and a CNN}
-% 	\label{fig:NN}
-% \end{figure}
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=12cm]{Figures/Inferenceopt.png}
+	\caption[Inference Optimisations]{Methods to accelerate an FPGA implementation \cite{Abdelouahab2018}}
+	\label{fig:InferenceOpt}
+\end{figure}
 
 The main strategies are:
 \begin{itemize}
