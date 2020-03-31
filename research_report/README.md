@@ -5,7 +5,7 @@
 
 ## Report plan
 - Abstract
-- Introduction (Motivation + Objectives)
+- Introduction (Motivation + Aims)
 - Literature Review
     - Background
         - Number representation
@@ -16,11 +16,13 @@
     - Applications
         - Linear Algebra
         - Simulations (Physics, Chemistry)
-        - Big Data
         - Deep Learning
     - Hardware
         - GPU
         - FPGA
+    - CNNs on FPGAs
+        - Parallelisation Vectors
+        - Inference Optimisations
 - Requirement Analysis
 - Professional, Legal, Ethical and Social Issues
 - Project Plan

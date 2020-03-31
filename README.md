@@ -42,32 +42,41 @@ automatically, and the impact of a malicious alteration of synthesis scripts wil
 be illustrated to motivate the need for cyber-protection when designing such a soc.
 
 ## Structure of the literature review
-The first part of the literature review will review the different vectors of
-precision. What are the elements of a program that have an impact on precision?
-Types, sampling, frequency?
-The second part will look at the possible applications of such
+Please look inside the research_report folder
 
 ## Articles read and annotated
 
-- [X] 1989-Imel: Mixed-precision operations from a single opcode
-- [X] 2001-Yates: Fixed-point arithmetic, an introduction
-- [X] 2008-Baboulin: Accelerating computations with mixed-precision
-- [X] 2008-Strzodka: Pipelined mixed-precision on FPGAs
-- [X] 2008-Sun: Mixed-precision linear-solver for FPGAs
-- [ ] 2009-Goddeke: Performance of solvers in FEM simulations
-- [X] 2010-Clark: GPUs mixed-precision lattice QCD solvers
-- [X] 2012-Chow: Mixed-precision Monte-Carlo methodology for FPGAs
-- [X] 2012-LeGrand: Mixed-Molecular GPU model for molecular dynamics
+- [X] 1967-Moler: Iterative Refinement in Floating Point
+- [X] 1989-Imel: Mixed-precision Operations Floating Point Operations from a Single Instruction Opcode
+- [X] 2000-Tong: Reducing Power by Optimizing the Necessary Precision/Range of Floating-Point Arithmetic
+- [X] 2006-Moore: Cramming More Components onto Integrated Circuits
+- [X] 2006-Strzodka: Pipelined mixed-precision Algorithms on FPGAs for Fast and Accurate PDE Solvers from Low-precision Components
+- [X] 2007-Goddeke: Performance and Accuracy of hardware-oriented native-, emulated- and mixed-precision solvers in FEM simulations
+- [X] 2007-Yates: Fixed-point arithmetic: an introduction
+- [X] 2008-Sun: High Performance Mixed-precision Linear Solver for FPGAs
+- [X] 2009-Baboulin: Accelerating Scientific Computations with Mixed-Precision Algorithms
+- [X] 2010-Clark: Solving lattice QCD systems of equations using mixed-precision solvers on GPUs
+- [X] 2012-Chow: A Mixed-precision Monte-Carlo methodology for Reconfigurable Accelerators Systems
 - [X] 2013-Darulova: Synthesis of fixed-point programs
-- [ ] 2013-RubioGonzalez: Precimonius, tuning assistant for FP programs
-- [ ] 2014-XuanSang: From Smalltalk to Silicon: Turn Smalltalk code into FPGA
-- [ ] 2018-Colangelo: Low numeric Precision Deep Learning inference
+- [X] 2013-LeGrand: SPFP: Speed without compromise - A Mixed-precision Model for GPU accelerated Molecular Dynamic Simulations
+- [X] 2013-Rubio: Precimonius, tuning assistant for Floating Point programs
+- [X] 2014-Horrowitz: Computing's Energy Problem (and what we caan do about it)
+- [X] 2014-XuanSang: From Smalltalk to Silicon: a methodology to turn Smalltalk code into FPGA
+- [X] 2015-Nips: High-Performance Hardware for Machine Learning
+- [X] 2016-Zhao: F-CNN: An FPGA-based Framework for Training Convolutional Neural Networks
+- [X] 2017-Micikevicius: Mixed-Precision Training
+- [X] 2017-Xilinx: Reduce Power and Cost by Converting from Floating Point to Fixed Point
+- [X] 2018-Abdelouahab: Accelerating CNN inference on FPGAs: A Survey
+- [X] 2018-Colangelo: Exploration of Low Numeric Precision Deep Learning Inference Using Intel FPGAs
 - [X] 2018-Darulova: Sound mixed-precision with rewriting
-- [ ] 2018-Jia: Deep learning training system
-- [ ] 2018-Joubert: Attacking the opioid epidemic
-- [ ] 2018-Kurth: Exascale deep learning for climate analysis
+- [X] 2018-Haidar: Harnessing GPU Tensor Cores for Fast FP16 Arithmetic to Speed Up Mixed-Precision Iterative Refinement Solvers
+- [X] 2018-Jia: Highly Scalable Deep Learning Training System With Mixed-Precision: Training ImageNet in Four Minutes
+- [ ] 2018-Joubert: Attacking the opioid epidemic: Determining the Epistatic and Pleiotropic Genetic Architectures for Chronic Pain and Opioid Addiction
+- [X] 2018-Kurth: Exascale deep learning for climate analysis
 - [X] 2018-LeGallo: Mixed-precision in-memory computing
-- [ ] 2018-Narang: Mixed-precision training
+- [X] 2018-Narang: Mixed-precision training
+- [X] 2019-Jahanshahi: TinyCNN: A Tiny Modular CNN Accelerator for Embedded FPGA
+- [X] 2020-Bacchus: Accuracy, Training Time and Hardware Efficiency Trade-Offs for Quantized Neural Networks on FPGAs
 
 ## Important sites
 Precision analysis:
@@ -118,3 +127,4 @@ lecture materials
 `08/03` Read and Annotated 2018-Colangelo  
 `09/03` Watched two talks on ML for FPGA (Intel and Xilinx)  
 `10/03` Read and annotated 2018-Jia and 2018-Narang
+...
