@@ -4,34 +4,64 @@
 
 \label{Chapter4} % For referencing this chapter elsewhere, use \ref{Chapter4}
 
-\lhead{Chapter 4. \emph{PLES}} 
+\lhead{Chapter 4. \emph{PLES}}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Main Section 1}
+\section{Professional Issues}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies lacinia euismod. Nam tempus risus in dolor rhoncus in interdum enim tincidunt. Donec vel nunc neque. In condimentum ullamcorper quam non consequat. Fusce sagittis tempor feugiat. Fusce magna erat, molestie eu convallis ut, tempus sed arcu. Quisque molestie, ante a tincidunt ullamcorper, sapien enim dignissim lacus, in semper nibh erat lobortis purus. Integer dapibus ligula ac risus convallis pellentesque.
+The experimental process to obtain the results will establish specific hardware and software configurations. The specific configurations will be run against each other in order to establish guidelines. Those guidelines will take in account the evaluated parameters and draw conclusions on them and their impact on the overall system and performance.
 
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
-\subsection{Subsection 1}
-
-Nunc posuere quam at lectus tristique eu ultrices augue venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat. Vivamus sodales tortor eget quam adipiscing in vulputate ante ullamcorper. Sed eros ante, lacinia et sollicitudin et, aliquam sit amet augue. In hac habitasse platea dictumst.
-
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
-
-\subsection{Subsection 2}
-Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar pellentesque. Cras in elit neque, quis varius elit. Phasellus fringilla, nibh eu tempus venenatis, dolor elit posuere quam, quis adipiscing urna leo nec orci. Sed nec nulla auctor odio aliquet consequat. Ut nec nulla in ante ullamcorper aliquam at sed dolor. Phasellus fermentum magna in augue gravida cursus. Cras sed pretium lorem. Pellentesque eget ornare odio. Proin accumsan, massa viverra cursus pharetra, ipsum nisi lobortis velit, a malesuada dolor lorem eu neque.
+Each piece of the tool and its implications will be tested and evaluated against other results from the literature. The configurations, if stated specifically, will help future research avoid duplication. Potential researchers can consider parameters that were overlooked in this study. Every experiment will be ensured to be reproducible and scientifically sound. Credible work has to be proposed in order to be taken in account by the literature
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 
-\section{Main Section 2}
+\section{Legal Issues}
 
-Sed ullamcorper quam eu nisl interdum at interdum enim egestas. Aliquam placerat justo sed lectus lobortis ut porta nisl porttitor. Vestibulum mi dolor, lacinia molestie gravida at, tempus vitae ligula. Donec eget quam sapien, in viverra eros. Donec pellentesque justo a massa fringilla non vestibulum metus vestibulum. Vestibulum in orci quis felis tempor lacinia. Vivamus ornare ultrices facilisis. Ut hendrerit volutpat vulputate. Morbi condimentum venenatis augue, id porta ipsum vulputate in. Curabitur luctus tempus justo. Vestibulum risus lectus, adipiscing nec condimentum quis, condimentum nec nisl. Aliquam dictum sagittis velit sed iaculis. Morbi tristique augue sit amet nulla pulvinar id facilisis ligula mollis. Nam elit libero, tincidunt ut aliquam at, molestie in quam. Aenean rhoncus vehicula hendrerit.
+The project will be fully developed under a GNU GPLv3 license \cite{GNUGPL}. The objective of this license is to allow complete use of the source code and modifications. It allows:
+
+\begin{itemize}
+  \item \textbf{Commercial use}: The software can be used for commercial purposes.
+  \item \textbf{Distribution:} The software may be distributed.
+  \item \textbf{Modification:} The software may be modified.
+  \item \textbf{Patent use:} The license provides an express grant of patent rights from the contributors.
+  \item \textbf{Private use:} The software may be used and modified in private.
+\end{itemize}
+
+Under the following conditions:
+
+\begin{itemize}
+  \item \textbf{Disclose source:} Source code must be made available when the software is distributed.
+  \item \textbf{License and copyright notice:} A copy of the license and copyright must be included with the software.
+  \item \textbf{Same license:} Modifications must be released under the same license when distributing the software.
+  \item \textbf{State changes:} Changes to the code must be documented.
+\end{itemize}
+
+The limitations of this license for the original developer can be met when looking at liability or warranty. This license includes a limitation of liability and explicitly states that no warranties are provided.
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{Ethical Issues}
+
+Providing guidelines on how reduced precision can impact performance will also highlight which parameters have an overall higher impact on the final performance. Since the goal of the study is to find the smallest size of each of the parameter without reducing the final precision too much and increasing the overall performance. Ranking parameters will give potential attackers hints on the importance of parameters. An alteration in the precision of a specific parameter can have a much higher impact when following the provided guidelines.
+
+Moreover, since FPGAs are reconfigurable pieces of hardware, each one of the design will be tailored to the specific needs of the application. This means no superfluous space will be allocated and that overflow will have a considerable impact on the system. The use of reduced precision will have to block any attempt to downgrade precision or access restricted spaces of the hardware.
+
+Since FPGAs are slowly developing their commercial use, fewer security measures are actually put in action. The project will have to state how precautions can be taken and how to protect the system against some attacks on precision or system integrity.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+
+\section{Social Issues}
+
+Machine learning and especially deep learning can be applied to nearly all computationally-demanding actions. From them can be taken speech processing, image recognition, object detection, etc. These applications are more and more demanded and demanding in terms of performance and portability. Those reasons combined bring the subject of the study to be the crux of the matter and sensible information due to its possibilities of application as any deep learning implementation will benefit from it.
+
+Tailoring Neural Networks on hardware of restricted size helps portability and will be proven to increase performance. This means that the implications of the project will have a heavy impact on how to design an implication. Related works providing network frameworks on FPGAs \cite{} help anyone access the most performant design for their application. However, as it is the case with every novel implementation, security guidelines have to be established and potential flaws have to be detected and included in guidelines early in the development process. FPGAs will gain increasing attention in the following years and this means stricter protections should be presented.
