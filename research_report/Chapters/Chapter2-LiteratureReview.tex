@@ -126,7 +126,7 @@ Floating-point representation (in either single or double precision) allows extr
 
 The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Mark Horrowitz talk at the ISSCC 2014 was entitled \guille{Computing's Energy Problem (and what we can do about it)} provides an insight of the problems and challenges technology scaling has encountered in its development. Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in \guille{the design of applications and hardware that are better matched to task and each other}. The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on \guille{High-Performance Hardware for Machine Learning} \cite{Nips2015}. The following graph is extracted from this lecture and presents the energy and area costs different floating-point operations demand.
 
-% COSTS OF OPERATIONS 2015-DALLY
+% COSTS OF OPERATIONS 2015-NIPS
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=15cm]{Figures/OpCosts.png}
@@ -134,7 +134,7 @@ The operations performed in floating-point are expensive in terms of bandwidth, 
 	\label{fig:OpCosts}
 \end{figure}
 
-The benefit of using a more optimised representation other the floating-point representation has been investigated as soon as in 2000 in 2000-TONG. The authors present a way to reduce the energy consumption by minimising the bitwidth representation of the floating-point data. The data used to tailor the type representation is human-sensory data such as speech or video imagery. This kind of data is obtained at low precision (4 to 10 bits) but mapped into a full single-precision floating-point type. Using such optimisations, the authors manage to obtain a reduction of 66\% in multiplier energy per operation without sacrificing any accuracy.
+The benefit of using a more optimised representation other the floating-point representation has been investigated as soon as in 2000 in \cite{Tong2000}. The authors present a way to reduce the energy consumption by minimising the bitwidth representation of the floating-point data. The data used to tailor the type representation is human-sensory data such as speech or video imagery. This kind of data is obtained at low precision (4 to 10 bits) but mapped into a full single-precision floating-point type. Using such optimisations, the authors manage to obtain a reduction of 66\% in multiplier energy per operation without sacrificing any accuracy.
 
 Xilinx, a manufacturer of Field-Programmable Gate Arrays (FPGAs), produced a white paper written by Finnerty et al. \cite{Xilinx2017}. This paper shows that the tools Xilinx provide can already handle fixed-point types and arithmetic and that the benefits are important for use of the FPGA:
 \begin{itemize}
@@ -249,7 +249,7 @@ This factorisation is required in many different algorithms using linear algebra
 	\label{fig:HaidarPerf}
 \end{figure}
 
-Strzodka et al. \cite{Strzodka2006} present a solution to the partial differentiate equation Poisson problem defined on a reconfigurable architecture. The resolution of such a problem is done using methods called multigrid solvers or the simpler conjugate gradient solver. The mixed-precision is integrated in the solution process by splitting it into a \guille{computationally demanding low precision inner iteration loop and a computationally simple high precision outer correction loop}. The authors present different pipelined versions of the conjugate gradient solver that can be better integrated in reconfigurable architectures.
+Strzodka et al. \cite{Strzodka2006} present a solution to the partial differentiate equation Poisson problem defined on a reconfigurable architecture. The resolution of such a problem is done using methods called multi-grid solvers or the simpler conjugate gradient solver. The mixed-precision is integrated in the solution process by splitting it into a \guille{computationally demanding low precision inner iteration loop and a computationally simple high precision outer correction loop}. The authors present different pipelined versions of the conjugate gradient solver that can be better integrated in reconfigurable architectures.
 
 Another mathematic computation extensively used in the world of science, engineering and finance are Monte Carlo simulations that are used to simulate random processes and estimate the distribution of the results. Chow et al. \cite{Chow2012} present a mixed-precision version of the sampling function used in the Monte-Carlo simulation. Along with the solution, the authors provide a description of the hardware implementation made possible on reconfigurable architecture.
 
@@ -315,13 +315,13 @@ Machine learning can also benefit from mixed-precision since it is heavily relyi
 
 \subsubsection{Neural Networks}
 
-The apparition of neural networks in machine learning comes from the analogy with the human brain and the way neurons work and communicate between each other. Each neuron receives several inputs from other previous neurons and performs an operation on all the received inputs to create the output that will go to the next layer of neurons. The analogy can be seen on the next figure:
+ Karpathy et al. \cite{Karparthy2015} present the different structures in their lecture materials. The apparition of neural networks in machine learning comes from the analogy with the human brain and the way neurons work and communicate between each other. Each neuron receives several inputs from other previous neurons and performs an operation on all the received inputs to create the output that will go to the next layer of neurons. The analogy can be seen on the next figure:
 
 % NEURON PRESENTATION
 % \begin{figure}[htbp]
 % 	\centering
 % 		\includegraphics[width=8cm]{Figures/Neuron.png}
-% 	\caption[Neuron Example]{Example of a neuron and its behaviour in a neural network \cite{Karpathy2018}}
+% 	\caption[Neuron Example]{Example of a neuron and its behaviour in a neural network \cite{Karpathy2015}}
 % 	\label{fig:Neuron}
 % \end{figure}
 
@@ -329,7 +329,7 @@ The apparition of neural networks in machine learning comes from the analogy wit
 % \begin{figure}[htbp]
 % 	\centering
 % 		\includegraphics[width=8cm]{Figures/NN.png}
-% 	\caption[Neural Network Example]{Example of a neural network architecture \cite{Karpathy2018}}
+% 	\caption[Neural Network Example]{Example of a neural network architecture \cite{Karpathy2015}}
 % 	\label{fig:NN}
 % \end{figure}
 
@@ -348,7 +348,7 @@ Neural networks perform well in machine learning, but the fields where the archi
 % \begin{figure}[htbp]
 % 	\centering
 % 		\includegraphics[width=8cm]{Figures/CNN.png}
-% 	\caption[Convolutional Neural Network Example]{Example of a convolutional neural network architecture \cite{Karpathy2018}}
+% 	\caption[Convolutional Neural Network Example]{Example of a convolutional neural network architecture \cite{Karpathy2015}}
 % 	\label{fig:CNN}
 % \end{figure}
 
@@ -369,7 +369,7 @@ Layers input a set of data, known as a \emph{Feature Map} and output a new set o
 
 \subsubsection{Introducing Mixed Precision}
 
-Training a neural network is the longest process mandatory to make the most out of the architecture. However, using the mixed-precision mindset, there are ways to accelerate the training of the network by decreasing the precision of some operations. The ImageNet Project \cite{Imagenet} is a large database designed to be used in visual object recognition softwares. The same project runs an annual contest, the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). Each year, contesters try to get the best possible accuracy out of the network they propose. While accuracy is the main factor to determine the winner, deep learning real-world issues often have to take in account the training of the network.
+Training a neural network is the longest process mandatory to make the most out of the architecture. However, using the mixed-precision mindset, there are ways to accelerate the training of the network by decreasing the precision of some operations. The ImageNet Project \cite{ImageNet2009} is a large database designed to be used in visual object recognition softwares. The same project runs an annual contest, the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). Each year, contesters try to get the best possible accuracy out of the network they propose. While accuracy is the main factor to determine the winner, deep learning real-world issues often have to take in account the training of the network.
 
 Many researchers have been looking into the issue with mixed-precision in mind. As shown by Bacchus et al. \cite{Bacchus2020}, there is a fundamental underlying trade-off between accuracy, network training time and hardware efficiency. Research looked upon ways to reduce the size taken by weights and the activation function and the impact of a reduction in the size of those:
 
@@ -411,7 +411,7 @@ GPUs are the basic way your computer delegates expensive tasks from the CPU to t
 
 \subsection{FPGA}
 
-On the other hand, the 1990's have seen the birth of a new type of architecture: reconfigurable hardware. They allow to create application-specific hardware and are mixed-precision by default. Xilinx, one of the most famous FPGA manufacturer describes them as consisting of \guille{up to two million logic cells that can be configured to implement a variety of software algorithms} \cite{Xilinx}. Those logic cells can be dynamically reconfigured and this is the strength of this architecture.
+On the other hand, the 1990's have seen the birth of a new type of architecture: reconfigurable hardware. They allow to create application-specific hardware and are mixed-precision by default. Xilinx, one of the most famous FPGA manufacturer describes them as consisting of \guille{up to two million logic cells that can be configured to implement a variety of software algorithms} \cite{Xilinx2017}. Those logic cells can be dynamically reconfigured and this is the strength of this architecture.
 
 FPGAs consist of several important elements:
 \begin{itemize}
@@ -439,7 +439,7 @@ Due to their heavy parallel affinity, CNNs can benefit from both GPUs and FPGAs 
 
 Low-energy embedded systems can take advantage of the affinity of CNNs with parallelisation. This extensive concurrency can be used when parallelising from either \emph{Batch Parallelism} or \emph{Inter-Layer Parallelism}.
 
-Batch size is an important parameter when looking at networks, it corresponds to \guille{a hyper-parameter that defines the number of samples to work through before updating the internal model parameters (weights)} \cite{MachineLearningMastery}. As stated in \cite{MachineLearningMastery}, the difference between a \emph{batch} and an \emph{epoch} is that an epoch consists of a full run through the training set while several batches can fit into an epoch. The batch size can divide the training in several types depending on the batch size:
+Batch size is an important parameter when looking at networks, it corresponds to \guille{a hyper-parameter that defines the number of samples to work through before updating the internal model parameters (weights)} \cite{MLMastery2019s}. As stated in \cite{MLMastery2019}, the difference between a \emph{batch} and an \emph{epoch} is that an epoch consists of a full run through the training set while several batches can fit into an epoch. The batch size can divide the training in several types depending on the batch size:
 
 \begin{itemize}
 	\item \emph{Batch Gradient Descent}: Batch size = Size of the training set
