@@ -138,7 +138,42 @@
 \usepackage{booktabs}
 \usepackage{rotating}
 \usepackage{listings}
+\usepackage{subfig}
+\usepackage{tcolorbox}
+\lstdefinestyle{CInputStyle}{
+	language=C,
+	basicstyle=\scriptsize\ttfamily,
+	captionpos=b,
+	frame=tb,
+	backgroundcolor=\color{black!5},
+	columns=fullflexible,
+	keepspaces=true,
+	linewidth=\textwidth,
+	escapeinside={(\#}{\#)},
+	deletekeywords={},
+	morekeywords={cp, tar, ls},
+}
+\lstset{
+	literate={é}{{\'e}}1
+	{è}{{\`e}}1
+	{ê}{{\^e}}1
+	{à}{{\`a}}1
+	{ç}{{\c c}}1
+	{ù}{{\`u}}1
+	{ï}{{\"\i}}1
+	{î}{{\^\i}}1
+	{É}{{\'E}}1
+	{È}{{\`E}}1
+	{Ê}{{\^E}}1
+	{À}{{\`A}}1
+	{Ù}{{\`U}}1
+	{Ï}{{\"\I}}1
+	{Î}{{\^\I}}1
+}
 \usepackage{lstpatch}
+% New commands
+\newcommand{\guille}[1]{``#1''}
+
 \lstset{captionpos=b,
         frame=tb,
         basicstyle=\scriptsize\ttfamily,

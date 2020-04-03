@@ -26,11 +26,11 @@ The first thing to note is that electronics can represent two states, a presence
 
 The representation of integers and especially unsigned integers is straightforward as it consists of a change form base 10 to base 2. This number representation can be done in 16-bits, 32-bits or 64-bits depending on its type, the supporting hardware and the space we need to contain it. Representing a number in base 2 from base 10 or vice versa is straightforward as it only demands simple and exact basic operations to be performed.
 
-Now, if we want to represent a signed integer, we have to use a method called the two's complement in order to bring the sign in while keeping the basic behaviour of the addition to work on numbers whether they are positive or negative. The method consists in changing the value of all the bits of a given number then adding one to the result.
+Now, if we want to represent a signed integer, we have to use a method called the two's complement in order to bring the sign in while keeping the basic behavior of the addition to work on numbers whether they are positive or negative. The method consists in changing the value of all the bits of a given number then adding one to the result.
 
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=12cm]{Figures/IntegerRepr.png}
+		\includegraphics[width=.8\textwidth]{Figures/IntegerRepr.png}
 	\caption[Integer Representation]{Integer Representation and Two's Complement example}
 	\label{fig:IntegerRepr}
 \end{figure}
@@ -69,7 +69,7 @@ When referring to single-precision floating-point representation we are talking 
 % FP32 EXAMPLE
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=12cm]{Figures/FP32.png}
+		\includegraphics[width=.8\textwidth]{Figures/FP32.png}
 	\caption[Single-precision float representation]{Example of the representation of a float in single-precision}
 	\label{fig:FP32}
 \end{figure}
@@ -85,7 +85,7 @@ Referring to double precision floating-point representation means looking at 64-
 % FP64 EXAMPLE
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=12cm]{Figures/FP64.png}
+		\includegraphics[width=.8\textwidth]{Figures/FP64.png}
 	\caption[Double-precision float representation]{Example of the representation of a float in double-precision}
 	\label{fig:FP64}
 \end{figure}
@@ -109,7 +109,7 @@ Representing a number with this representation can be done by simply concatenati
 % FIXED POINT EXAMPLE
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=12cm]{Figures/FixedPoint.png}
+		\includegraphics[width=.8\textwidth]{Figures/FixedPoint.png}
 	\caption[Fixed-Point Representation]{Example of a float in fixed-point representation}
 	\label{fig:FixedPoint}
 \end{figure}
@@ -124,19 +124,19 @@ Along with this new representation comes a whole new arithmetic. While this form
 
 Floating-point representation (in either single or double precision) allows extreme precision at the cost of space in memory. On the other hand, fixed-point representation, even if it comes with a more complex arithmetic and insidious round-off errors, allows to tailor the type to your needs. If you want to store the values of the size and mass of planets in floating-point precision, you will end up not using the majority of the range of values you selected while you could tailor a correct type in fixed-point representation.
 
-The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Mark Horrowitz talk at the ISSCC 2014 was entitled \guille{Computing's Energy Problem (and what we can do about it)} provides an insight of the problems and challenges technology scaling has encountered in its development. Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in \guille{the design of applications and hardware that are better matched to task and each other}. The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on \guille{High-Performance Hardware for Machine Learning} \cite{Nips2015}. The following graph is extracted from this lecture and presents the energy and area costs different floating-point operations demand.
+The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Mark Horowitz talk at the ISSCC 2014 was entitled \guille{Computing's Energy Problem (and what we can do about it)} provides an insight of the problems and challenges technology scaling has encountered in its development. Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in \guille{the design of applications and hardware that are better matched to task and each other}. The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on \guille{High-Performance Hardware for Machine Learning} \cite{Nips2015}. The following graph is extracted from this lecture and presents the energy and area costs different floating-point operations demand.
 
 % COSTS OF OPERATIONS 2015-NIPS
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=15cm]{Figures/OpCosts.png}
-	\caption[Operation costs]{Cost of operations in certain representations \cite{Nips2015,Horrowitz2014}}
+		\includegraphics[width=\textwidth]{Figures/OpCosts.png}
+	\caption[Operation costs]{Cost of operations in certain representations \cite{Nips2015,Horowitz2014}}
 	\label{fig:OpCosts}
 \end{figure}
 
 The benefit of using a more optimised representation other the floating-point representation has been investigated as soon as in 2000 in \cite{Tong2000}. The authors present a way to reduce the energy consumption by minimising the bitwidth representation of the floating-point data. The data used to tailor the type representation is human-sensory data such as speech or video imagery. This kind of data is obtained at low precision (4 to 10 bits) but mapped into a full single-precision floating-point type. Using such optimisations, the authors manage to obtain a reduction of 66\% in multiplier energy per operation without sacrificing any accuracy.
 
-Xilinx, a manufacturer of Field-Programmable Gate Arrays (FPGAs), produced a white paper written by Finnerty et al. \cite{Xilinx2017}. This paper shows that the tools Xilinx provide can already handle fixed-point types and arithmetic and that the benefits are important for use of the FPGA:
+Xilinx, a manufacturer of Field-Programmable Gate Arrays (FPGAs), produced a white paper written by Finnerty et al. \cite{Xilinx2017} showing that their tools are able to handle fixed-point types and arithmetic and that the benefits are important for FPGA use cases:
 \begin{itemize}
   \item Reduced power consumption
   \item Reduced use of FPGA resources (look-up tables, flip-flops, memory)
@@ -195,7 +195,12 @@ Since the early 1960's, literature has studied the effects and ways to implement
 % Iterative Refinement Example
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=10cm]{Figures/IterativeRef.png}
+\begin{tabular}{ll}
+	$x^{(0)}=0$ &\\
+	$d^{(s)}=b-Ax^{(s)}$ & Compute residual in \emph{high} precision\\
+	$Ac^{(s)}=d^{(s)}$ & Solve equation system in \emph{low} precision\\
+	$x^{(s+1)}=x^{(s)}+c^{(s)}$ & Accumulate solution in \emph{high} precision\\
+\end{tabular}
 	\caption[Iterative Refinement]{Iterative Refinement Method \cite{Goddeke2007}}
 	\label{fig:IterativeRef}
 \end{figure}
@@ -209,12 +214,75 @@ When creating a new application or system, any developer tends to use the highes
 The mixed-precision approach can be applied from a different perspective when using a fixed-precision representation. Darulova et al. \cite{Darulova2013} shows that several polynomial expressions over the reals are cast over fixed-point arithmetic without being optimised, leading approximations of the real values. The tool they present allows to determine the best fixed-point implementation of a real number thanks to genetic programming. Then, as the order of operations is impactful when dealing with fixed-point arithmetic (distributivity and associativity are not respected), the tool reorder the operations to optimise the error and accuracy.
 
 Those two tools have been brought together in \cite{Darulova2018} under the \guille{first fully automated and sound technique and tool for optimising the performance of floating-point and fixed-point kernels}. This tool combines rewriting and mixed-precision tuning where rewriting goes over several evaluation orders and picks the one that minimises the round-off error without runtime costs while mixed-precision tuning assigns the correct finite-precision variables and operations. The overall tool provides finer-grain control over the program and better performance than each of the method taken alone.
-
 % TUNING EXAMPLE
 \begin{figure}[htbp]
-	\centering
-		\includegraphics[width=17cm]{Figures/Tuning.png}
-	\caption[Tuning]{Tuning Example \cite{Rubio2013}}
+\centering
+\begin{minipage}{.48\textwidth}
+\begin{lstlisting}[style=CInputStyle]
+long double fun( long double x ) {
+  int k, n = 5;
+  long double t1;
+  long double d1 = 1.0L;
+  t1 = x;
+  for( k = 1; k <= n; k++ ) {
+    d1 = 2.0 * d1;
+    t1 = t1 + sin (d1 * x) / d1;
+  }
+  return t1;
+}
+int main( int argc, char **argv) {
+  int i, n = 1000000;
+  long double h, t1, t2, dppi;
+  long double s1;
+  t1 = -1.0;
+  dppi = acos(t1);
+  s1 = 0.0;
+  t1 = 0.0;
+  h = dppi / n;
+  for( i = 1; i <= n; i++ ) {
+    t2 = fun (i * h);
+    s1 = s1 + sqrt (h*h + (t2 - t1)*(t2 - t1));
+    t1 = t2;
+  }
+  // final answer is stored in variable s1
+  return 0;
+}
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{.48\textwidth}
+\begin{lstlisting}[style=CInputStyle]
+double fun( double x ) {
+  int k, n = 5;
+  double t1;
+  float d1 = 1.0f;
+  t1 = x;
+  for( k = 1; k <= n; k++ ) {
+    d1 = 2.0 * d1;
+    t1 = t1 + sin (d1 * x) / d1;
+  }
+return t1;
+}
+int main( int argc, char **argv) {
+  int i, n = 1000000;
+  double h, t1, t2, dppi;
+  long double s1;
+  t1 = -1.0;
+  dppi = acos(t1);
+   s1 = 0.0;
+  t1 = 0.0;
+  h = dppi / n;
+  for( i = 1; i <= n; i++ ) {
+    t2 = fun (i * h);
+    s1 = s1 + sqrt (h*h + (t2 - t1)*(t2 - t1));
+    t1 = t2;
+  }
+  // final answer is stored in variable s1
+  return 0;
+}
+\end{lstlisting}
+\end{minipage}
+\caption[Tuning]{Tuning Example \cite{Rubio2013}}
 	\label{fig:Tuning}
 \end{figure}
 
@@ -235,16 +303,16 @@ Mixed-precision mindset and algorithms are used in several applications from ove
 Linear Algebra directly gains from iterative refinement techniques and can be applied to several wider projects. Some well-known linear problems and operations are the bottleneck of their container projects and finding an optimisation leading to a better performance in their resolution would mean a direct improvement to the overall performance. Baboulin et al. \cite{Baboulin2009} and Sun et al. \cite{Sun2008} present a mixed-precision method aiming at the LU factorisation.
 \begin{align}
   PA=LU \textrm{ where } & \textrm{A is the matrix to factorise} \\
-        & \textrm{ P is a permutation matrix} \\
-        & \textrm{ U an upper triangular matrix} \\
-        & \textrm{ L is a lower triangular matrix} \\
+        & \textrm{P is a permutation matrix} \\
+        & \textrm{U an upper triangular matrix} \\
+        & \textrm{L is a lower triangular matrix}
 \end{align}
 This factorisation is required in many different algorithms using linear algebra as obtaining triangular matrices simplifies later computation. While both authors focus on the same subject, \cite{Sun2008} presents a reconfigurable architecture design and implementation. Later on, Haidar et al., a group of researchers and NVidia CUDA library engineers, showed a 4 times performance improvement in \cite{Haidar2018}.
 
 % PERFORMANCE IMPROVEMENT HAIDAR 2018
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=16cm]{Figures/HaidarPerf.png}
+		\includegraphics[width=\textwidth]{Figures/HaidarPerf.png}
 	\caption[Performance Improvement]{Performance Improvement of the LU factorisation \cite{Haidar2018}}
 	\label{fig:HaidarPerf}
 \end{figure}
@@ -266,7 +334,7 @@ Goddeke et al. \cite{Goddeke2007} present a survey paper to quantify the perform
 % FINITE ELEMENT SIMULATION
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=8cm]{Figures/FESim.png}
+		\includegraphics[width=.5\textwidth]{Figures/FESim.png}
 	\caption[Finite Element Simulation]{Finite Element Analysis of a piston rod \cite{Simscale}}
 	\label{fig:FESim}
 \end{figure}
@@ -276,7 +344,7 @@ In the same finite element simulation field, Ichimura et al. \cite{Ichimura2018}
 % EARTHQUAKE SIMULATION
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=16cm]{Figures/EarthquakeSim.png}
+		\includegraphics[width=\textwidth]{Figures/EarthquakeSim.png}
 	\caption[Earthquake Simulation]{Earthquake simulation created with AI and mized-precision \cite{Ichimura2018}}
 	\label{fig:EarthquakeSim}
 \end{figure}
@@ -286,7 +354,7 @@ Clark et al. \cite{Clark2010} use mixed-precision to solve lattice quantum chrom
 % QUARK SIMULATION
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=4cm]{Figures/QuarkSim.png}
+		\includegraphics[width=.3\textwidth]{Figures/QuarkSim.png}
 	\caption[Quark Simulation]{Simulation of Quark-Gluon Plasma Instabilities \cite{Ipp2011}}
 	\label{fig:QuarkSim}
 \end{figure}
@@ -296,7 +364,7 @@ Molecular dynamics simulations are also using mixed-precision techniques as prop
 % MOLECULAR DYNAMICS SIMULATION
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=10cm]{Figures/MolecularSim.png}
+		\includegraphics[width=.7\textwidth]{Figures/MolecularSim.png}
 	\caption[Molecular Dynamics Simulation]{Molecular Dynamics Simulation \cite{Feng2019}}
 	\label{fig:MolecularSim}
 \end{figure}
@@ -315,13 +383,13 @@ Machine learning can also benefit from mixed-precision since it is heavily relyi
 
 \subsubsection{Neural Networks}
 
- Karpathy et al. \cite{Karparthy2015} present the different structures in their lecture materials. The apparition of neural networks in machine learning comes from the analogy with the human brain and the way neurons work and communicate between each other. Each neuron receives several inputs from other previous neurons and performs an operation on all the received inputs to create the output that will go to the next layer of neurons. The analogy can be seen on the next figure:
+ Karpathy et al. \cite{Karpathy2015} present the different structures in their lecture materials. The apparition of neural networks in machine learning comes from the analogy with the human brain and the way neurons work and communicate between each other. Each neuron receives several inputs from other previous neurons and performs an operation on all the received inputs to create the output that will go to the next layer of neurons. The analogy can be seen on the next figure:
 
 % NEURON PRESENTATION
 % \begin{figure}[htbp]
 % 	\centering
 % 		\includegraphics[width=8cm]{Figures/Neuron.png}
-% 	\caption[Neuron Example]{Example of a neuron and its behaviour in a neural network \cite{Karpathy2015}}
+% 	\caption[Neuron Example]{Example of a neuron and its behavior in a neural network \cite{Karpathy2015}}
 % 	\label{fig:Neuron}
 % \end{figure}
 
@@ -335,14 +403,14 @@ Machine learning can also benefit from mixed-precision since it is heavily relyi
 
 The neuron performs a simple dot product of all the inputs along with their weights, adds a bias to the sum and applies a given non-linear activation function. The weight will give importance to some of the inputs while hiding others. Throughout the training, some of the inputs will be shown to be more useful than others and the weight will depict this attribute. The activation function models the \guille{firing rate of the neuron which [...] represents the frequency of the spikes along the axoms}. Several choices of non-linear functions can be made for your neurons:
 \begin{itemize}
-  \item Sigmoid function $\sigma(x) = \frac{1}{(1+e^{-x})}$
-  \item Tanh $tanh(x) = 2\sigma(2x)$
-  \item Rectified Linear Unit (ReLU) $ f(x) = max(0,x) $
+  \item Sigmoid function: $\sigma(x) = \frac{1}{(1+e^{-x})}$
+  \item Tanh: $tanh(x) = 2\sigma(2x)$
+  \item Rectified Linear Unit (ReLU): $ f(x) = max(0,x) $
 \end{itemize}
 
 Neural networks perform the simple operations of reducing the inputs, adding a bias and passing it through a non-linear function. However, it is possible to set up several layers where the first one is called the \emph{input layer}, the last one the \emph{output layer} and all the layers in-between the \emph{hidden layers}. While having hidden neurons is useful to better comprehend the data fed to the network, having too much of them can lead to overfitting, including noise and outliers into the pattern recognition.
 
-Neural networks perform well in machine learning, but the fields where the architecture is the most used are image and speech recognition. An extension of neural networks is used when the data is known to be of a certain type. For example, if the data is known to be images, Convolutional Neural Networks (CNN) are the best choice. They are tailored with the goal of handling images. They are a special type of neural networks in the sense that they use 3D layers and transformations on images. CNNs can be used for image classification, object detection, image segmentation or speech recognition. We will focus on image recognition here.
+Neural networks perform well in machine learning, but the fields where the architecture is the most used are image and speech recognition. An extension of neural networks is used when the data is known to be of a certain type. For example, if the data is known to be images, Convolutional Neural Networks (CNN) are the best choice as they are tailored with the goal of handling images. They are a special type of neural networks in the sense that they use 3D layers and transformations on images. CNNs can be used for image classification, object detection, image segmentation or speech recognition. We will focus on image recognition here.
 
 % NEURAL NETWORK PRESENTATION
 % \begin{figure}[htbp]
@@ -399,7 +467,7 @@ Moore's law \cite{Moore2006} predicted the evolution of hardware capacities in y
 
 \subsection{GPU}
 
-One solution to enable hardware acceleration is to parallelise computationally expensive tasks. The GPUs, or Graphics Processing Unit are specialised electronic circuit that can handle computationally demanding tasks such as 3D rendering, video encoding and decoding or any action that can be massively parallelised (cryptocurrency digging, matrix computations or brute-force cracking). Few companies actually conceive and sell such systems. The most famous are NVidia, AMD and Intel and some smaller fabless (they conceive the circuit but do not mass-produce it) companies such as Qualcomm or ARM. Other manufacturing companies such as ASUS or MSI will then integrate those circuits into products and calibrate them along with a cooling system that can make it enhance its base abilities.
+One solution to enable hardware acceleration is to parallelise computationally expensive tasks. GPUs (\emph{Graphics Processing Units}) are specialised electronic circuit that can handle computationally demanding tasks such as 3D rendering, video encoding and decoding or any action that can be massively parallelised (cryptocurrency digging, matrix computations or brute-force cracking). Few companies actually conceive and sell such systems. The most famous are NVidia, AMD and Intel and some smaller fabless (they conceive the circuit but do not mass-produce it) companies such as Qualcomm or ARM. Other manufacturing companies such as ASUS or MSI will then integrate those circuits into products and calibrate them along with a cooling system that can make it enhance its base abilities.
 
 Along with GPUs come their proper Software Development Kit (SDK) in order for developers to use their tools. NVidia invested heavily in CUDA (\emph{Compute Unified Device Architecture}) \cite{CUDA} and its aim is to reproduce a C syntax and environment for GPUs. AMD and Intel provide open-source SDK that tools then built upon.
 
@@ -431,15 +499,17 @@ One downside of FPGAs is the need for intrinsic knowledge of a Hardware Descript
 
 \section{CNNs on FPGAs}
 
-Due to their heavy parallel affinity, CNNs can benefit from both GPUs and FPGAs heavy parallelisation capabilities as shown in \cite{}. However, CNNs as stated in \cite{Jahanshahi2019}, "CNN-based methods are computational-intensive and resource-consuming, and thus are hard to be integrated into embedded systems such as smartphones, smart glasses and robots". FPGAs can counterbalance this issue by providing a tailored hardware representation of the CNN and making the most our of limited precision datatypes.
+Due to their heavy parallel affinity, CNNs can benefit from both GPUs and FPGAs heavy parallelisation capabilities as shown in \cite{x}.% PCO: Reference missing here, don't know which one you would like to cite
+However, CNNs as stated in \cite{Jahanshahi2019}, "CNN-based methods are computational-intensive and resource-consuming, and thus are hard to be integrated into embedded systems such as smartphones, smart glasses and robots". FPGAs can counterbalance this issue by providing a tailored hardware representation of the CNN and making the most our of limited precision datatypes.
 
-\cite{} presented frameworks for CNNs automatic or semi-automatic hardware implementations on FPGAs. However, Abdelouahab et al. \cite{Abdelouahab2018} present the issues FPGAs face and resolve in their survey paper. While this paper cites over a hundred sources, we can look at the main ideas it highlights.
+% PCO: other reference missing here.
+\cite{x} presented frameworks for CNNs automatic or semi-automatic hardware implementations on FPGAs. However, Abdelouahab et al. \cite{Abdelouahab2018} present the issues FPGAs face and resolve in their survey paper. While this paper cites over a hundred sources, we can look at the main ideas it highlights.
 
 \subsection{Parallelisation Vectors}
 
 Low-energy embedded systems can take advantage of the affinity of CNNs with parallelisation. This extensive concurrency can be used when parallelising from either \emph{Batch Parallelism} or \emph{Inter-Layer Parallelism}.
 
-Batch size is an important parameter when looking at networks, it corresponds to \guille{a hyper-parameter that defines the number of samples to work through before updating the internal model parameters (weights)} \cite{MLMastery2019s}. As stated in \cite{MLMastery2019}, the difference between a \emph{batch} and an \emph{epoch} is that an epoch consists of a full run through the training set while several batches can fit into an epoch. The batch size can divide the training in several types depending on the batch size:
+Batch size is an important parameter when looking at networks, it corresponds to \guille{a hyper-parameter that defines the number of samples to work through before updating the internal model parameters (weights)} \cite{MLMastery2019}. As stated in \cite{MLMastery2019}, the difference between a \emph{batch} and an \emph{epoch} is that an epoch consists of a full run through the training set while several batches can fit into an epoch. The batch size can divide the training in several types depending on the batch size:
 
 \begin{itemize}
 	\item \emph{Batch Gradient Descent}: Batch size = Size of the training set
@@ -461,7 +531,7 @@ Next, the literature presents several \emph{Inference Optimisations} strategies 
 % INFERENCE OPTIMISATIONS
 \begin{figure}[htbp]
 	\centering
-		\includegraphics[width=12cm]{Figures/InferenceOpt.png}
+		\includegraphics[width=\textwidth]{Figures/InferenceOpt.png}
 	\caption[Inference Optimisations]{Methods to accelerate an FPGA implementation \cite{Abdelouahab2018}}
 	\label{fig:InferenceOpt}
 \end{figure}
