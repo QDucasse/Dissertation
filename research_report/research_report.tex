@@ -39,6 +39,8 @@
 \title{HWU CS Masters thesis template} % BUT you should use use " \title{\ttitle} " here instead to define the thesis title !
 % \ttitle is defined in the file Thesis.cls
 
+\hyphenation{pro-blem} % Fix hyphenation issues for some words
+
 \begin{document}
 
 \frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
@@ -110,11 +112,7 @@
 
 \addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
 
-I, \authornames, declare that this thesis titled, '\ttitle' and the work presented in it is my own. I confirm that this work submitted for assessment is my own and is
-  expressed in my own words. Any uses made within it of the works of
-  other authors in any form (e.g., ideas, equations, figures, text,
-  tables, programs) are properly acknowledged at any point of their
-  use. A list of the references employed is included.
+I, \authornames, declare that this thesis titled, \guille{\ttitle} and the work presented in it is my own. I confirm that this work submitted for assessment is my own and is expressed in my own words. Any uses made within it of the works of other authors in any form (e.g., ideas, equations, figures, text, tables, programs) are properly acknowledged at any point of their use. A list of the references employed is included.
 
 %\begin{itemize}
 %\item[\tiny{$\blacksquare$}] This work was done wholly or mainly while in candidature for a research degree at this University.
@@ -140,15 +138,13 @@ Date:\\
 
 \pagestyle{empty} % No headers or footers for the following pages
 
-\null\vfill % Add some space to move the quote down the page a bit
+~\\~\\ % Add some space to move the quote down the page a bit
 
-\textit{``Thanks to my solid academic training, today I can write hundreds of words on virtually any topic without possessing a shred of information, which is how I got a good job in journalism."}
+\textit{\guille{Thanks to my solid academic training, today I can write hundreds of words on virtually any topic without possessing a shred of information, which is how I got a good job in journalism.}}
 
 \begin{flushright}
 Dave Barry
 \end{flushright}
-
-\vfill\vfill\vfill\vfill\vfill\vfill\null % Add some space at the bottom to position the quote just right
 
 \clearpage % Start a new page
 

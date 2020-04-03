@@ -136,7 +136,7 @@ The operations performed in floating-point are expensive in terms of bandwidth, 
 
 The benefit of using a more optimised representation other the floating-point representation has been investigated as soon as in 2000 in \cite{Tong2000}. The authors present a way to reduce the energy consumption by minimising the bitwidth representation of the floating-point data. The data used to tailor the type representation is human-sensory data such as speech or video imagery. This kind of data is obtained at low precision (4 to 10 bits) but mapped into a full single-precision floating-point type. Using such optimisations, the authors manage to obtain a reduction of 66\% in multiplier energy per operation without sacrificing any accuracy.
 
-Xilinx, a manufacturer of Field-Programmable Gate Arrays (FPGAs), produced a white paper written by Finnerty et al. \cite{Xilinx2017}. This paper shows that the tools Xilinx provide can already handle fixed-point types and arithmetic and that the benefits are important for use of the FPGA:
+Xilinx, a manufacturer of Field-Programmable Gate Arrays (FPGAs), produced a white paper written by Finnerty et al. \cite{Xilinx2017} showing that their tools are able to handle fixed-point types and arithmetic and that the benefits are important for FPGA use cases:
 \begin{itemize}
   \item Reduced power consumption
   \item Reduced use of FPGA resources (look-up tables, flip-flops, memory)
@@ -235,9 +235,9 @@ Mixed-precision mindset and algorithms are used in several applications from ove
 Linear Algebra directly gains from iterative refinement techniques and can be applied to several wider projects. Some well-known linear problems and operations are the bottleneck of their container projects and finding an optimisation leading to a better performance in their resolution would mean a direct improvement to the overall performance. Baboulin et al. \cite{Baboulin2009} and Sun et al. \cite{Sun2008} present a mixed-precision method aiming at the LU factorisation.
 \begin{align}
   PA=LU \textrm{ where } & \textrm{A is the matrix to factorise} \\
-        & \textrm{ P is a permutation matrix} \\
-        & \textrm{ U an upper triangular matrix} \\
-        & \textrm{ L is a lower triangular matrix} \\
+        & \textrm{P is a permutation matrix} \\
+        & \textrm{U an upper triangular matrix} \\
+        & \textrm{L is a lower triangular matrix}
 \end{align}
 This factorisation is required in many different algorithms using linear algebra as obtaining triangular matrices simplifies later computation. While both authors focus on the same subject, \cite{Sun2008} presents a reconfigurable architecture design and implementation. Later on, Haidar et al., a group of researchers and NVidia CUDA library engineers, showed a 4 times performance improvement in \cite{Haidar2018}.
 
@@ -335,9 +335,9 @@ Machine learning can also benefit from mixed-precision since it is heavily relyi
 
 The neuron performs a simple dot product of all the inputs along with their weights, adds a bias to the sum and applies a given non-linear activation function. The weight will give importance to some of the inputs while hiding others. Throughout the training, some of the inputs will be shown to be more useful than others and the weight will depict this attribute. The activation function models the \guille{firing rate of the neuron which [...] represents the frequency of the spikes along the axoms}. Several choices of non-linear functions can be made for your neurons:
 \begin{itemize}
-  \item Sigmoid function $\sigma(x) = \frac{1}{(1+e^{-x})}$
-  \item Tanh $tanh(x) = 2\sigma(2x)$
-  \item Rectified Linear Unit (ReLU) $ f(x) = max(0,x) $
+  \item Sigmoid function: $\sigma(x) = \frac{1}{(1+e^{-x})}$
+  \item Tanh: $tanh(x) = 2\sigma(2x)$
+  \item Rectified Linear Unit (ReLU): $ f(x) = max(0,x) $
 \end{itemize}
 
 Neural networks perform the simple operations of reducing the inputs, adding a bias and passing it through a non-linear function. However, it is possible to set up several layers where the first one is called the \emph{input layer}, the last one the \emph{output layer} and all the layers in-between the \emph{hidden layers}. While having hidden neurons is useful to better comprehend the data fed to the network, having too much of them can lead to overfitting, including noise and outliers into the pattern recognition.
