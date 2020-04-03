@@ -124,13 +124,13 @@ Along with this new representation comes a whole new arithmetic. While this form
 
 Floating-point representation (in either single or double precision) allows extreme precision at the cost of space in memory. On the other hand, fixed-point representation, even if it comes with a more complex arithmetic and insidious round-off errors, allows to tailor the type to your needs. If you want to store the values of the size and mass of planets in floating-point precision, you will end up not using the majority of the range of values you selected while you could tailor a correct type in fixed-point representation.
 
-The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Mark Horrowitz talk at the ISSCC 2014 was entitled \guille{Computing's Energy Problem (and what we can do about it)} provides an insight of the problems and challenges technology scaling has encountered in its development. Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in \guille{the design of applications and hardware that are better matched to task and each other}. The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on \guille{High-Performance Hardware for Machine Learning} \cite{Nips2015}. The following graph is extracted from this lecture and presents the energy and area costs different floating-point operations demand.
+The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Mark Horowitz talk at the ISSCC 2014 was entitled \guille{Computing's Energy Problem (and what we can do about it)} provides an insight of the problems and challenges technology scaling has encountered in its development. Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in \guille{the design of applications and hardware that are better matched to task and each other}. The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on \guille{High-Performance Hardware for Machine Learning} \cite{Nips2015}. The following graph is extracted from this lecture and presents the energy and area costs different floating-point operations demand.
 
 % COSTS OF OPERATIONS 2015-NIPS
 \begin{figure}[htbp]
 	\centering
 		\includegraphics[width=15cm]{Figures/OpCosts.png}
-	\caption[Operation costs]{Cost of operations in certain representations \cite{Nips2015,Horrowitz2014}}
+	\caption[Operation costs]{Cost of operations in certain representations \cite{Nips2015,Horowitz2014}}
 	\label{fig:OpCosts}
 \end{figure}
 
@@ -315,7 +315,7 @@ Machine learning can also benefit from mixed-precision since it is heavily relyi
 
 \subsubsection{Neural Networks}
 
- Karpathy et al. \cite{Karparthy2015} present the different structures in their lecture materials. The apparition of neural networks in machine learning comes from the analogy with the human brain and the way neurons work and communicate between each other. Each neuron receives several inputs from other previous neurons and performs an operation on all the received inputs to create the output that will go to the next layer of neurons. The analogy can be seen on the next figure:
+ Karpathy et al. \cite{Karpathy2015} present the different structures in their lecture materials. The apparition of neural networks in machine learning comes from the analogy with the human brain and the way neurons work and communicate between each other. Each neuron receives several inputs from other previous neurons and performs an operation on all the received inputs to create the output that will go to the next layer of neurons. The analogy can be seen on the next figure:
 
 % NEURON PRESENTATION
 % \begin{figure}[htbp]
@@ -439,7 +439,7 @@ Due to their heavy parallel affinity, CNNs can benefit from both GPUs and FPGAs 
 
 Low-energy embedded systems can take advantage of the affinity of CNNs with parallelisation. This extensive concurrency can be used when parallelising from either \emph{Batch Parallelism} or \emph{Inter-Layer Parallelism}.
 
-Batch size is an important parameter when looking at networks, it corresponds to \guille{a hyper-parameter that defines the number of samples to work through before updating the internal model parameters (weights)} \cite{MLMastery2019s}. As stated in \cite{MLMastery2019}, the difference between a \emph{batch} and an \emph{epoch} is that an epoch consists of a full run through the training set while several batches can fit into an epoch. The batch size can divide the training in several types depending on the batch size:
+Batch size is an important parameter when looking at networks, it corresponds to \guille{a hyper-parameter that defines the number of samples to work through before updating the internal model parameters (weights)} \cite{MLMastery2019}. As stated in \cite{MLMastery2019}, the difference between a \emph{batch} and an \emph{epoch} is that an epoch consists of a full run through the training set while several batches can fit into an epoch. The batch size can divide the training in several types depending on the batch size:
 
 \begin{itemize}
 	\item \emph{Batch Gradient Descent}: Batch size = Size of the training set
