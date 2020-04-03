@@ -6,40 +6,14 @@ Literature corpus of my MSc's dissertation thesis.
 
 ## Subject
 
-Many  embedded systems are based on the use of generic or dedicated processors.
-These processors have hardware calculation units of variable precision (examples:
-ALU or FPU 8, 16, 32, 64 bits).
-Some processing algorithms are designed to perform calculations based on a given
-accuracy. However, the use of calculations with lower accuracy allows, in some
-cases, an acceleration of these same calculations while maintaining sufficient
-accuracy for the desired functionality. This acceleration can have several
-benefits:
-- A reduction in the cost of the calculating component: a less powerful component
-is generally cheaper,
-- Better energy efficiency: a less powerful component or with a lower frequency/
-voltage consumes less energy, and dissipates less heat,
-- Better performance: reduced computing time allows you to work on larger datasets
-or perform other calculations at constant cost.
+Many embedded systems are based on the use of generic or dedicated processors. These processors have hardware calculation units of variable precision (examples: ALU or FPU 8, 16, 32, 64 bits). Some processing algorithms are designed to perform calculations based on a given accuracy. However, the use of calculations with lower accuracy allows, in some cases, an acceleration of these same calculations while maintaining sufficient accuracy for the desired functionality. This acceleration can have several benefits:
+- A reduction in the cost of the calculating component: a less powerful component is generally cheaper,
+- Better energy efficiency: a less powerful component or with a lower frequency/ voltage consumes less energy, and dissipates less heat,
+- Better performance: reduced computing time allows you to work on larger datasets or perform other calculations at constant cost.
 
-The objective of the internship is to analyse a reference application, determine
-the parts of code where accuracy can be reduced, and then implement it on one or
-more hardware architectures to verify that the accuracy is sufficient and the
-performance gain makes sense.
-The trainee will have to appropriate the existing digital precision analysis
-tools, then implement these tools on an algorithm, to analyse on each code
-portion, the loss of precision and its level of acceptability. This step will be
-performed on a sequential code in C or C++, in order to allow the use of tools
-that do not support the parallelised code.  This first stage will rely on LLVM
-or Clang.
+The objective of the internship is to analyse a reference application, determine the parts of code where accuracy can be reduced, and then implement it on one or more hardware architectures to verify that the accuracy is sufficient and the performance gain makes sense. The trainee will have to appropriate the existing digital precision analysis tools, then implement these tools on an algorithm, to analyse on each code portion, the loss of precision and its level of acceptability. This step will be performed on a sequential code in C or C++, in order to allow the use of tools that do not support the parallelised code.  This first stage will rely on LLVM or Clang.
 
-In a second step, the application will be based on an architecture with computing
-unit(s) of the desired precision (GPU or MPPA). Depending on the profiling and
-the results of the analysis, the application code will be modified to take
-advantage of the targeted computing units (meaning, exploiting an extended ISA,
-with extra instructions that invoke hardware primitives).  
-Finally, the global architecture (processor + hardware primitives) will be built
-automatically, and the impact of a malicious alteration of synthesis scripts will
-be illustrated to motivate the need for cyber-protection when designing such a soc.
+In a second step, the application will be based on an architecture with computing unit(s) of the desired precision (GPU or MPPA). Depending on the profiling and the results of the analysis, the application code will be modified to take advantage of the targeted computing units (meaning, exploiting an extended ISA, with extra instructions that invoke hardware primitives). Finally, the global architecture (processor + hardware primitives) will be built automatically, and the impact of a malicious alteration of synthesis scripts will be illustrated to motivate the need for cyber-protection when designing such a soc.
 
 ## Structure of the literature review
 Please look inside the research_report folder
@@ -118,9 +92,7 @@ Deep-learning:
 `29/02` Read and annotated 2018-LeGallo.  
 `01/03` Found applications and uses of mixed-precision in diverse fields
 2018-Joubert, 2018-Kurth.  
-`02/03` Looking for material regarding fixed-point and floating-point
-arithmetic. Computerphile serie and 2001-Yates document.
-Read and annotated 2013-Darulova.  
+`02/03` Looking for material regarding fixed-point and floating-point arithmetic. Computerphile serie and 2001-Yates document. Read and annotated 2013-Darulova.  
 `06/03` Read and Annotated 2014-XuanSang.  
 `07/03` Learned about CNN (Convolutional Neural Network) through the cd231n Stanford
 lecture materials  
