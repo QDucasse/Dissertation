@@ -56,39 +56,40 @@ Taking from the \textbf{Aims} defined in Chapter \ref{Chapter1}, we derive the o
 
 The baseline chosen to illustrate hardware acceleration is the implementation of a modular CNN on an FPGA. The system illustrates the use as well as impact of mixed-precision. The system should respect the following requirements.
 
-\textbf{Requirement Table} The table specifies the requirements that the developed system should fulfill. It does not give an indication of how the requirements will be met but instead explains the reasons of its existence. Each requirement has an identifier, a name, a priority rank (0 being the highest) and an explanation.
+\textbf{Requirements Table} The table specifies the requirements that the developed system should fulfill. It does not give an indication of how the requirements will be met but instead explains the reasons of its existence. Each requirement has an identifier, a name, a priority rank (0 being the highest) and an explanation.
 
 % REWORK PRIORITIES
-
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{ | c c c c c c | }
-  \hline
-  \textbf{ID}  & \textbf{Name}      & \textbf{Description} & \textbf{Type}  & \textbf{Priority} & \textbf{Justification} \\
-  \hline
-  \textbf{R0}  & \emph{LitParam}    & The system should tune parameters defined by the literature                             & Constraint & 0 &  Literature review \\
-  \hline
-  \textbf{R2}  & \emph{LitInfOpt}   & The system should use inference optimisations taken from the literature                 & Constraint & 0 &  Literature review \\
-  \hline
-  \textbf{R3}  & \emph{LitHardDes}  & The system should use hardware design taken from the literature                         & Constraint & 0 &  Literature review \\
-  \hline
-  \textbf{R4}  & \emph{TestParam}   & The system should evaluate the impact of the tuning parameters                          & Constraint & 0 &  User requirement  \\
-  \hline
-  \textbf{R5}  & \emph{TestOptMeth} & The system should evaluate the impact of the optimisation methods                       & Constraint & 0 &  User requirement  \\
-  \hline
-  \textbf{R6}  & \emph{TestHardDes} & The system should evaluate the impact of the hardware design                            & Constraint & 0 &  User requirement  \\
-  \hline
-  \textbf{R7}  & \emph{ExpSound}    & The system should lead the experiment through a sound process                           & Constraint & 0 &  Meaningful experimental process \\
-  \hline
-  \textbf{R8}  & \emph{ExpConsist}  & The system should lead the experiment through a consistent and replicable process       & Constraint & 0 &  Meaningful experimental process \\
-  \hline
-  \textbf{R9}  & \emph{ResGuide}    & The system should help create guidelines with the results                               & Constraint & 0 &  Exploitable results \\
-  \hline
-  \textbf{R10} & \emph{ResComp}     & The system should create results comparable to the literature                           & Constraint & 0 &  Exploitable results \\
-  \hline
-  \textbf{R11} & \emph{ResFlaws}    & The system should identify its security flaws and define a set of rules to contain them & Constraint & 1 &  Exploitable results \\
-  \hline
-\end{tabular}
+\resizebox{\textwidth}{!}{
+  \begin{tabular}{ | c c c c c c | }
+    \hline
+    \textbf{ID}  & \textbf{Name}      & \textbf{Description} & \textbf{Type}  & \textbf{Priority} & \textbf{Justification} \\
+    \hline
+    \textbf{R0}  & \emph{LitParam}    & The system should tune parameters defined by the literature                             & Constraint & 0 &  Literature review \\
+    \hline
+    \textbf{R2}  & \emph{LitInfOpt}   & The system should use inference optimisations taken from the literature                 & Constraint & 0 &  Literature review \\
+    \hline
+    \textbf{R3}  & \emph{LitHardDes}  & The system should use hardware design taken from the literature                         & Constraint & 0 &  Literature review \\
+    \hline
+    \textbf{R4}  & \emph{TestParam}   & The system should evaluate the impact of the tuning parameters                          & Constraint & 0 &  User requirement  \\
+    \hline
+    \textbf{R5}  & \emph{TestOptMeth} & The system should evaluate the impact of the optimisation methods                       & Constraint & 0 &  User requirement  \\
+    \hline
+    \textbf{R6}  & \emph{TestHardDes} & The system should evaluate the impact of the hardware design                            & Constraint & 0 &  User requirement  \\
+    \hline
+    \textbf{R7}  & \emph{ExpSound}    & The system should lead the experiment through a sound process                           & Constraint & 0 &  Meaningful experimental process \\
+    \hline
+    \textbf{R8}  & \emph{ExpConsist}  & The system should lead the experiment through a consistent and replicable process       & Constraint & 0 &  Meaningful experimental process \\
+    \hline
+    \textbf{R9}  & \emph{ResGuide}    & The system should help create guidelines with the results                               & Constraint & 0 &  Exploitable results \\
+    \hline
+    \textbf{R10} & \emph{ResComp}     & The system should create results comparable to the literature                           & Constraint & 0 &  Exploitable results \\
+    \hline
+    \textbf{R11} & \emph{ResFlaws}    & The system should identify its security flaws and define a set of rules to contain them & Constraint & 1 &  Exploitable results \\
+    \hline
+  \end{tabular}
 }
+
+The projected deliverables for the \emph{Research Report} are this given report as well as the \emph{Ethics Forms}. The additional deliverables for the \emph{Dissertation Thesis} are the developed \emph{Software}, the \emph{Guidelines}, \emph{Discussion and Evaluation of the results}, as well as the final \emph{Dissertation Thesis} and \emph{Ethics Forms}.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2 - Evaluation Methodology
@@ -96,7 +97,7 @@ The baseline chosen to illustrate hardware acceleration is the implementation of
 
 \section{Evaluation Methodology}
 
-This section will provide methods, criteria and metrics to evaluate the end product and the deliverable.
+This section will provide methods, criteria and metrics to evaluate the end product and the deliverables.
 
 %----------------------------------------------------------------------------------------
 %	SUBSECTION 1 - Comparison
@@ -104,7 +105,7 @@ This section will provide methods, criteria and metrics to evaluate the end prod
 
 \subsection{Comparison}
 
-The results of the study and the values obtained will be compared to state-of-the-art studies and methods. The main works used for the comparison will be \cite{}
+The results of the study and the values obtained will be compared to state-of-the-art studies and methods. The main works used for the comparison will be similar CNNs applied on different parallel architectures, from GPUs \cite{Micikevicius2017, Jia2018, Kurth2018} to FPGAs \cite{Zhao2016, Colangelo2018, Jahanshahi2019, Bacchus2020}.
 
 %----------------------------------------------------------------------------------------
 %	SUBSECTION 2 - Requirements
@@ -121,9 +122,3 @@ Each requirement from the table will be examined later on and run against the ac
 \subsection{Quality}
 
 The scientific process will be reviewed to check if it complies to good practices and sound methodology. The results have to be reproducible and performed under a sound experimental process. Any parameter or configuration that might have been overlooked will have to be stated as so and justified.
-
-%----------------------------------------------------------------------------------------
-%	SECTION 3 - Project Deliverables
-%----------------------------------------------------------------------------------------
-
-\section{Project Deliverables}

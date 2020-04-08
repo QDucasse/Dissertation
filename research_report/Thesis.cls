@@ -218,7 +218,7 @@
 
 \thesistitle{Hardware acceleration with mixed-precision} % Your thesis title - this is used in the title and abstract
 %-------------------------------------------------
-\supervisor{Dr. Rob \textsc{Stewart}} % You supervisor's name - this is used in the title page
+\supervisor{Dr. Rob \textsc{Stewart} \linebreak Dr. Loïc \textsc{Lagadec} \linebreak Dr. Pascal \textsc{Cotret}} % You supervisor's name - this is used in the title page
 %-------------------------------------------------
 \examiner{} % Your examiner's name - this is not currently used anywhere in the template, cite it with \examname if you want it
 %-------------------------------------------------
