@@ -10,16 +10,16 @@
 
 \section{Context}
 
-Ever since the creation of computers, their computation power has been a source of progress in terms of high-precision scientific computations in one hand or efficient energy expensive mass computations. In one case or the other, this performance has been met through the development of more and more performant hardware as stated by Moore through his law announced in 1965. However, the last decade has proven to counterbalance this law and make it meet an end due to physical and thermal limitations. This decrease in hardware evolution has rather shifted the focus to other vectors of performance. One of them is parallelisation through the use of multiple or a cluster of computers to increase the computational power. This focus has enabled the development of new architectures tailored to those specific tasks, such as Graphical Processing Units (GPUs) or reprogrammable architectures such as Field Programmable Gate Arrays (FPGAs). Another field of interest, that will be the main focus of this report is the use of reduced precision to increase the performance of computational-expensive tasks. This report will look over the ideas under mixed-precision, the ways to implement them efficiently, applications that can derive from those methods and how to translate them in physical architectures.
+Ever since the creation of computers, their computation power has been a source of progress in terms of high-precision scientific computations in one hand or efficient energy expensive mass computations. In one case or the other, this performance has been met through the development of more and more performant hardware architectures. Moore forecasted the evolution through his law announced in 1965. However, the last decade has proven to counterbalance this law and makes it meet an end due to physical and thermal limitations. This decrease in hardware evolution has rather shifted the focus to other vectors of performance. One of them is parallelisation through the use of multiple or a cluster of computers. The goal is then to increase the computational power. This focus has enabled the development of new architectures tailored to those specific tasks, such as Graphical Processing Units (GPUs) or reprogrammable architectures such as Field Programmable Gate Arrays (FPGAs). In parallel, the use of reduced precision to increase the performance of computational-expensive tasks is a focus of the literature that can be applied particularly well to state-of-the-art hardware architectures. Next chapters look over the ideas under mixed-precision and the ways to implement them efficiently. Next derive applications that can benefit from the implementations and their translation to physical architectures.
 
 %-----------------------------------
 %	SECTION 2 - Aims and Objectives
 %-----------------------------------
 \section{Aims and Objectives}
 
-The aim of the report is to give to the reader an insight of the mixed-precision mindset and intentions by covering important articles and ideas the literature holds. The practical aim after looking into the literature is to implement an application of mixed-precision to demonstrate how it can provide hardware acceleration. The choice of the application, the architecture and the methods it will be done has to be carried out and explain through the report.
+The aim of the report is to give the reader an insight of the mixed-precision mindset and intentions by covering important articles and ideas the literature holds. The practical aim and result of the literature review is to implement an application using mixed-precision. This application should demonstrate how it can provide hardware acceleration. The choice of the application, the architecture and the underlying methods to implement have to be carried out and explained through the report.
 
-A Proof of Concept of a mixed-precision will be developed later on during the \emph{Dissertation Thesis}, which parts of the given report will be part of. A better understanding of the literature surrounding the concept of mixed-precision and its applications is expected and should result in the development and implementation of a Convolutional Neural Network on an FPGA.
+A Proof of Concept of mixed-precision will be developed later on during the \emph{Dissertation Thesis}. The literature review part of the given report will be part of the later \emph{Dissertation Thesis}. A better understanding of the literature surrounding the concept of mixed-precision and its applications is expected. This study of the literature should result in the development and implementation of a Convolutional Neural Network on an FPGA.
 
 The resulting aims are the following. The objectives will be defined after the literature review in the \guille{Requirements analysis} chapter.
 
@@ -28,7 +28,7 @@ The resulting aims are the following. The objectives will be defined after the l
   \item Determine the motivations behind mixed-precision.
   \item Assess the impact of mixed-precision on state-to-the-art applications.
   \item Present the methods to apply a mixed-precision mindset to a given application.
-  \item Look into the range of applications mixed-precision has in the literature.
+  \item Investigate the range of applications mixed-precision has in the literature.
   \item Provide insight on the choice of architecture for mixed-precision applications.
 \end{enumerate}
 

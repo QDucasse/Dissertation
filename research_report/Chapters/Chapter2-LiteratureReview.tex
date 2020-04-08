@@ -17,7 +17,7 @@ The question of the representation of numbers as we, humans, use them in a world
 %-----------------------------------
 \subsection{Number Representation}
 
-The first thing to note is that electronics can represent two states, a presence or absence of an electric impulsion. The states of \guille{on} and \guille{off} is embedded in transistors that can represent both. The transistor is the hardware representant of this duality while a bit is the software counter-part. This is the underlying reason of why computers, even the first fully electronical computer ENIAC (\emph{Electronical Numerical Integrator and Computer}), are using a binary system. If this system is handy to translate our base 10 arithmetic and simple numbers such as integers, it is harder to translate more complex numbers such as reals and floating point operations. The meaning of an N-bit binary word is entirely dependent of the interpretation we choose to use. This interpretation consists of both a representation (the type of the object the memory represents) as well as its associated mapping. Common number representations consists of unsigned integers, signed integers (using two's complement), floating point reals as well as fixed-point reals.
+The first thing to note is that electronics can represent two states, a presence or absence of an electric impulsion. The states of \guille{on} and \guille{off} is embedded in transistors that can represent both. The transistor is the hardware representant of this duality while a bit is its software counter-part. This is the underlying reason why computers, even the first fully electronical computer ENIAC (\emph{Electronical Numerical Integrator and Computer}), use a binary system. If this system is handy to translate our base 10 arithmetic and simple numbers such as integers, it is harder to translate more complex numbers such as reals and floating point operations. The meaning of an N-bit binary word is entirely dependent of the interpretation we choose to use. This interpretation consists of both a representation (the type of the object the memory represents) as well as its associated mapping. Common number representations consists of unsigned integers, signed integers (using two's complement), floating point reals as well as fixed-point reals.
 
 %-----------------------------------
 %	SUBSUBSECTION 1 - Integer Representation
@@ -26,7 +26,7 @@ The first thing to note is that electronics can represent two states, a presence
 
 The representation of integers and especially unsigned integers is straightforward as it consists of a change form base 10 to base 2. This number representation can be done in 16-bits, 32-bits or 64-bits depending on its type, the supporting hardware and the space we need to contain it. Representing a number in base 2 from base 10 or vice versa is straightforward as it only demands simple and exact basic operations to be performed.
 
-Now, if we want to represent a signed integer, we have to use a method called the two's complement in order to bring the sign in while keeping the basic behavior of the addition to work on numbers whether they are positive or negative. The method consists in changing the value of all the bits of a given number then adding one to the result.
+Now, if we want to represent a signed integer, we have to use a method called the two's complement in order to bring the sign in. This method keeps the basic behaviour of the addition to work on numbers be they positive or negative. The method consists in changing the value of all the bits of a given number then adding one to the result.
 
 \begin{figure}[htbp]
 	\centering
@@ -42,7 +42,7 @@ Those two representations allow a complete mapping of integers up to a certain r
 %-----------------------------------
 \subsubsection{Floating-Point Representation}
 
-Representing floating-point numbers has been a concern since the 1980's and the industrial development of several computing modules and interfaces. The need for a consensus in this domain and particular applications has been answered by the IEEE-754 standard \cite{Ieee754} in 1985. This standard defines both the floating-point number representations and exceptions conditions along with their default handling. This norm was reviewed fundamentally in 2008, extending it to 64-bits and 128-bits length. The last dated revision of the norm is from 2019.
+Representing floating-point numbers has been a concern since the 1980's and the industrial development of several computing modules and interfaces. The need for a consensus in this domain and particular applications has been answered by the IEEE-754 standard \cite{Ieee754_1985} in 1985. This standard defines both the floating-point number representations and exceptions conditions along with their default handling. This norm was reviewed fundamentally in 2008 \cite{Ieee754_2008}, extending it to 64-bits and 128-bits length. The last dated revision of the norm is from 2019 \cite{Ieee754_2019}.
 
 Floating-point numbers following this representation are composed of three distinct elements:
 \begin{enumerate}
@@ -53,12 +53,12 @@ Floating-point numbers following this representation are composed of three disti
 
 Those three elements compose the number by using the following formula:
 \begin{equation}
-  (sign)\ mantissa \times 2^{exponent}
+  (sign) \times mantissa \times 2^{exponent}
 \end{equation}
 
-In order to present both positive and negative exponents and as using the two's complement on the exponent would complexify the computation of floating-point numbers, a bias is used in the exponent. This bias corresponds to $2^e - 1$ where e is the number of bits of the exponent part.
+In order to present both positive and negative exponents and as using the two's complement on the exponent would complexify the computation of floating-point numbers, a bias is used in the exponent. This bias corresponds to $2^e - 1$ where e is the number of bits of the exponent part. This means that with an 8-bit exponent, the bias is equal to 127. An exponent equal to $00000111$ is equal to $7 - 127 = -120$ and an exponent equal to $10000111$ is equal to $135 - 127 = 8$. An 8-bit exponent can cover a range from -126 to 127 (because exponents -127 (all 0s) and +128 (all 1s) are reserved for special numbers.
 
-When referring to single-precision floating-point representation we are talking about 32-bit long memory representation. They are mapped as follows:
+When referring to single-precision floating-point representation we are talking about 32-bit long memory representation. They are mapped as follows and as shown in \ref{fig:FP32}:
 \begin{itemize}
   \item Sign bit: 1 bit
   \item Exponent: 8 bits
@@ -74,7 +74,7 @@ When referring to single-precision floating-point representation we are talking 
 	\label{fig:FP32}
 \end{figure}
 
-Referring to double precision floating-point representation means looking at 64-bit long memory representation, mapped as follows:
+Referring to double precision floating-point representation means looking at 64-bit long memory representation, mapped as follows and as shown in \ref{fig:FP64}:
 \begin{itemize}
   \item Sign bit: 1 bit
   \item Exponent: 11 bits
@@ -90,7 +90,7 @@ Referring to double precision floating-point representation means looking at 64-
 	\label{fig:FP64}
 \end{figure}
 
-Along this representations, IEEE-754 introduces representations of special numbers such as positive and negative infinity as well as NaN and zero. Moreover, it adds methods to round floating-point numbers to positive or negative infinity, zero or to the nearest value.
+Along these representations, IEEE-754 introduces representations of special numbers. Positive and negative infinities are encoded with all 1s exponents and a fraction equal to zero. Zero is encoded with an all-0s exponent and fraction. Moreover, it adds methods to round floating-point numbers to positive or negative infinity, zero or to the nearest value.
 
 %-----------------------------------
 %	SUBSUBSECTION 3 - Fixed-Point Representation
@@ -104,7 +104,7 @@ Another way to look at the decimals is to fix the radix point to be at a certain
   \item Another integer corresponding to the size of the fractional part
 \end{enumerate}
 
-Representing a number with this representation can be done by simply concatenating the base 2 representation of each side of the radix point.
+Representing a number with this representation can be done by simply concatenating the base 2 representation of each side of the radix point. This means the integer part will be represented with positive powers of two ($2^0$,$2^1$,$2^2$,...) while the fractional part is represented with negative powers of two ($2^{-1}$, $2^{-2}$,...).
 
 % FIXED POINT EXAMPLE
 \begin{figure}[htbp]
@@ -114,17 +114,21 @@ Representing a number with this representation can be done by simply concatenati
 	\label{fig:FixedPoint}
 \end{figure}
 
-As shown in the above example, several representations can depict the same decimal number. Finding the correct amount of bits to allocate to each side of the radix point is what will qualify the representation. Allocating fewer bits than needed may lead to overflow while allocating too much may increase quantisation errors.
+As shown in \ref{fig:FixedPoint}, several representations can depict the same decimal number. Finding the correct amount of bits to allocate to each side of the radix point is what will qualify the representation. Allocating fewer bits than needed may lead to overflow while allocating too much may increase quantisation errors.
 Along with this new representation comes a whole new arithmetic. While this format can help tailor your needs in terms of variable types, it comes with an additional cost. The operations performed in this arithmetic are non-trivial as addition and multiplication are not associative and distributive anymore. This means the order of the operations will have an impact on the final result. Moreover, the round-off error underlying this representation is often non-trivial to grasp. However, those operations are low demanding in terms of computing power.
+
+% PRESENT A WAY TO COMBINE DIFFERENT PRECISIONS
 
 %-----------------------------------
 %	SUBSECTION 2 - Performance Benchmarks
 %-----------------------------------
 \subsection{Performance benchmarks}
 
-Floating-point representation (in either single or double precision) allows extreme precision at the cost of space in memory. On the other hand, fixed-point representation, even if it comes with a more complex arithmetic and insidious round-off errors, allows to tailor the type to your needs. If you want to store the values of the size and mass of planets in floating-point precision, you will end up not using the majority of the range of values you selected while you could tailor a correct type in fixed-point representation.
+Floating-point representation (in either single or double precision) allows extreme precision at the cost of performance trade-offs (space or memory). On the other hand, fixed-point representation, even if it comes with a more complex arithmetic and insidious round-off errors, allows to tailor the type to your needs. Storing the values of the size and mass of planets in floating-point precision, would end up not using the majority of the range of values you selected while one could tailor a correct type in fixed-point representation.
 
-The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Mark Horowitz talk at the ISSCC 2014 was entitled \guille{Computing's Energy Problem (and what we can do about it)} provides an insight of the problems and challenges technology scaling has encountered in its development. Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in \guille{the design of applications and hardware that are better matched to task and each other}. The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on \guille{High-Performance Hardware for Machine Learning} \cite{Nips2015}. The following graph is extracted from this lecture and presents the energy and area costs different floating-point operations demand.
+% PARAGRAPH ON METRICS
+
+The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Mark Horowitz' talk at the ISSCC 2014 \cite{Horowitz2014} entitled \guille{Computing's Energy Problem (and what we can do about it)} provides an insight of the problems and challenges technology scaling has encountered in its development. Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in \guille{the design of applications and hardware that are better matched to task and each other}. The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on \guille{High-Performance Hardware for Machine Learning} \cite{Nips2015}. The \ref{fig:OpCosts} is extracted from this lecture and presents the energy and area costs different floating-point operations demand. Increasing precision on the used numbers increases the relative energy cost at the same time. An 8-bit addition costs 0.03 pJ whereas the same addition in 32-bit floating-point costs 0.9 pJ or 30 times more.
 
 % COSTS OF OPERATIONS 2015-NIPS
 \begin{figure}[htbp]
@@ -136,16 +140,16 @@ The operations performed in floating-point are expensive in terms of bandwidth, 
 
 The benefit of using a more optimised representation other the floating-point representation has been investigated as soon as in 2000 in \cite{Tong2000}. The authors present a way to reduce the energy consumption by minimising the bitwidth representation of the floating-point data. The data used to tailor the type representation is human-sensory data such as speech or video imagery. This kind of data is obtained at low precision (4 to 10 bits) but mapped into a full single-precision floating-point type. Using such optimisations, the authors manage to obtain a reduction of 66\% in multiplier energy per operation without sacrificing any accuracy.
 
-Xilinx, a manufacturer of Field-Programmable Gate Arrays (FPGAs), produced a white paper written by Finnerty et al. \cite{Xilinx2017} showing that their tools are able to handle fixed-point types and arithmetic and that the benefits are important for FPGA use cases:
+Modifications of the representations can be embedded in the architecture. Xilinx, a manufacturer of state-of-the-art architecture, produced a white paper written by Finnerty et al. \cite{Xilinx2017} showing that their tools are able to handle fixed-point types and arithmetic and that the benefits are important:
 \begin{itemize}
   \item Reduced power consumption
-  \item Reduced use of FPGA resources (look-up tables, flip-flops, memory)
+  \item Reduced use of resources (look-up tables, memory)
   \item Latency improvements
   \item Comparable performance and accuracy
 \end{itemize}
 The authors show the example of an FIR filter implementation in fixed-point representation from floating-point. The frequency is shown to be 16\% faster and the latency 7.5 times lower.
 
-In conclusion, using a type that matches correctly the use you will make of it in an environment where costs are translated in terms of energy consumption, memory or bandwidth usage, will always come out as an improvement with little to no loss in accuracy.
+In conclusion, customising type in an environment where costs are translated in terms of energy consumption, memory or bandwidth usage, will always come out as an improvement. This redirects the issue to a need to guarantee little to no loss in accuracy.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2 - Mixed Precision
@@ -153,16 +157,16 @@ In conclusion, using a type that matches correctly the use you will make of it i
 
 \section{Mixed Precision}
 
-The previous section explained in details the different existing number representations. With a particular emphasis on the representation of floating-point number, the previous section has shown what the underlying issues of such representations are. The question now is how can we use to our advantage the different types along with their strengths and weaknesses?
+The previous section explained in details the different existing number representations. With a particular emphasis on the representation of floating-point number, it has shown which the underlying issues of such representations are. The question now is how can we use to our advantage the different types along with their strengths and weaknesses?
 
 %-----------------------------------
 %	SUBSECTION 1 - Motivations
 %-----------------------------------
 \subsection{Motivations}
 
-The term \guille{mixed precision} comes from the idea of using different precisions (type representations) to increase the performance of a computation that would otherwise only use the highest available (or user-defined) precision. The previous section shown us that each number representation has its pros and cons. Using lower precision types and representations will allow the total computation to decrease the usage of several hardware resources (memory, bandwidth, energy consumption) \cite{Horowitz2014,Nips2015}.
+The term \guille{mixed precision} comes from the idea of using different precisions (type representations) to increase the performance of a computation that would otherwise only use the highest available (or user-defined) precision. The previous section showed us that each number representation has its pros and cons. Using lower precision types and representations will allow the total computation to decrease the usage of several hardware resources (memory, bandwidth, energy consumption) \cite{Horowitz2014,Nips2015}.
 
-However, if lower-precision is acceptable, using mixed-precision can increase the capacity of smaller systems and subsystems as it will increase the overall performance and resources usage. This goal is targeted when you are aiming for the most performant processor, being given a size and type of usage. Moreover, this can be used when you know exactly the tasks your system will perform as well as their needed size. Yates \cite{Yates2007} presents several rules allowing you to determine the required size of any operation performed in fixed-point arithmetic. This arithmetic, as shown earlier is an interesting choice as it allows you to tailor the type size to your needs. Reconfigurable hardware can take advantage of this as well by using the exact required size for an operation. Such architecture will be looked upon in the next sections.
+However, if lower-precision is acceptable, using mixed-precision can increase the capacity of smaller systems and subsystems as it will increase the overall performance and resources usage. This goal is targeted when you are aiming for the most performant processor, being given a size and type of usage. Moreover, this can be used when you know exactly the tasks your system will perform as well as their needed size. Yates \cite{Yates2007} presents several rules allowing  to determine the required size of any operation performed in fixed-point arithmetic. This arithmetic allows to tailor the type size to one's needs. Reconfigurable hardware can take advantage of this as well by using the exact required size for an operation. Such architecture will be looked upon in the next sections.
 
 Scientific computations often require the highest available precision and the reduced precision induced by the lower-precision components is unacceptable. In order to still take advantage of the several gains lower-precision provides, a compromise has to be found about how and when to use lower-precision. Ideas on the usage have been looked upon since the 1950's and the first methods to correctly implement them in the early 1960's.
 
@@ -190,7 +194,7 @@ Several methods to actually implement a mixed precision algorithm have been deve
 %-----------------------------------
 \subsubsection{Iterative Refinement}
 
-Since the early 1960's, literature has studied the effects and ways to implement mixed precision. The first known works to implement such methods are James H. Wilkinson \cite{Wilkinson1994} and Cleve Moler \cite{Moler1967}. The method presented by both is named \guille{iterative refinement} and uses a combination of accumulative inner products along with a linear solver. This solution is directed towards the resolution of a system in the form of \begin{equation} Ax=b \end{equation} for a quadratic \begin{equation} NxN A\end{equation} matrix. The main idea is to use a residual between the wanted result and the result obtained by the last iteration. This residual is computed using high precision and accumulated using high-precision as well while the resolution of the equation is done in low-precision.
+Since the early 1960's, literature has studied the effects and ways to implement mixed precision. The first reported works to implement such methods are James H. Wilkinson \cite{Wilkinson1994} and Cleve Moler \cite{Moler1967}. The method presented by both is named \guille{iterative refinement} and uses a combination of accumulative inner products along with a linear solver. This solution is directed towards the resolution of a system in the form of $Ax=b$ for a quadratic $N*N$ matrix $A$. The main idea is to use a residual between the wanted result and the result obtained by the last iteration. This residual is computed using high precision and accumulated using high-precision as well while the resolution of the equation is done in low-precision.
 
 % Iterative Refinement Example
 \begin{figure}[htbp]
@@ -205,15 +209,15 @@ Since the early 1960's, literature has studied the effects and ways to implement
 	\label{fig:IterativeRef}
 \end{figure}
 
-This method has later been reused and extended. Baboulin et al. \cite{Baboulin2009} combines single- and double-precision floating-point numbers to enhance the performance of \guille{dense and sparse linear algebra algorithms}. Strzodka et al. \cite{Strzodka2006} presents an enhanced algorithm to resolve a partial differential equation (Poisson problem) to present the effects of a mixed-precision approach. Sun et al. \cite{Sun2008} reproduces a linear solver in mixed-precision but adds an error analysis. The last two articles implement the result of their research on a reprogrammable architecture. Several applications profit directly from these papers and their implementations of mixed-precision algorithms as we will see in later sections.
+This method has later been reused and extended. Baboulin et al. \cite{Baboulin2009} combine single- and double-precision floating-point numbers to enhance the performance of \guille{dense and sparse linear algebra algorithms}. Strzodka et al. \cite{Strzodka2006} present an enhanced algorithm to resolve a partial differential equation (Poisson problem) to present the effects of a mixed-precision approach. Sun et al. \cite{Sun2008} reproduce a linear solver in mixed-precision but adds an error analysis. The last two articles implement the result of their research on a reprogrammable architecture. Several applications profit directly from these papers and their implementations of mixed-precision algorithms as seen in later sections.
 
 \subsubsection{Analysis and Rewriting}
 
-When creating a new application or system, any developer tends to use the highest available (or one of the highest) to represent the numbers he will need. However, the space and operations performed on higher-precision types are, as shown earlier, not the most performant. A simple, yet effective way to choose the correct type is to analyse the code and rewrite types that can be represented by lower precision ones. This idea has been implemented in the code analysis tool Precimonious \cite{Rubio2013} for floating-point representations. This analysis tool can go over the code and determines parts of it where lower precision can be applied.
+When creating a new application or system, any developer tends to use the highest available (or one of the highest) to represent the numbers he will need. However, the space and operations performed on higher-precision types are, as shown earlier, not the most performant. A simple, yet effective way to choose the correct type is to analyse the code and rewrite types that can be represented by lower precision ones. This idea has been implemented in the code analysis tool Precimonious \cite{Rubio2013} for floating-point representations. This analysis tool can go over the code and determines parts of it where lower precision can apply.
 
-The mixed-precision approach can be applied from a different perspective when using a fixed-precision representation. Darulova et al. \cite{Darulova2013} shows that several polynomial expressions over the reals are cast over fixed-point arithmetic without being optimised, leading approximations of the real values. The tool they present allows to determine the best fixed-point implementation of a real number thanks to genetic programming. Then, as the order of operations is impactful when dealing with fixed-point arithmetic (distributivity and associativity are not respected), the tool reorder the operations to optimise the error and accuracy.
+The mixed-precision approach can apply from a different perspective when using a fixed-precision representation. Darulova et al. \cite{Darulova2013} show that several polynomial expressions over the reals are cast over fixed-point arithmetic without being optimised, leading approximations of the real values. The tool they present allows to determine the best fixed-point implementation of a real number thanks to genetic programming. Then, as the order of operations is impactful when dealing with fixed-point arithmetic (distributivity and associativity are not respected), the tool reorder the operations to optimise the error and accuracy.
 
-Those two tools have been brought together in \cite{Darulova2018} under the \guille{first fully automated and sound technique and tool for optimising the performance of floating-point and fixed-point kernels}. This tool combines rewriting and mixed-precision tuning where rewriting goes over several evaluation orders and picks the one that minimises the round-off error without runtime costs while mixed-precision tuning assigns the correct finite-precision variables and operations. The overall tool provides finer-grain control over the program and better performance than each of the method taken alone.
+Those two tools have been brought together in \cite{Darulova2018} under the \guille{first fully automated and sound technique and tool for optimising the performance of floating-point and fixed-point kernels}. This tool combines rewriting and mixed-precision tuning where rewriting goes over several evaluation orders and picks the one that minimises the round-off error without runtime costs. In the meantime, mixed-precision tuning assigns the correct finite-precision variables and operations. The overall tool provides finer-grain control over the program and better performance than each of the method taken alone.
 % TUNING EXAMPLE
 \begin{figure}[htbp]
 \centering
@@ -292,7 +296,7 @@ int main( int argc, char **argv) {
 
 \section{Applications}
 
-Mixed-precision mindset and algorithms are used in several applications from overall performance boosting due to precise tuning to new methods to handle tomorrow's problematics such as Big Data or Deep Learning. The question to ask when developing a new application that can benefit from mixed-precision is how are you put it in action inside your application: code analysis and rewriting, finer-grain tuning or more complex algorithms such as the earlier iterative refinement?
+Mixed-precision mindset and algorithms are used in several applications from overall performance boosting due to precise tuning to new methods to handle tomorrow's problematics such as Big Data or Deep Learning. The question to ask when developing a new application that can benefit from mixed-precision is: how to put it in action inside an application? Code analysis and rewriting? Finer-grain tuning or more complex algorithms such as the earlier iterative refinement?
 
 %-----------------------------------
 %	SUBSECTION 1 - Linear Algebra
@@ -307,7 +311,7 @@ Linear Algebra directly gains from iterative refinement techniques and can be ap
         & \textrm{U an upper triangular matrix} \\
         & \textrm{L is a lower triangular matrix}
 \end{align}
-This factorisation is required in many different algorithms using linear algebra as obtaining triangular matrices simplifies later computation. While both authors focus on the same subject, \cite{Sun2008} presents a reconfigurable architecture design and implementation. Later on, Haidar et al., a group of researchers and NVidia CUDA library engineers, showed a 4 times performance improvement in \cite{Haidar2018}.
+This factorisation is required in many different algorithms using linear algebra as obtaining triangular matrices simplifies later computation. While both authors focus on the same subject, \cite{Sun2008} presents a reconfigurable architecture design and implementation. Later on, Haidar et al., a group of researchers and NVidia CUDA library engineers, showed a 4 times performance improvement in \cite{Haidar2018} and \ref{fig:HaidarPerf}.
 
 % PERFORMANCE IMPROVEMENT HAIDAR 2018
 \begin{figure}[htbp]
@@ -317,7 +321,7 @@ This factorisation is required in many different algorithms using linear algebra
 	\label{fig:HaidarPerf}
 \end{figure}
 
-Strzodka et al. \cite{Strzodka2006} present a solution to the partial differentiate equation Poisson problem defined on a reconfigurable architecture. The resolution of such a problem is done using methods called multi-grid solvers or the simpler conjugate gradient solver. The mixed-precision is integrated in the solution process by splitting it into a \guille{computationally demanding low precision inner iteration loop and a computationally simple high precision outer correction loop}. The authors present different pipelined versions of the conjugate gradient solver that can be better integrated in reconfigurable architectures.
+Strzodka et al. \cite{Strzodka2006} present a solution to the partial differentiate equation Poisson problem defined on a reconfigurable architecture. The resolution of such a problem is done using methods called multi-grid solvers or the simpler conjugate gradient solver. The mixed-precision is integrated in the solution process by splitting it into a \guille{computationally demanding low precision inner iteration loop and a computationally simple high precision outer correction loop}. The authors present different pipelined versions of the conjugate gradient solver that focus on parallelisation.
 
 Another mathematic computation extensively used in the world of science, engineering and finance are Monte Carlo simulations that are used to simulate random processes and estimate the distribution of the results. Chow et al. \cite{Chow2012} present a mixed-precision version of the sampling function used in the Monte-Carlo simulation. Along with the solution, the authors provide a description of the hardware implementation made possible on reconfigurable architecture.
 
@@ -327,9 +331,9 @@ Another mathematic computation extensively used in the world of science, enginee
 
 \subsection{Physics simulations}
 
-A direct application of the above computations is the improvement of physics simulations. Such simulation is usually done using GPUs  and can take place in several fields requiring computationally intensive operations. Such fields are molecular chemistry, nuclear physics and finite element simulations for example.
+A direct application of the above computations is the improvement of physics simulations. Such simulations are usually done using GPUs  and can take place in several fields requiring computationally intensive operations. Such fields are molecular chemistry, nuclear physics and finite element simulations for example.
 
-Goddeke et al. \cite{Goddeke2007} present a survey paper to quantify the performance and accuracy of mixed-precision solvers in finite element simulations. This survey paper takes in consideration different mixed precision algorithms and their associated implementations. Moreover, it compares the performance of different hardware architecture, CPUs, GPUs and FPGAs. The article confirms that low-precision operations are more performant but need the developer to have knowledge of the error propagation.
+Goddeke et al. \cite{Goddeke2007} present a survey paper to quantify the performance and accuracy of mixed-precision solvers in finite element simulations. This survey paper takes in consideration different mixed precision algorithms and their associated implementations. Moreover, it compares the performance of different hardware architecture, CPUs, GPUs and FPGAs. The article confirms that low-precision operations are more performant but need the developer to have knowledge of the error propagation. Finite element simulation is a method used to split a bigger object in smaller parts and define the interactions between them. It can be visualised as shown in \ref{fig:FESim}.
 
 % FINITE ELEMENT SIMULATION
 \begin{figure}[htbp]
@@ -339,25 +343,25 @@ Goddeke et al. \cite{Goddeke2007} present a survey paper to quantify the perform
 	\label{fig:FESim}
 \end{figure}
 
-In the same finite element simulation field, Ichimura et al. \cite{Ichimura2018} present a mix between mixed-precision and artificial intelligence through an earthquake simulator. They managed to get finalist in the Supercomputing 2018 conference (SC'18). The AI is used to improve the convergence of the solver and the use of reduced precision improves the performance by 25.3 over a standard solver and by 3.9 times over a previous state-of-the-art solver (SC'14).
+In the same finite element simulation field, Ichimura et al. \cite{Ichimura2018} present a mix between mixed-precision and artificial intelligence through an earthquake simulator. They managed to get finalist in the Supercomputing 2018 conference (SC'18). The AI is used to improve the convergence of the solver and the use of reduced precision improves the performance by 25.3 over a standard solver and by 3.9 times over a previous state-of-the-art solver (SC'14). This improvement was made with no loss in accuracy.
 
 % EARTHQUAKE SIMULATION
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=\textwidth]{Figures/EarthquakeSim.png}
-	\caption[Earthquake Simulation]{Earthquake simulation created with AI and mized-precision \cite{Ichimura2018}}
-	\label{fig:EarthquakeSim}
-\end{figure}
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics[width=\textwidth]{Figures/EarthquakeSim.png}
+% 	\caption[Earthquake Simulation]{Earthquake simulation created with AI and mixed-precision \cite{Ichimura2018}}
+% 	\label{fig:EarthquakeSim}
+% \end{figure}
 
 Clark et al. \cite{Clark2010} use mixed-precision to solve lattice quantum chromodynamics systems of equations in simulations. These systems corresponds to \guille{the lattice discretised theory of the strong force, that which binds together quarks in the nucleon}. The propagation of those quarks uses a Dirac operator's inverse, a large sparse matrix that needs to be used in several system of operations later on. The Wilson-Dirac matrix is the target of the optimisation and this optimisation is made possible by implementing a method of mixed-precision using \emph{reliable updates} within a linear solver. Those \emph{reliable updates} periodically replace the iterated residual with the true residual calculated at high precision and allows better performance than classic defect-correction approach.
 
 % QUARK SIMULATION
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=.3\textwidth]{Figures/QuarkSim.png}
-	\caption[Quark Simulation]{Simulation of Quark-Gluon Plasma Instabilities \cite{Ipp2011}}
-	\label{fig:QuarkSim}
-\end{figure}
+% \begin{figure}[htbp]
+% 	\centering
+% 		\includegraphics[width=.3\textwidth]{Figures/QuarkSim.png}
+% 	\caption[Quark Simulation]{Simulation of Quark-Gluon Plasma Instabilities \cite{Ipp2011}}
+% 	\label{fig:QuarkSim}
+% \end{figure}
 
 Molecular dynamics simulations are also using mixed-precision techniques as proposed by Le Grand et al. \cite{LeGrand2013}. The mixed-precision approach presented in the article uses fixed-point integer arithmetic to translate the force components. The article compares single precision fixed-point representation to the classic single/double precision. The conclusions show a gain in performance without sacrificing any accuracy.
 
@@ -383,42 +387,46 @@ Machine learning can also benefit from mixed-precision since it is heavily relyi
 
 \subsubsection{Neural Networks}
 
- Karpathy et al. \cite{Karpathy2015} present the different structures in their lecture materials. The apparition of neural networks in machine learning comes from the analogy with the human brain and the way neurons work and communicate between each other. Each neuron receives several inputs from other previous neurons and performs an operation on all the received inputs to create the output that will go to the next layer of neurons. The analogy can be seen on the next figure:
+ Karpathy et al. \cite{Karpathy2015} present the different structures in their lecture materials. The apparition of neural networks in machine learning comes from the analogy with the human brain and the way neurons work and communicate between each other. The analogy can be seen on \ref{fig:Neuron}.
 
 % NEURON PRESENTATION
-% \begin{figure}[htbp]
-% 	\centering
-% 		\includegraphics[width=8cm]{Figures/Neuron.png}
-% 	\caption[Neuron Example]{Example of a neuron and its behavior in a neural network \cite{Karpathy2015}}
-% 	\label{fig:Neuron}
-% \end{figure}
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=8cm]{Figures/Neuron.png}
+	\caption[Neuron Example]{Example of a neuron and its behavior in a neural network \cite{Karpathy2015}}
+	\label{fig:Neuron}
+\end{figure}
+
+Each neuron receives several inputs from other previous neurons and performs an operation on all the received inputs to create the output that will go to its successors. A family of neurons that will obtain the outputs of the same neurons is called a \emph{layer}. A combination of \emph{layers} composes a \emph{neural network} as presented on \ref{fig:NN}.
 
 % NEURAL NETWORK PRESENTATION
-% \begin{figure}[htbp]
-% 	\centering
-% 		\includegraphics[width=8cm]{Figures/NN.png}
-% 	\caption[Neural Network Example]{Example of a neural network architecture \cite{Karpathy2015}}
-% 	\label{fig:NN}
-% \end{figure}
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=8cm]{Figures/NN.png}
+	\caption[Neural Network Example]{Example of a neural network architecture \cite{Karpathy2015}}
+	\label{fig:NN}
+\end{figure}
 
-The neuron performs a simple dot product of all the inputs along with their weights, adds a bias to the sum and applies a given non-linear activation function. The weight will give importance to some of the inputs while hiding others. Throughout the training, some of the inputs will be shown to be more useful than others and the weight will depict this attribute. The activation function models the \guille{firing rate of the neuron which [...] represents the frequency of the spikes along the axoms}. Several choices of non-linear functions can be made for your neurons:
+The neuron performs a simple dot product of all the inputs along with their weights, adds a bias to the sum and applies a given non-linear activation function. The weight will give importance to some of the inputs while hiding others. Throughout the training, some of the inputs will be shown to be more useful than others and their weight will depict this attribute. The activation function models the \guille{firing rate of the neuron which [...] represents the frequency of the spikes along the axoms}. Several choices of non-linear functions can be made for your neurons:
 \begin{itemize}
   \item Sigmoid function: $\sigma(x) = \frac{1}{(1+e^{-x})}$
-  \item Tanh: $tanh(x) = 2\sigma(2x)$
+  \item Tanh: $tanh(x) = 2\sigma(2x) - 1$
   \item Rectified Linear Unit (ReLU): $ f(x) = max(0,x) $
 \end{itemize}
 
-Neural networks perform the simple operations of reducing the inputs, adding a bias and passing it through a non-linear function. However, it is possible to set up several layers where the first one is called the \emph{input layer}, the last one the \emph{output layer} and all the layers in-between the \emph{hidden layers}. While having hidden neurons is useful to better comprehend the data fed to the network, having too much of them can lead to overfitting, including noise and outliers into the pattern recognition.
+Neural networks perform the simple operations of reducing the inputs, adding a bias and passing it through a non-linear function. However, it is possible to set up several layers where the first one is called the \emph{input layer}, the last one the \emph{output layer} and all the layers in-between the \emph{hidden layers}. These layers go one after each other as shown in \ref{fig:NN}. While having hidden neurons is useful to better comprehend the data fed to the network, having too much of them can lead to overfitting, including noise and outliers into the pattern recognition.
 
-Neural networks perform well in machine learning, but the fields where the architecture is the most used are image and speech recognition. An extension of neural networks is used when the data is known to be of a certain type. For example, if the data is known to be images, Convolutional Neural Networks (CNN) are the best choice as they are tailored with the goal of handling images. They are a special type of neural networks in the sense that they use 3D layers and transformations on images. CNNs can be used for image classification, object detection, image segmentation or speech recognition. We will focus on image recognition here.
+Neural networks perform well in machine learning, but the fields where the architecture is mostly used are image and speech recognition. An extension of neural networks is used when the data is known to be of a certain type. For example, if the data is known to be images, Convolutional Neural Networks (CNN) are the best choice as they are tailored with the goal of handling images. They are a special type of neural networks in the sense that they use 3D layers and transformations on images. CNNs can be used for image classification, object detection, image segmentation or speech recognition. We will focus on image recognition here.
+
+% EXPLAIN WHY???
 
 % NEURAL NETWORK PRESENTATION
-% \begin{figure}[htbp]
-% 	\centering
-% 		\includegraphics[width=8cm]{Figures/CNN.png}
-% 	\caption[Convolutional Neural Network Example]{Example of a convolutional neural network architecture \cite{Karpathy2015}}
-% 	\label{fig:CNN}
-% \end{figure}
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=8cm]{Figures/CNN.png}
+	\caption[Convolutional Neural Network Example]{Example of a convolutional neural network architecture \cite{Karpathy2015}}
+	\label{fig:CNN}
+\end{figure}
 
 Several layers are used and allow to perform different operations on images:
 \begin{itemize}
@@ -437,7 +445,7 @@ Layers input a set of data, known as a \emph{Feature Map} and output a new set o
 
 \subsubsection{Introducing Mixed Precision}
 
-Training a neural network is the longest process mandatory to make the most out of the architecture. However, using the mixed-precision mindset, there are ways to accelerate the training of the network by decreasing the precision of some operations. The ImageNet Project \cite{ImageNet2009} is a large database designed to be used in visual object recognition softwares. The same project runs an annual contest, the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). Each year, contesters try to get the best possible accuracy out of the network they propose. While accuracy is the main factor to determine the winner, deep learning real-world issues often have to take in account the training of the network.
+Training a neural network is the longest process, among mandatory ones, to make the most out of the architecture. However, mixed-precision mindset offers ways to accelerate the training of the network by decreasing the precision of some operations. The ImageNet Project \cite{ImageNet2009} is a large database designed to be used in visual object recognition softwares. The same project runs an annual contest, the ImageNet Large Scale Visual Recognition Challenge (ILSVRC). Every year, contesters try to get the best possible accuracy out of the network they propose. While accuracy is the main factor to determine the winner, deep learning real-world issues often have to take in account the network's training phase.
 
 Many researchers have been looking into the issue with mixed-precision in mind. As shown by Bacchus et al. \cite{Bacchus2020}, there is a fundamental underlying trade-off between accuracy, network training time and hardware efficiency. Research looked upon ways to reduce the size taken by weights and the activation function and the impact of a reduction in the size of those:
 
@@ -451,7 +459,7 @@ Zhao et al. \cite{Zhao2016} propose F-CNN, a framework to train CNNs on FPGAs. T
 
 Jahanshahi et al. \cite{Jahanshahi2019} propose a CNN accelerator tool. It generates the hardware description for a CNN to be programmed on a target FPGA. The software uses an API the developer can use to enter the available resources. The software will then generate the hardware description and run a simulation to adjust the precision and minimise the classification error. The whole system is shown to be more performant on a half-precision fixed-point representation rather than using single-precision floating-point data: 3\% accuracy loss in exchange for 15.75x speedup.
 
-Kurth et al. \cite{Kurth2018} presents a direct application of mixed-precision training on GPUs to help climate analysis. The authors expand open-source tools such as Tensorflow and Horovod in order to present their work. They managed to optimise the network's training to increase the overall efficiency and performance. The predictions the network is able to make are shown to be of an unmet precision and will help characterise the impact of several physical event (flooding, monetary loss, etc.).
+Kurth et al. \cite{Kurth2018} presents a direct application of mixed-precision training on GPUs to help climate analysis. The authors expand open-source tools such as Tensorflow and Horovod in order to present their work. They managed to optimise the network's training to increase the overall efficiency and performance. The predictions the network is able to make are shown to be of an unmet precision and will help characterise the impact of several physical events (flooding, monetary loss, etc.).
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4 - Hardware Architecture
@@ -467,11 +475,13 @@ Moore's law \cite{Moore2006} predicted the evolution of hardware capacities in y
 
 \subsection{GPU}
 
-One solution to enable hardware acceleration is to parallelise computationally expensive tasks. GPUs (\emph{Graphics Processing Units}) are specialised electronic circuit that can handle computationally demanding tasks such as 3D rendering, video encoding and decoding or any action that can be massively parallelised (cryptocurrency digging, matrix computations or brute-force cracking). Few companies actually conceive and sell such systems. The most famous are NVidia, AMD and Intel and some smaller fabless (they conceive the circuit but do not mass-produce it) companies such as Qualcomm or ARM. Other manufacturing companies such as ASUS or MSI will then integrate those circuits into products and calibrate them along with a cooling system that can make it enhance its base abilities.
+% REREAD THIS CHAPTER !!!
+
+One solution to enable hardware acceleration is to parallelise computationally expensive tasks. GPUs (\emph{Graphics Processing Units}) are specialised electronic circuits that can handle computationally demanding tasks such as 3D rendering, video encoding and decoding or any action that can be massively parallelised (cryptocurrency digging, matrix computations or brute-force cracking). Few companies actually conceive and sell such systems. The most famous are NVidia, AMD and Intel and some smaller fabless (they conceive the circuit but do not mass-produce it) companies such as Qualcomm or ARM. Other manufacturing companies such as ASUS or MSI will then integrate those circuits into products and calibrate them along with a cooling system that can make it enhance its base abilities.
 
 Along with GPUs come their proper Software Development Kit (SDK) in order for developers to use their tools. NVidia invested heavily in CUDA (\emph{Compute Unified Device Architecture}) \cite{CUDA} and its aim is to reproduce a C syntax and environment for GPUs. AMD and Intel provide open-source SDK that tools then built upon.
 
-GPUs are the basic way your computer delegates expensive tasks from the CPU to the GPU (integrated or external). They require less knowledge than FPGAs but provide a more static architecture that will be limited when it comes to tuning. Mixed-precision mindset will not reach its full potential with this architecture but will still manage to increase the performance of different operations and tasks.
+GPUs are the basic way your computer delegates expensive tasks from the CPU to the GPU (integrated or external). They require less knowledge than FPGAs but provide a more static architecture that will limit tuning. Mixed-precision mindset will not reach its full potential with this architecture but will still manage to increase the performance of different operations and tasks.
 
 %-----------------------------------
 %	SUBSECTION 2 - FPGA
@@ -499,11 +509,10 @@ One downside of FPGAs is the need for intrinsic knowledge of a Hardware Descript
 
 \section{CNNs on FPGAs}
 
-Due to their heavy parallel affinity, CNNs can benefit from both GPUs and FPGAs heavy parallelisation capabilities as shown in \cite{x}.% PCO: Reference missing here, don't know which one you would like to cite
+Due to their heavy parallel affinity, CNNs can benefit from both GPUs \cite{Micikevicius2017, Jia2018, Kurth2018} and FPGAs \cite{Zhao2016, Colangelo2018, Jahanshahi2019, Bacchus2020} heavy parallelisation capabilities.
 However, CNNs as stated in \cite{Jahanshahi2019}, "CNN-based methods are computational-intensive and resource-consuming, and thus are hard to be integrated into embedded systems such as smartphones, smart glasses and robots". FPGAs can counterbalance this issue by providing a tailored hardware representation of the CNN and making the most our of limited precision datatypes.
 
-% PCO: other reference missing here.
-\cite{x} presented frameworks for CNNs automatic or semi-automatic hardware implementations on FPGAs. However, Abdelouahab et al. \cite{Abdelouahab2018} present the issues FPGAs face and resolve in their survey paper. While this paper cites over a hundred sources, we can look at the main ideas it highlights.
+\cite{Zhao2016, Colangelo2018, Jahanshahi2019} presented frameworks for CNNs automatic or semi-automatic hardware implementations on FPGAs. Abdelouahab et al. \cite{Abdelouahab2018} present the issues FPGAs face and resolve in a survey paper. While this paper cites over a hundred sources, the following sections focuses on the main ideas it highlights.
 
 \subsection{Parallelisation Vectors}
 
@@ -526,7 +535,7 @@ The layers CONV are source of concurrency that can be exploited through the sepa
 
 As said earlier, the \emph{Inference} step is a critical spot of CNN implementations as it is required each time a new instance is presented to the system whereas the \emph{Training} step can be done once and for all. Increasing the performance of this step is crucial and can be done in several ways. First, the memory bandwidth is the bottleneck of several FPGA implementations. High number of memory reads or high number of weights stored result in a loss of performance. A caching strategy is often a nice answer to this kind of issues.
 
-Next, the literature presents several \emph{Inference Optimisations} strategies that will help the CNN perform best on an FPGA. Exporting a CNN to an FPGA consists of finding the most efficient way to map the CNN on the hardware architecture of the FPGA. The main strategies are resumed beneath and presented in the following graph:
+Next, the literature presents several \emph{Inference Optimisations} strategies that will help the CNN perform best on an FPGA. Exporting a CNN to an FPGA consists in finding the most efficient way to map the CNN on the hardware architecture of the FPGA. The main strategies are listed beneath and presented in \ref{fig:InferenceOpt}.
 
 % INFERENCE OPTIMISATIONS
 \begin{figure}[htbp]
@@ -544,4 +553,4 @@ The main strategies are:
 	\item Reduce computations: Weight pruning, Low rank approximations.
 \end{itemize}
 
-Several solutions found in the literature present combination of three strategies to perform best on a given architecture. These works present several ways to tune a CNN to perform best. When looking globally, re-centering to mixed-precision we can see that, as concluded in \cite{Abdelouahab2018}, \guille{CNNs are by nature over-parameterised and support particularly well approximate tuning techniques such as weight pruning and fixed-point computation}.
+Several solutions found in the literature present combination of three strategies to perform best on a given architecture. These works present several ways to tune a CNN to perform best. When looking globally, re-centring to mixed-precision we can see that, as concluded in \cite{Abdelouahab2018}, \guille{CNNs are by nature over-parameterised and support particularly well approximate tuning techniques such as weight pruning and fixed-point computation}.
