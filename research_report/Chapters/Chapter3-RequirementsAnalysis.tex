@@ -40,12 +40,11 @@ Taking from the \textbf{Aims} defined in Chapter \ref{Chapter1}, we derive the o
   \item Assess the impact of mixed-precision methods when put in action in the application.
   \item Determine the metrics of the associated application as compared to the literature.
   \item Present a proof of concept of the application along with mixed-precision tuning.
-  \item Look for explanations to unexpected behaviour.
   \item Present a demonstration of the system.
   \item Confront the results to the state-of-the-art comparable experimental results.
   \item Present how each parameter impacts the overall performance of the system.
-  \item Provide an insight on how security can be impacted when trying to deteriorate precision.
-  \item Present a set of rules to go against the potential security flaws.
+  \item In medium term, provide an insight on how security can be impacted when trying to deteriorate precision.
+  \item In medium term, present a set of rules to go against the potential security flaws.
 \end{enumerate}
 
 %----------------------------------------------------------------------------------------
@@ -68,23 +67,23 @@ The baseline chosen to illustrate hardware acceleration is the implementation of
     \hline
     \textbf{R2}  & \emph{LitInfOpt}   & The system should use inference optimisations taken from the literature                 & Constraint & 0 &  Literature review \\
     \hline
-    \textbf{R3}  & \emph{LitHardDes}  & The system should use hardware design taken from the literature                         & Constraint & 0 &  Literature review \\
+    \textbf{R3}  & \emph{LitHardDes}  & The system should use hardware design taken from the literature                         & Constraint & 1 &  Literature review \\
     \hline
     \textbf{R4}  & \emph{TestParam}   & The system should evaluate the impact of the tuning parameters                          & Constraint & 0 &  User requirement  \\
     \hline
     \textbf{R5}  & \emph{TestOptMeth} & The system should evaluate the impact of the optimisation methods                       & Constraint & 0 &  User requirement  \\
     \hline
-    \textbf{R6}  & \emph{TestHardDes} & The system should evaluate the impact of the hardware design                            & Constraint & 0 &  User requirement  \\
+    \textbf{R6}  & \emph{TestHardDes} & The system should evaluate the impact of the hardware design                            & Constraint & 1 &  User requirement  \\
     \hline
     \textbf{R7}  & \emph{ExpSound}    & The system should lead the experiment through a sound process                           & Constraint & 0 &  Meaningful experimental process \\
     \hline
-    \textbf{R8}  & \emph{ExpConsist}  & The system should lead the experiment through a consistent and replicable process       & Constraint & 0 &  Meaningful experimental process \\
+    \textbf{R8}  & \emph{ExpConsist}  & The system should lead the experiment through a consistent and replicable process       & Constraint & 1 &  Meaningful experimental process \\
     \hline
-    \textbf{R9}  & \emph{ResGuide}    & The system should help create guidelines with the results                               & Constraint & 0 &  Exploitable results \\
+    \textbf{R9}  & \emph{ResGuide}    & The system should help create guidelines with the results                               & Constraint & 1 &  Exploitable results \\
     \hline
     \textbf{R10} & \emph{ResComp}     & The system should create results comparable to the literature                           & Constraint & 0 &  Exploitable results \\
     \hline
-    \textbf{R11} & \emph{ResFlaws}    & The system should identify its security flaws and define a set of rules to contain them & Constraint & 1 &  Exploitable results \\
+    \textbf{R11} & \emph{ResFlaws}    & The system should identify its security flaws and define a set of rules to contain them & Constraint & 2 &  Exploitable results \\
     \hline
   \end{tabular}
 }
