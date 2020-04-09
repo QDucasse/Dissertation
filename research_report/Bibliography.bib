@@ -439,17 +439,23 @@
 	year={2019 (accessed April 6, 2020)}
 }
 
-@conference{Bacchus2020,
-	title = "Accuracy, Training Time and Hardware Efficiency Trade-Offs for Quantized Neural Networks on FPGAs",
-	abstract = "Neural networks have proven a successful AI approach in many application areas. Some neural network deployments require low inference latency and lower power requirements to be useful e.g. autonomous vehicles and smart drones. Whilst FPGAs meet these requirements, hardware needs of neural networks to execute often exceed FPGA resources.Emerging industry led frameworks aim to solve this problem by compressing the topology and precision of neural networks, eliminating computations that require memory for execution. Compressing neural networks inevitably comes at the cost of reduced inference accuracy.This paper uses Xilinx's FINN framework to systematically evaluate the trade-off between precision, inference accuracy, training time and hardware resources of 64 quantized neural networks that perform MNIST character recognition.We identify sweet spots around 3 bit precision in the quantization design space after training with 40 epochs, minimising both hardware resources and accuracy loss. With enough training, using 2 bit weights achieves almost the same inference accuracy as 3-8 bit weights.",
-	keywords = "Neural network, FPGA (Field Programmable Gate Array), quantization, artificial intelligence",
-	author = "Pascal Bacchus and Stewart, {Robert James} and Ekaterina Komendantskaya",
-	year = "2020",
-	month = "1",
-	day = "13",
-	language = "English",
-	note = "16th International Symposium on Applied Reconfigurable Computing 2020, ARC2020 ; Conference date: 01-04-2020 Through 03-04-2020",
-	url = "https://arcoresearch.com/arc2020/",
+@inproceedings{Bacchus2020,
+author="Bacchus, Pascal
+and Stewart, Robert
+and Komendantskaya, Ekaterina",
+editor="Rinc{\'o}n, Fernando
+and Barba, Jes{\'u}s
+and So, Hayden K. H.
+and Diniz, Pedro
+and Caba, Juli{\'a}n",
+title="Accuracy, Training Time and Hardware Efficiency Trade-Offs for Quantized Neural Networks on FPGAs",
+booktitle="Applied Reconfigurable Computing. Architectures, Tools, and Applications",
+year="2020",
+publisher="Springer International Publishing",
+address="Cham",
+pages="121--135",
+abstract="Neural networks have proven a successful AI approach in many application areas. Some neural network deployments require low inference latency and lower power requirements to be useful e.g. autonomous vehicles and smart drones. Whilst FPGAs meet these requirements, hardware needs of neural networks to execute often exceed FPGA resources.",
+isbn="978-3-030-44534-8"
 }
 
 @manual{CUDA,
@@ -468,6 +474,7 @@
 
 @article{IEEE754_1985,
 	journal={ANSI/IEEE Std 754-1985},
+	author={"IEEE Computer Society"},
 	title={IEEE Standard for Binary Floating-Point Arithmetic},
 	year={1985},
 	pages={1-20}
@@ -475,12 +482,14 @@
 
 @article{IEEE754_2008,
 	journal={IEEE Std 754-2008},
+	author={"IEEE Computer Society"},
 	title={IEEE Standard for Floating-Point Arithmetic},
 	year={2008},
 	pages={1-70}
 }
 
 @article{IEEE754_2019,
+	author={"IEEE Computer Society"},
 	journal={IEEE Std 754-2019 (Revision of IEEE 754-2008)},
 	title={IEEE Standard for Floating-Point Arithmetic},
 	year={2019},
