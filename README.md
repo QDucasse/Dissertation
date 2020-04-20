@@ -34,13 +34,20 @@ Please look inside the research_report folder
 - [X] 2013-Darulova: Synthesis of fixed-point programs
 - [X] 2013-LeGrand: SPFP: Speed without compromise - A Mixed-precision Model for GPU accelerated Molecular Dynamic Simulations
 - [X] 2013-Rubio: Precimonius, tuning assistant for Floating Point programs
-- [X] 2014-Horrowitz: Computing's Energy Problem (and what we caan do about it)
+- [X] 2014-Horrowitz: Computing's Energy Problem (and what we can do about it)
 - [X] 2014-XuanSang: From Smalltalk to Silicon: a methodology to turn Smalltalk code into FPGA
 - [X] 2015-Nips: High-Performance Hardware for Machine Learning
+- [X] 2016-Courbariaux: Binary-net: Training deep neural networks with weights and activations constrained to +1 or -1
+- [X] 2016-Hubara: s neural networks: Training neural networks with low precision weights and activations
+- [X] 2016-Park: FPGA based implementation of deep neural networks using on-chip memory only
+- [X] 2016-Qiu: - [ ] Going Deeper with Embedded FPGA Platform for Convolutional Neural Network
 - [X] 2016-Zhao: F-CNN: An FPGA-based Framework for Training Convolutional Neural Networks
+- [ ] 2017-Liang: FP-BNN: Binarised neural network on FPGA
 - [X] 2017-Micikevicius: Mixed-Precision Training
+- [X] 2017-Umuroglu: FINN: A framework for fast, scalable binarised neural network inference
 - [X] 2017-Xilinx: Reduce Power and Cost by Converting from Floating Point to Fixed Point
 - [X] 2018-Abdelouahab: Accelerating CNN inference on FPGAs: A Survey
+- [X] 2018-Blott: FINN-R: An End-to-End Deep-Learning Framework for Fast Exploration of quantised Neural Networks
 - [X] 2018-Colangelo: Exploration of Low Numeric Precision Deep Learning Inference Using Intel FPGAs
 - [X] 2018-Darulova: Sound mixed-precision with rewriting
 - [X] 2018-Haidar: Harnessing GPU Tensor Cores for Fast FP16 Arithmetic to Speed Up Mixed-Precision Iterative Refinement Solvers
@@ -49,8 +56,13 @@ Please look inside the research_report folder
 - [X] 2018-Kurth: Exascale deep learning for climate analysis
 - [X] 2018-LeGallo: Mixed-precision in-memory computing
 - [X] 2018-Narang: Mixed-precision training
+- [X] 2018-Rybalkin: FINN-L: Library Extensions and Design Trade-off Analysis for Variable Precision LSTM Networks on FPGAs
+- [ ] 2019-Ding: REQ-YOLO: A Resource-Aware, Efficient Quantisation Framework for Object Detection on FPGAs
 - [X] 2019-Jahanshahi: TinyCNN: A Tiny Modular CNN Accelerator for Embedded FPGA
+- [ ] 2019-Wang: Deep neural network approximation for custom hardware: Where we’ve been, where we’re going
+- [X] 2019-Zhao: Automatic generation of multi-precision multi-arithmetic CNN accelerators for FPGAs
 - [X] 2020-Bacchus: Accuracy, Training Time and Hardware Efficiency Trade-Offs for Quantized Neural Networks on FPGAs
+- [X] 2020-Radu: Performance Aware Convolutional Neural Network Channel Pruning for Embedded GPUs
 
 ## Important sites
 Precision analysis:

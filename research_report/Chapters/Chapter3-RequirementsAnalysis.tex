@@ -35,17 +35,33 @@ Taking from the \textbf{Aims} defined in Chapter \ref{Chapter1}, we derive the o
 \textbf{Objectives}
 
 \begin{enumerate}
-  \item Choose a state-of-the-art application.
-  \item Determine the parameters linked to the application.
-  \item Assess the impact of mixed-precision methods when put in action in the application.
-  \item Determine the metrics of the associated application as compared to the literature.
-  \item Present a proof of concept of the application along with mixed-precision tuning.
-  \item Present a demonstration of the system.
+  \item Implement a CNN on an FPGA
+  \begin{enumerate}
+    \item Hardware architectures: Digilent Nexys A7 and Zedboard Zynq 7000
+    \item Framework: FINN and Brevitas
+    \item Datasets: MNIST and CIFAR-10
+  \end{enumerate}
+  \item Determine the impact of the size of parameters linked to the application.
+  \begin{enumerate}
+    \item Weights
+    \item Activation Function
+    \item Training Time
+  \end{enumerate}
+  \item Measure the metrics of the associated application as compared to the literature.
+  \begin{enumerate}
+    \item Throughput
+    \item Latency
+    \item Energy
+    \item Compression Ratio
+    \item Robustness
+  \end{enumerate}
   \item Confront the results to the state-of-the-art comparable experimental results.
   \item Present how each parameter impacts the overall performance of the system.
   \item In medium term, provide an insight on how security can be impacted when trying to deteriorate precision.
   \item In medium term, present a set of rules to go against the potential security flaws.
 \end{enumerate}
+
+The above objectives consist of an extension of the \cite{Bacchus2020} article in order to benchmark the same setup with an extended framework (PyTorch with Brevitas), other hardware architectures (Digilent Nexys A7) and new datasets (CIFAR-10).
 
 %----------------------------------------------------------------------------------------
 %	SUBSECTION 2 - Requirements
