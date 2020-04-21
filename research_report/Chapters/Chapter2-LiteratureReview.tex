@@ -130,14 +130,14 @@ The benchmarks in this field use several metrics in order to quantify and qualif
 \begin{itemize}
 	\item \textbf{Size}: The size of a number in a given representation.
 	\item \textbf{Energy cost}: The cost of operations in a given representation. \emph{The lower the better}.
-	\item \textbf{Frequency}: The clock rate of a piece of hardware, or the quickness of pulses' generation. \emph{The lower the better}.
+	\item \textbf{Frequency}: The clock rate of a piece of hardware, or the quickness of pulses generation. \emph{The lower the better}.
 	\item \textbf{Latency}: The access time of a piece of hardware to memory or external devices. \emph{The lower the better}.
 	\item \textbf{Accuracy}: The precision enabled by a given representation. \emph{The higher the better}.
 	\item \textbf{Memory Usage}: The memory needed to store both numbers and results of operations between them. \emph{The lower the better}.
 	\item \textbf{Performance}: The overall time needed to complete a sequence of operations.
 \end{itemize}
 
-The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Mark Horowitz' talk at the ISSCC 2014 \cite{Horowitz2014} entitled \guille{Computing's Energy Problem (and what we can do about it)} provides an insight of the problems and challenges technology scaling has encountered in its development. Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in \guille{the design of applications and hardware that are better matched to task and each other}. The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on \guille{High-Performance Hardware for Machine Learning} \cite{Nips2015}. The \emph{Figure} \ref{fig:OpCosts} is extracted from this lecture and presents the energy and area costs different floating-point operations demand. Increasing precision on the used numbers increases the relative energy cost at the same time. An 8-bit addition costs 0.03 pJ whereas the same addition in 32-bit floating-point costs 0.9 pJ or 30 times more.
+The operations performed in floating-point are expensive in terms of bandwidth, memory and energy consumption, which ultimately translate in to additional cost to perform an action. Horowitz's talk at ISSCC 2014 \cite{Horowitz2014} entitled \guille{Computing's Energy Problem (and what we can do about it)} provides an insight of the problems and challenges technology scaling has encountered in its development. Moore's law is getting outdated and a solution to the issue of permanently growing energy needs resides in \guille{the design of applications and hardware that are better matched to task and each other}. The numbers presented by M.Horrowitz have been reused by Professor William Dally (Standford University, NVidia Corporation) in his lecture on \guille{High-Performance Hardware for Machine Learning} \cite{Nips2015}. The \emph{Figure} \ref{fig:OpCosts} is extracted from this lecture and presents the energy and area costs different floating-point operations demand. Increasing precision on the used numbers increases the relative energy cost at the same time. An 8-bit addition costs 0.03 pJ whereas the same addition in 32-bit floating-point costs 0.9 pJ or 30 times more.
 
 % COSTS OF OPERATIONS 2015-NIPS
 \begin{figure}[htbp]
@@ -496,7 +496,7 @@ Along with GPUs come their proper Software Development Kit (SDK) in order for de
 
 GPUs allow computers to delegate expensive tasks (3D rendering for example) from the CPU to them. The GPUs can be either integrated or external. They require less knowledge than FPGAs but provide a more static architecture that will limit tuning opportunities. Mixed-precision mindset will not reach its full potential with this architecture but will still manage to increase the performance of different operations and tasks.
 
-Previous cited works have used CPUs, in mathematical computations and physics simulations \cite{Goddeke2007, Baboulin2009, Clark2010, LeGrand2013, Haidar2018, Ichimura2018} or deep learning \cite{Godekke2007, Baboulin2009, Micikevicius2017, Jia2018, Ichimura2018}.
+Previous cited works have used CPUs, in mathematical computations and physics simulations \cite{Goddeke2007, Baboulin2009, Clark2010, LeGrand2013, Haidar2018, Ichimura2018} or deep learning \cite{Goddeke2007, Baboulin2009, Micikevicius2017, Jia2018, Ichimura2018}.
 
 %-----------------------------------
 %	SUBSECTION 2 - FPGA
